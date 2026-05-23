@@ -94,6 +94,7 @@ header.scrolled { box-shadow: var(--shadow-sm); }
   align-items: center;
   justify-content: space-between;
   height: 76px;
+  gap: 16px;
 }
 .logo {
   display: flex;
@@ -103,10 +104,13 @@ header.scrolled { box-shadow: var(--shadow-sm); }
   font-size: 18px;
   color: var(--navy-900);
   letter-spacing: -0.02em;
+  flex-shrink: 0;
+  min-width: 0;
 }
 .logo-mark {
   width: 36px;
   height: 36px;
+  flex-shrink: 0;
   background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
   color: var(--gold-600);
   border-radius: 8px;
@@ -118,7 +122,7 @@ header.scrolled { box-shadow: var(--shadow-sm); }
   font-size: 20px;
   font-weight: 700;
 }
-.logo-text { line-height: 1.2; }
+.logo-text { line-height: 1.2; white-space: nowrap; overflow: hidden; }
 .logo-text small {
   display: block;
   font-size: 10px;
@@ -194,26 +198,31 @@ nav.main-nav a:hover::after { transform: scaleX(1); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 900px) {
-  .header-inner { height: 64px; }
+  .header-inner { height: 60px; gap: 12px; }
+  .logo { font-size: 16px; gap: 10px; }
+  .logo-mark { width: 32px; height: 32px; font-size: 17px; border-radius: 7px; }
+  .logo-text small { font-size: 9px; letter-spacing: 0.15em; }
   nav.main-nav {
     position: fixed;
-    top: 64px;
+    top: 60px;
     left: 0;
     right: 0;
     bottom: 0;
     background: white;
     flex-direction: column;
-    padding: 32px 28px;
+    padding: 28px 24px max(28px, env(safe-area-inset-bottom));
     box-shadow: var(--shadow-md);
     gap: 4px;
     align-items: stretch;
     transform: translateY(-100%);
     transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     z-index: 99;
     display: flex;
+    visibility: hidden;
   }
-  nav.main-nav.open { transform: translateY(0); }
+  nav.main-nav.open { transform: translateY(0); visibility: visible; }
   nav.main-nav a {
     font-size: 18px;
     font-weight: 600;
@@ -823,6 +832,19 @@ footer li a:hover { color: var(--gold-600); }
 .hamburger,
 .float-cta a {
   min-height: 44px;
+}
+
+/* Tiny phones (≤ 380px): hide english subtitle, tighten logo */
+@media (max-width: 380px) {
+  .header-inner { gap: 8px; }
+  .logo { font-size: 15px; gap: 8px; }
+  .logo-mark { width: 28px; height: 28px; font-size: 15px; }
+  .logo-text small { display: none; }
+}
+
+/* Very narrow (≤ 320px): final fallback */
+@media (max-width: 320px) {
+  .logo-text { font-size: 13.5px; }
 }
 
 /* iOS link tap callout suppression */
