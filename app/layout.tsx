@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,6 +25,24 @@ export const metadata: Metadata = {
     locale: "ko_KR",
   },
   robots: { index: true, follow: true },
+  formatDetection: { telephone: false, email: false, address: false },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "드림위드에스",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  minimumScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0a1228" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a1228" },
+  ],
 };
 
 export default function RootLayout({
