@@ -8,11 +8,11 @@ const SITE_URL = "https://www.bookpublishingwithess.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "드림위드에스 출판사 | 위드에스마케팅 — 책 한 권으로 인생을 바꾸는 구조",
+    default: "드림위드에스 출판사 | 위드에스마케팅 — 책 한 권으로 시작되는 인생의 다음 챕터",
     template: "%s | 드림위드에스 출판사",
   },
   description:
-    "드림위드에스 출판사 | 누적 890권+ 출간 · 베스트셀러 다수 배출. 책 출판·자서전·자비출판·논문 컨설팅 전문. 인터뷰 기반 집필 + 표절 검수 전담팀 + 출판→마케팅→강연·사업 확장까지 원스톱. 강남 위치, 정가의 45% 인세, 3개월 출간. 책 한 권으로 인생을 바꾸는 구조.",
+    "드림위드에스 출판사 | 누적 890권+ 출간 · 베스트셀러 다수 배출. 책 출판·자서전·자비출판·논문 컨설팅 전문. 인터뷰 기반 집필 + 표절 검수 전담팀 + 출판→마케팅→강연·사업 확장까지 원스톱. 강남 위치, 정가의 45% 인세, 3개월 출간. 책 한 권으로 시작되는 인생의 다음 챕터.",
   applicationName: "드림위드에스 출판사",
   authors: [{ name: "드림위드에스 출판사", url: SITE_URL }],
   generator: "Next.js",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "드림위드에스 출판사 | 책 한 권으로 인생을 바꾸는 구조",
+    title: "드림위드에스 출판사 | 책 한 권으로 시작되는 인생의 다음 챕터",
     description:
       "누적 890권+ 출간. 인터뷰 기반 출판 + 표절 검수 전담팀 + 마케팅·강연 원스톱. 자서전·자비출판·논문 컨설팅 전문.",
     url: SITE_URL,
@@ -61,19 +61,19 @@ export const metadata: Metadata = {
     alternateLocale: ["en_US", "zh_CN", "ja_JP"],
     images: [
       {
-        url: `${SITE_URL}/og-image.png`,
+        url: `${SITE_URL}/og-image.png?v=2`,
         width: 1200,
         height: 630,
-        alt: "드림위드에스 출판사 — 책 한 권으로 인생을 바꾸는 구조",
+        alt: "드림위드에스 출판사 — 책 한 권으로 시작되는 인생의 다음 챕터",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "드림위드에스 출판사 | 책 한 권으로 인생을 바꾸는 구조",
+    title: "드림위드에스 출판사 | 책 한 권으로 시작되는 인생의 다음 챕터",
     description: "누적 890권+ 출간. 인터뷰 기반 출판 + 마케팅·강연 원스톱.",
-    images: [`${SITE_URL}/og-image.png`],
+    images: [`${SITE_URL}/og-image.png?v=2`],
   },
   icons: {
     icon: [
@@ -171,7 +171,7 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "드림위드에스 출판사",
-  image: `${SITE_URL}/og-image.png`,
+  image: `${SITE_URL}/og-image.png?v=2`,
   "@id": SITE_URL,
   url: SITE_URL,
   telephone: "+82-10-2068-0817",
