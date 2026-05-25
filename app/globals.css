@@ -447,6 +447,94 @@ section.dark .section-lead { color: rgba(255, 255, 255, 0.75); }
 
 @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
 
+/* LANG SWITCHER (헤더 우측) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+}
+.lang-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--navy-900);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.lang-current:hover {
+  border-color: var(--gold-600);
+}
+.lang-current .lang-short {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.lang-current .lang-caret {
+  font-size: 9px;
+  color: var(--text-500);
+  margin-left: 2px;
+}
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  min-width: 160px;
+  list-style: none;
+  padding: 4px;
+  margin: 0;
+  z-index: 100;
+}
+.lang-menu li { margin: 0; padding: 0; }
+.lang-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-700);
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: left;
+  transition: background 0.15s;
+}
+.lang-item:hover { background: var(--gold-50); color: var(--navy-900); }
+.lang-item.active { background: var(--gold-50); color: var(--navy-900); font-weight: 600; }
+.lang-item .lang-short {
+  width: 30px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--gold-600);
+  font-size: 11.5px;
+}
+.lang-item .lang-label { flex: 1; }
+.lang-item .lang-check { color: var(--gold-600); font-weight: 700; }
+
+/* 모바일에서는 햄버거 옆에 lang switcher만 노출, CTA는 숨김 */
+@media (max-width: 900px) {
+  .header-right.desktop-only { display: flex; }  /* lang switcher는 보임 */
+  .header-right .cta-btn { display: none; }       /* CTA만 숨김 */
+  .lang-current { padding: 7px 10px; font-size: 12px; }
+  .lang-menu { right: 0; }
+}
+
 /* DIFFERENTIATORS */
 .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
 .diff-card {
