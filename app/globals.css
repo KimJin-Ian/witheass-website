@@ -980,14 +980,15 @@ footer li a:hover { color: var(--gold-600); }
   .community-list ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0 16px;
+    gap: 0 12px;
   }
   .community-list li {
-    padding: 6px 0 6px 18px;
+    padding: 6px 0;
     font-size: 12px;
     line-height: 1.45;
   }
-  .community-list li::before { top: 8px; }
+  /* 모바일에서 좌측 ◆ 마크가 텍스트와 겹쳐서 가독성 ↓ → 숨김 */
+  .community-list li::before { display: none; }
 }
 
 /* ──────── MOBILE COMPACT — 가로 활용 + 세로 스크롤 단축 ──────── */
