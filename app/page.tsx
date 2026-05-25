@@ -410,8 +410,11 @@ export default function Home() {
                 <div className="cover">
                   <img
                     src={`/covers/${p.img}`}
-                    alt={p.title}
+                    alt={`드림위드에스 출판 사례 — ${p.title} (${p.cat})`}
+                    title={p.title}
                     loading="lazy"
+                    width={720}
+                    height={960}
                     style={{
                       width: "100%",
                       height: "100%",
