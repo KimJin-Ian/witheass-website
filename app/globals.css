@@ -97,39 +97,27 @@ header.scrolled { box-shadow: var(--shadow-sm); }
   gap: 16px;
 }
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  font-weight: 800;
-  font-size: 18px;
-  color: var(--navy-900);
-  letter-spacing: -0.02em;
   flex-shrink: 0;
   min-width: 0;
+  text-decoration: none;
 }
-.logo-mark {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
-  color: var(--gold-600);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 20px;
-  font-weight: 700;
-}
-.logo-text { line-height: 1.2; white-space: nowrap; overflow: hidden; }
-.logo-text small {
+.logo img {
+  height: 44px;
+  width: auto;
   display: block;
-  font-size: 10px;
-  color: var(--text-500);
-  letter-spacing: 0.2em;
-  font-weight: 500;
+  /* 작은 원본 이미지의 화질을 추가로 보정 */
+  image-rendering: -webkit-optimize-contrast;
 }
+@media (max-width: 760px) {
+  .logo img { height: 36px; }
+}
+@media (max-width: 380px) {
+  .logo img { height: 32px; }
+}
+/* 기존 logo-mark/logo-text 클래스는 사용 안 함 (호환성 위해 남김) */
+.logo-mark, .logo-text { display: none; }
 
 nav.main-nav { display: flex; align-items: center; gap: 28px; }
 nav.main-nav a {
@@ -964,12 +952,83 @@ footer li a:hover { color: var(--gold-600); }
   footer .ft-grid { gap: 28px; }
 }
 
+/* ──────── MOBILE COMPACT — 가로 활용 + 세로 스크롤 단축 ──────── */
+@media (max-width: 900px) {
+  /* 8단계 process — 2-col로 압축 (4행) */
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .process-step { padding: 14px 12px; }
+  .step-num { font-size: 10.5px; letter-spacing: 0.16em; }
+  .process-step h4 { font-size: 13.5px; margin: 4px 0 4px; line-height: 1.35; }
+  .process-step p { font-size: 11.5px; line-height: 1.55; }
+
+  /* Differentiators 5개 → 2-col (마지막 1개는 풀폭) */
+  .diff-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .diff-card { padding: 18px 16px; }
+  .diff-card .num { font-size: 26px; margin-bottom: 6px; }
+  .diff-card h3 { font-size: 14.5px; margin-bottom: 8px; line-height: 1.4; }
+  .diff-card p { font-size: 12px; line-height: 1.6; }
+
+  /* Voices 9개 → 2-col */
+  .voices-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .voice-card { padding: 16px 14px; }
+  .voice-card .voice-tag { font-size: 10px; padding: 2px 7px; margin-bottom: 8px; }
+  .voice-card h4 { font-size: 13px; margin-bottom: 6px; line-height: 1.4; }
+  .voice-card p { font-size: 11.5px; line-height: 1.6; }
+
+  /* For Whom 카드 6개 → 2-col */
+  #service .diff-grid,
+  #service [style*="grid-template-columns"] { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+
+  /* Pricing 4개 → 2-col (featured는 2칸 풀폭) */
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .price-card { padding: 22px 18px; }
+  .price-card h3 { font-size: 16px; }
+  .price-card .price { font-size: 26px; }
+  .price-card ul { font-size: 12.5px; }
+  .price-card.featured { grid-column: 1 / -1; }
+
+  /* Tracks 3개 → 1-col 유지 */
+  .tracks-grid { grid-template-columns: 1fr; gap: 10px; }
+  .track-card { padding: 18px; }
+  .track-card h4 { font-size: 15px; }
+  .track-card ol { font-size: 12.5px; }
+
+  /* Portfolio 카드 그리드 — 모바일에서 2-col */
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .portfolio-card h4 { font-size: 13px; line-height: 1.4; }
+  .portfolio-card p { font-size: 11px; }
+  .portfolio-card .info { padding: 12px 14px; }
+
+  /* Community 박스 */
+  .community-list { padding: 24px 20px; }
+  .community-list h4 { font-size: 15px; }
+  .community-list li { font-size: 12.5px; padding: 6px 0; }
+
+  /* Case study */
+  .case-hero { padding: 32px 22px; gap: 24px; }
+  .case-hero h3 { font-size: 19px; }
+
+  /* Section padding 축소 */
+  section { padding: 60px 0; }
+  .section-title { font-size: 24px; line-height: 1.3; }
+  .section-lead { font-size: 13.5px; line-height: 1.7; }
+  .section-eyebrow { font-size: 11px; }
+}
+
 @media (max-width: 600px) {
-  /* Portfolio → 1 column on small phones */
-  .portfolio-grid { grid-template-columns: 1fr; }
-  .portfolio-card .cover { height: 160px; }
-  .portfolio-card h4 { font-size: 14.5px; }
-  .portfolio-card p { font-size: 12px; }
+  /* 정말 작은 폰만 1-col로 */
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card.featured { grid-column: 1; }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-card .cover { height: auto; }
+  .voices-grid { grid-template-columns: 1fr; }
+  /* process·diff 등은 2-col 유지 (압축 가독성 OK) */
+}
+
+@media (max-width: 380px) {
+  /* 초소형 폰: 가독성 위해 일부 1-col */
+  .process-grid { grid-template-columns: 1fr; }
+  .diff-grid { grid-template-columns: 1fr; }
 }
 
 /* iOS Safari safe-area insets for floating CTA */

@@ -44,12 +44,14 @@ export default function SiteHeader() {
   return (
     <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
       <div className="container header-inner">
-        <a href="#top" className="logo" onClick={closeMenu}>
-          <div className="logo-mark">S</div>
-          <div className="logo-text">
-            드림위드에스
-            <small>DREAM · WITH · S</small>
-          </div>
+        <a href="#top" className="logo" onClick={closeMenu} aria-label="드림위드에스 출판사 홈으로">
+          <img
+            src="/logo.png"
+            alt="드림위드에스 출판사 — 위드에스마케팅"
+            width={200}
+            height={50}
+            style={{ height: "44px", width: "auto", display: "block" }}
+          />
         </a>
         <nav
           className={`main-nav ${open ? "open" : ""}`}

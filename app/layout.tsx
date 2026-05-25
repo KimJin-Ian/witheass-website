@@ -59,11 +59,29 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     alternateLocale: ["en_US", "zh_CN", "ja_JP"],
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "드림위드에스 출판사 — 책 한 권으로 인생을 바꾸는 구조",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "드림위드에스 출판사 | 책 한 권으로 인생을 바꾸는 구조",
     description: "누적 890권+ 출간. 인터뷰 기반 출판 + 마케팅·강연 원스톱.",
+    images: [`${SITE_URL}/og-image.png`],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "64x64" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   robots: {
     index: true,
