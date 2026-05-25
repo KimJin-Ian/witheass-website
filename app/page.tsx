@@ -37,38 +37,42 @@ export default function Home() {
         <div className="container">
           <div className="about-grid">
             <div className="about-text">
-              <div className="section-eyebrow">FOUNDER&apos;S STORY</div>
-              <h2 className="section-title">평범했던 한 사람이<br />책 한 권으로 만든 변화</h2>
+              <div className="section-eyebrow">OUR STORY</div>
+              <h2 className="section-title">책 한 권이 만들어낸<br />수많은 인생의 변화</h2>
               <div className="section-rule"></div>
               <div className="quote">
-                저도 23살, 평범한 음대생이었습니다.<br />
-                그때 낸 책 한 권이 제 인생을 바꿨습니다.
+                책은 인세로 끝나는 상품이 아닙니다.<br />
+                <strong>기회가 시작되는 자산</strong>입니다.
               </div>
               <p>
-                그 책은 단순한 인세를 가져다 준 게 아니라{" "}
-                <strong>웹툰·뮤지컬·독립영화·영문판·강연·사업 확장</strong>까지 이어졌습니다.
-              </p>
-              <p>
-                그래서 저희는 압니다.{" "}
-                <strong>책은 인세로 끝나는 상품이 아니라, 기회가 시작되는 자산입니다.</strong>
+                저희가 함께한 저자들은 한 권의 책으로{" "}
+                <strong>강연·언론 노출·사업 확장·해외 진출·웹툰·뮤지컬</strong>까지
+                다양한 기회로 이어졌습니다.
               </p>
               <p>
                 누적 <strong>890권 이상</strong>의 출간 경험과 베스트셀러 배출 노하우로,
                 저자 한 분 한 분의 가능성을 끝까지 책임지고 끌어드립니다.
               </p>
+              <p>
+                글솜씨가 없어도, 시간이 부족해도, 시작은 가능합니다.
+                <strong> 인터뷰 2회만으로</strong> 책의 뼈대가 잡히고,
+                전문 작가팀이 표현·구성·디자인까지 동시에 진행합니다.
+              </p>
             </div>
 
             <div className="about-portrait">
-              <div className="badge">CEO PROFILE</div>
-              <h3>이서진 대표<br /><span style={{ color: "var(--gold-500)", fontSize: 14, letterSpacing: "0.2em" }}>LEE SEO-JIN</span></h3>
+              <div className="badge">OUR PROMISE</div>
+              <h3>책으로 시작되는<br /><span style={{ color: "var(--gold-500)", fontSize: 14, letterSpacing: "0.2em" }}>NEW POSSIBILITIES</span></h3>
               <p style={{ fontSize: 14.5, lineHeight: 1.8, color: "rgba(255,255,255,0.85)" }}>
-                베스트셀러 작가 출신. 『꿈을 찾는 음대생』 외 다수 저서. 10년간 매년 책을 집필.
+                저자가 책 하나에 그치지 않고 강연·브랜딩·사업까지 이어갈 수 있도록,
+                전 과정을 단일 회사 안에서 책임집니다.
               </p>
               <ul>
-                <li><span>대표 저서</span><span>『꿈을 찾는 음대생』 등 4권 베스트셀러</span></li>
-                <li><span>수상</span><span>문화발전진흥대상</span></li>
-                <li><span>선정</span><span>스포츠서울 차세대리더상</span></li>
-                <li><span>활동</span><span>퍼스널 브랜딩 강연</span></li>
+                <li><span>RUNNING</span><span>10년+</span></li>
+                <li><span>PUBLISHED</span><span>890권+</span></li>
+                <li><span>ROYALTY</span><span>정가의 45% 인세</span></li>
+                <li><span>TIME TO PUBLISH</span><span>평균 3개월</span></li>
+                <li><span>SCOPE</span><span>출판 + 마케팅 + 강연 + 커뮤니티 원스톱</span></li>
               </ul>
             </div>
           </div>
@@ -108,6 +112,11 @@ export default function Home() {
               <h3>출판 → 마케팅 → 강연까지 원스톱</h3>
               <p>책 제작에서 끝나지 않습니다. 검색 자산화, 커뮤니티 홍보, 오프라인 행사, 강연·사업 연결까지 단일 회사 안에서 처리합니다.</p>
             </div>
+            <div className="diff-card">
+              <div className="num">05</div>
+              <h3>표절 검수 + 법적 리스크 방지 전담팀</h3>
+              <p>책 출판에 별도 표절 검수팀을 운영하는 곳은 드뭅니다. 인용·저작권·초상권·명예훼손까지 출간 전 사전 차단해 법적 리스크 0을 보장합니다.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -125,8 +134,8 @@ export default function Home() {
                 자신이 쓰려는 내용이 정리가 안 된다?
               </p>
               <p style={{ fontSize: 16, lineHeight: 1.85, marginBottom: 24 }}>
-                저희는 <strong>기획·대필부터 표절 검수까지</strong> 한 번에 해결합니다.
-                서울대·해외 박사급 컨설턴트가 직장인 1:1 맞춤 진행합니다.
+                저희는 <strong>구조 설계·맞춤 컨설팅부터 표절 검수까지</strong> 한 번에 해결합니다.
+                서울대·해외 박사급 컨설턴트가 직장인 1:1 맞춤으로 통과까지 함께합니다.
               </p>
               <div className="diff-card" style={{ background: "var(--gold-50)", borderColor: "var(--gold-100)", padding: 24, marginTop: 8 }}>
                 <h3 style={{ fontSize: 16 }}>📘 논문 → 책 전환 서비스 (Unique)</h3>
@@ -152,7 +161,8 @@ export default function Home() {
           <div className="section-rule"></div>
           <p className="section-lead">
             원고가 있는지, 어디까지 직접 진행하실지에 따라 패키지를 선택하시면 됩니다.
-            가장 많이 선택하시는 패키지는 <strong style={{ color: "var(--navy-900)" }}>900만원 올인원</strong>입니다.
+            많은 분들이 <strong style={{ color: "var(--navy-900) " }}>책 출판부터 마케팅·강연회까지</strong>를
+            함께 진행하는 풀패키지를 선택하십니다.
           </p>
 
           <div className="pricing-grid">
@@ -184,11 +194,13 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="price-card featured">
-              <div className="tag">★ MOST POPULAR</div>
-              <div className="cat">RECOMMENDED</div>
-              <h3>올인원 패키지</h3>
+            <div className="price-card">
+              <div className="cat">올인원 (책 출판 전과정)</div>
+              <h3>책 출판 올인원 패키지</h3>
               <div className="price">900<small>만원</small></div>
+              <p style={{ fontSize: 12.5, color: "var(--text-500)", marginTop: -8, marginBottom: 12, lineHeight: 1.5 }}>
+                책 제작·디자인·인쇄·유통까지 — <strong>마케팅·강연회 별도</strong>
+              </p>
               <ul>
                 <li>인터뷰 기반 기획 (글 없어도 OK)</li>
                 <li>목차 설계 + 원고 집필</li>
@@ -198,22 +210,26 @@ export default function Home() {
                 <li>ISBN + 네이버 책 등록</li>
                 <li>전국 서점 유통 + 인세 45%</li>
               </ul>
-              <a href="#contact" className="cta-btn gold" style={{ marginTop: "auto" }}>상담 신청 →</a>
             </div>
 
-            <div className="price-card">
-              <div className="cat">브랜딩 확장</div>
-              <h3>마케팅 풀패키지</h3>
+            <div className="price-card featured">
+              <div className="tag">★ MOST POPULAR</div>
+              <div className="cat">FULL 패키지 (마케팅·강연회 포함)</div>
+              <h3>책 출판 &amp; 마케팅<br />올인원 풀패키지</h3>
               <div className="price">2,000<small>만원</small></div>
+              <p style={{ fontSize: 12.5, color: "rgba(255,255,255,0.75)", marginTop: -8, marginBottom: 12, lineHeight: 1.5 }}>
+                <strong>책 출판 전과정 포함</strong> + 마케팅 풀세트 + 강연회 주최
+              </p>
               <ul>
-                <li>올인원 패키지 포함</li>
+                <li><strong>책 출판 올인원 전과정 포함</strong> (위 900만원 패키지 전체)</li>
                 <li>블로그·인스타·유튜브 마케팅</li>
                 <li>언론 PR + 포털 검색 브랜딩</li>
                 <li>리뷰단 + 바이럴</li>
                 <li>웹툰형 콘텐츠 20장+</li>
-                <li>강연·클래스 연결</li>
-                <li>퍼스널 브랜딩 로드맵</li>
+                <li><strong>강연회 주최·운영</strong> (북토크·강의)</li>
+                <li>강연·클래스 연결 + 퍼스널 브랜딩 로드맵</li>
               </ul>
+              <a href="#contact" className="cta-btn gold" style={{ marginTop: "auto" }}>상담 신청 →</a>
             </div>
           </div>
 
@@ -381,20 +397,69 @@ export default function Home() {
             카테고리별 대표 사례. 분야가 비슷한 예시를 원하시면 상담 시 더 많이 보여드립니다.{" "}
             <em style={{ color: "var(--text-500)" }}>※ 저작권 보호 대상이므로 열람 후 저장/배포는 삼가 주세요.</em>
           </p>
+          <div
+            style={{
+              textAlign: "center",
+              marginBottom: 28,
+              padding: "16px 20px",
+              background: "var(--gold-50)",
+              border: "1px solid var(--gold-100)",
+              borderRadius: "10px",
+              maxWidth: 720,
+              margin: "0 auto 32px",
+            }}
+          >
+            <p style={{ fontSize: 14, color: "var(--text-700)", marginBottom: 10 }}>
+              📚 <strong>드림위드에스에서 출간된 전체 책 보기</strong> — 네이버 책에서 직접 확인 가능합니다
+            </p>
+            <a
+              href="https://search.shopping.naver.com/book/search?bookTabType=ALL&pageSize=40&query=%EB%93%9C%EB%A6%BC%EC%9C%84%EB%93%9C%EC%97%90%EC%8A%A4&sort=REL"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-btn gold"
+              style={{ fontSize: 13.5, padding: "10px 22px" }}
+            >
+              네이버 책 &quot;드림위드에스&quot; 전체 보기 →
+            </a>
+          </div>
 
           <div className="portfolio-grid">
             {[
-              { cover: "ESG", cat: "전문지식", title: "ESG 기반 도서", desc: "지속가능경영 분야" },
-              { cover: "Smart", cat: "전문지식", title: "스마트시티 관련 도서", desc: "도시·기술 분야" },
-              { cover: "대전신보", cat: "기관 브랜딩", title: "대전신용보증재단", desc: "표지·내지 디자인 일체" },
-              { cover: "천안시장", cat: "자서전 · 공신력", title: "천안시장 자서전", desc: "인터뷰 기반" },
-              { cover: "서초구", cat: "자서전 · 공신력", title: "서초구의원 자서전", desc: "정치인 출판기념회 패키지" },
-              { cover: "재테크", cat: "금융 · 교재형", title: "주식·재테크 도서", desc: "내지 칼라 인쇄" },
-              { cover: "CEO 자서전", cat: "퍼스널 자서전", title: "이문호 CEO 자서전", desc: "기업가 인생 기록" },
-              { cover: "이기적 남자", cat: "전문직 브랜딩", title: "안세훈 변호사 『이기적 남자』", desc: "15년차 형사 전문 변호사 · 23주 완성" },
+              // 이미지 파일을 /public/covers/ 에 넣으면 img 필드에 파일명 지정
+              // 예: { img: "esg.jpg", ... }
+              { img: null, cover: "ESG", cat: "전문지식", title: "ESG 기반 도서", desc: "지속가능경영 분야" },
+              { img: null, cover: "Smart", cat: "전문지식", title: "스마트시티 관련 도서", desc: "도시·기술 분야" },
+              { img: null, cover: "대전신보", cat: "기관 브랜딩", title: "대전신용보증재단", desc: "표지·내지 디자인 일체" },
+              { img: null, cover: "천안시장", cat: "자서전 · 공신력", title: "천안시장 자서전", desc: "인터뷰 기반" },
+              { img: null, cover: "서초구", cat: "자서전 · 공신력", title: "서초구의원 자서전", desc: "정치인 출판기념회 패키지" },
+              { img: null, cover: "재테크", cat: "금융 · 교재형", title: "주식·재테크 도서", desc: "내지 칼라 인쇄" },
+              { img: null, cover: "CEO 자서전", cat: "퍼스널 자서전", title: "이문호 CEO 자서전", desc: "기업가 인생 기록" },
+              { img: null, cover: "이기적 남자", cat: "전문직 브랜딩", title: "안세훈 변호사 『이기적 남자』", desc: "15년차 형사 전문 변호사 · 23주 완성" },
+              { img: null, cover: "음대생", cat: "에세이 · 베스트셀러", title: "『꿈을 찾는 음대생』", desc: "10년 스테디셀러" },
+              { img: null, cover: "강사 브랜딩", cat: "강사 · 컨설팅", title: "강사 퍼스널 브랜딩 도서", desc: "강의·콘텐츠 자산화" },
+              { img: null, cover: "의료 에세이", cat: "전문직 · 의료", title: "의사 에세이", desc: "환자와의 이야기 기록" },
+              { img: null, cover: "교육·학원", cat: "학원장 · 브랜딩", title: "학원장 교육 철학서", desc: "학부모 신뢰 자산" },
+              { img: null, cover: "법률 안내", cat: "법조인 · 실용서", title: "법률 가이드 도서", desc: "변호사 전문성 입증" },
+              { img: null, cover: "코칭 에세이", cat: "코치 · 라이프", title: "라이프 코칭 에세이", desc: "코칭 프로그램 연동" },
+              { img: null, cover: "회고록", cat: "가족 자서전", title: "가족 회고록 (지인용)", desc: "소량 인쇄 옵션" },
             ].map((p, i) => (
               <div key={i} className="portfolio-card">
-                <div className="cover"><div className="cover-text">{p.cover}</div></div>
+                <div className="cover">
+                  {p.img ? (
+                    <img
+                      src={`/covers/${p.img}`}
+                      alt={p.title}
+                      loading="lazy"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : (
+                    <div className="cover-text">{p.cover}</div>
+                  )}
+                </div>
                 <div className="info">
                   <div className="cat-tag">{p.cat}</div>
                   <h4>{p.title}</h4>
@@ -402,6 +467,67 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* REAL VOICES — 유형별 출간 후 변화 */}
+      <section id="voices">
+        <div className="container">
+          <div className="section-eyebrow">REAL VOICES · AFTER THE BOOK</div>
+          <h2 className="section-title">책 한 권으로 달라진<br />저자들의 진짜 이야기</h2>
+          <div className="section-rule"></div>
+          <p className="section-lead">
+            출간 후 저자들이 가장 자주 들려주시는 이야기들 —
+            <strong style={{ color: "var(--navy-900)" }}> 분야마다 책이 다르게 작동합니다.</strong>
+          </p>
+
+          <div className="voices-grid">
+            <div className="voice-card">
+              <div className="voice-tag">학원·교육 운영</div>
+              <h4>&ldquo;학원 매출이 눈에 띄게 올랐어요.&rdquo;</h4>
+              <p>&ldquo;원장 책이 있으니 학부모 상담 시 신뢰도가 다릅니다. 검색하면 책이 먼저 나오고, 등록률이 확연히 올라갔어요.&rdquo;</p>
+            </div>
+            <div className="voice-card">
+              <div className="voice-tag">정치인 · 공직자</div>
+              <h4>&ldquo;강연회 덕분에 지역에 제대로 알려졌습니다.&rdquo;</h4>
+              <p>&ldquo;출판기념회·북토크 한 번에 수백 명이 모이고, 책 한 권이 명함 역할을 하니까 캠페인 효율이 완전히 달라졌어요.&rdquo;</p>
+            </div>
+            <div className="voice-card">
+              <div className="voice-tag">전문직 (의사·변호사·교수)</div>
+              <h4>&ldquo;나의 브랜딩, 나의 기록 자체가 좋아요.&rdquo;</h4>
+              <p>&ldquo;환자·의뢰인이 검색했을 때 책이 보이는 게 다르더라고요. 본업의 신뢰도가 책으로 자연스럽게 연결됩니다.&rdquo;</p>
+            </div>
+            <div className="voice-card">
+              <div className="voice-tag">CEO · 기업인</div>
+              <h4>&ldquo;돈 벌 때보다 책 쓰고 강연 부수입이 더 행복하더라고요.&rdquo;</h4>
+              <p>&ldquo;사업으로 만든 노하우가 책이 되니 강연 의뢰가 끊이질 않아요. 인생의 두 번째 챕터를 시작한 기분입니다.&rdquo;</p>
+            </div>
+            <div className="voice-card">
+              <div className="voice-tag">강사 · 컨설턴트</div>
+              <h4>&ldquo;강의료 단가가 올라갔어요.&rdquo;</h4>
+              <p>&ldquo;책이 있는 강사와 없는 강사는 단가부터 다릅니다. 한 권의 책이 강사 커리어 전체를 한 단계 위로 올려줬어요.&rdquo;</p>
+            </div>
+            <div className="voice-card">
+              <div className="voice-tag">자영업자 · 소상공인</div>
+              <h4>&ldquo;검색하면 신뢰가 먼저 보입니다.&rdquo;</h4>
+              <p>&ldquo;가게 이름 옆에 &lsquo;저자&rsquo; 타이틀 하나가 붙으니까 소개·납품·제휴 제안이 자연스럽게 들어와요.&rdquo;</p>
+            </div>
+            <div className="voice-card">
+              <div className="voice-tag">자서전 · 회고록</div>
+              <h4>&ldquo;가족이 더 자랑스러워해 줍니다.&rdquo;</h4>
+              <p>&ldquo;돈으로 살 수 없는 기록을 남겼다는 만족감. 자녀·손주에게 남길 수 있어 인생에서 가장 잘한 일 같아요.&rdquo;</p>
+            </div>
+            <div className="voice-card">
+              <div className="voice-tag">코치 · 트레이너</div>
+              <h4>&ldquo;코칭 프로그램 전환율이 올라갔어요.&rdquo;</h4>
+              <p>&ldquo;콘텐츠가 책으로 정리되니 고객이 미리 신뢰를 가지고 옵니다. 무료 상담 → 유료 프로그램 전환률이 확연히 늘었어요.&rdquo;</p>
+            </div>
+            <div className="voice-card">
+              <div className="voice-tag">작가 · 콘텐츠 크리에이터</div>
+              <h4>&ldquo;다음 작품·콜라보 제안이 자연스럽게 들어옵니다.&rdquo;</h4>
+              <p>&ldquo;첫 책이 나오니 출판사·플랫폼에서 두 번째 책 제안이 옵니다. 인스타·블로그 팔로워도 한 번에 늘었어요.&rdquo;</p>
+            </div>
           </div>
         </div>
       </section>
@@ -461,7 +587,7 @@ export default function Home() {
           <div className="ft-grid">
             <div>
               <div className="ft-brand">드림위드에스 / 위드에스마케팅 / 더컬쳐앤</div>
-              <p style={{ marginBottom: 8 }}>책 출판 · 자서전 출판 · 논문 대필 · 논문 컨설팅 · 자비출판</p>
+              <p style={{ marginBottom: 8 }}>책 출판 · 자서전 출판 · 논문 컨설팅 · 자비출판</p>
               <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>대표이사 이서진 | 사업자등록번호 859-24-00524</p>
             </div>
             <div>

@@ -470,6 +470,52 @@ section.dark .section-lead { color: rgba(255, 255, 255, 0.75); }
 .diff-card h3 { font-size: 18px; color: var(--navy-900); margin-bottom: 12px; line-height: 1.4; }
 .diff-card p { font-size: 14px; color: var(--text-500); line-height: 1.7; }
 
+/* REAL VOICES (유형별 출간 후 변화 카드) */
+.voices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.voice-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold-600);
+  border-radius: var(--radius-md);
+  padding: 26px 24px;
+  position: relative;
+  transition: all 0.2s;
+}
+.voice-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--navy-900);
+}
+.voice-card .voice-tag {
+  display: inline-block;
+  background: var(--gold-50);
+  color: var(--gold-600);
+  border: 1px solid var(--gold-100);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+.voice-card h4 {
+  font-size: 16px;
+  color: var(--navy-900);
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.voice-card p {
+  font-size: 13.5px;
+  color: var(--text-500);
+  line-height: 1.7;
+}
+
 /* PRICING */
 #pricing { background: var(--gold-50); }
 .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
