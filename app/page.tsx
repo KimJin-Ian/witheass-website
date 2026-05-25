@@ -364,16 +364,24 @@ export default function Home() {
           <div
             style={{
               textAlign: "center",
-              marginBottom: 28,
-              padding: "16px 20px",
-              background: "var(--gold-50)",
-              border: "1px solid var(--gold-100)",
-              borderRadius: "10px",
-              maxWidth: 720,
-              margin: "0 auto 32px",
+              padding: "32px 28px",
+              background: "linear-gradient(135deg, var(--gold-50) 0%, var(--white) 60%)",
+              border: "2px solid var(--gold-600)",
+              borderRadius: "16px",
+              maxWidth: 860,
+              margin: "0 auto 40px",
+              boxShadow: "0 10px 30px rgba(196, 166, 97, 0.18)",
             }}
           >
-            <p style={{ fontSize: 14, color: "var(--text-700)", marginBottom: 10 }}>
+            <p
+              style={{
+                fontSize: 18,
+                color: "var(--navy-900)",
+                marginBottom: 18,
+                fontWeight: 600,
+                lineHeight: 1.5,
+              }}
+            >
               {t("portfolio.naverHint")}
             </p>
             <a
@@ -381,7 +389,12 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="cta-btn gold"
-              style={{ fontSize: 13.5, padding: "10px 22px" }}
+              style={{
+                fontSize: 17,
+                padding: "16px 38px",
+                fontWeight: 700,
+                letterSpacing: "0.02em",
+              }}
             >
               {t("portfolio.naverCta")}
             </a>
@@ -531,10 +544,6 @@ export default function Home() {
                 <div className="ch-label">EMAIL</div>
                 <div className="ch-val">dreamwithessmarketing<br />@gmail.com</div>
               </a>
-              <a href="https://www.bookpublishingwithess.com/" target="_blank" rel="noopener noreferrer" className="contact-ch">
-                <div className="ch-label">WEBSITE</div>
-                <div className="ch-val">{t("contact.ch.web")}</div>
-              </a>
             </div>
           </div>
         </div>
@@ -566,7 +575,6 @@ export default function Home() {
                 <li>Tel · 010-2068-0817</li>
                 <li>Email · dreamwithessmarketing@gmail.com</li>
                 <li>KakaoTalk · {t("contact.ch.kakao")}</li>
-                <li>Web · bookpublishingwithess.com</li>
               </ul>
             </div>
           </div>
