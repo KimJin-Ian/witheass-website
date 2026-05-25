@@ -652,19 +652,28 @@ section.dark .section-lead { color: rgba(255, 255, 255, 0.75); }
 }
 .portfolio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .portfolio-card .cover {
-  height: 180px;
+  aspect-ratio: 3 / 4;
   background: linear-gradient(135deg, var(--navy-700) 0%, var(--navy-900) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
 }
-.portfolio-card .cover::after {
+/* 이미지가 들어간 카드는 골드 보더 데코를 표시 X */
+.portfolio-card .cover:has(img)::after { display: none; }
+.portfolio-card .cover:not(:has(img))::after {
   content: "";
   position: absolute;
   inset: 16px;
   border: 1px solid rgba(196, 166, 97, 0.4);
   border-radius: 4px;
+}
+.portfolio-card .cover img {
+  transition: transform 0.4s ease;
+}
+.portfolio-card:hover .cover img {
+  transform: scale(1.04);
 }
 .portfolio-card .cover-text { color: var(--gold-600); font-family: Georgia, serif; font-style: italic; font-size: 28px; font-weight: 600; }
 .portfolio-card .info { padding: 20px 24px; }
@@ -837,7 +846,7 @@ footer li a:hover { color: var(--gold-600); }
 
   /* Portfolio */
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .portfolio-card .cover { height: 140px; }
+  .portfolio-card .cover { aspect-ratio: 3 / 4; height: auto; }
   .portfolio-card .cover-text { font-size: 22px; }
   .portfolio-card .info { padding: 16px 18px; }
   .portfolio-card h4 { font-size: 13.5px; }

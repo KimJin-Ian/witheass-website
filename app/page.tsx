@@ -425,40 +425,35 @@ export default function Home() {
 
           <div className="portfolio-grid">
             {[
-              // 이미지 파일을 /public/covers/ 에 넣으면 img 필드에 파일명 지정
-              // 예: { img: "esg.jpg", ... }
-              { img: null, cover: "ESG", cat: "전문지식", title: "ESG 기반 도서", desc: "지속가능경영 분야" },
-              { img: null, cover: "Smart", cat: "전문지식", title: "스마트시티 관련 도서", desc: "도시·기술 분야" },
-              { img: null, cover: "대전신보", cat: "기관 브랜딩", title: "대전신용보증재단", desc: "표지·내지 디자인 일체" },
-              { img: null, cover: "천안시장", cat: "자서전 · 공신력", title: "천안시장 자서전", desc: "인터뷰 기반" },
-              { img: null, cover: "서초구", cat: "자서전 · 공신력", title: "서초구의원 자서전", desc: "정치인 출판기념회 패키지" },
-              { img: null, cover: "재테크", cat: "금융 · 교재형", title: "주식·재테크 도서", desc: "내지 칼라 인쇄" },
-              { img: null, cover: "CEO 자서전", cat: "퍼스널 자서전", title: "이문호 CEO 자서전", desc: "기업가 인생 기록" },
-              { img: null, cover: "이기적 남자", cat: "전문직 브랜딩", title: "안세훈 변호사 『이기적 남자』", desc: "15년차 형사 전문 변호사 · 23주 완성" },
-              { img: null, cover: "음대생", cat: "에세이 · 베스트셀러", title: "『꿈을 찾는 음대생』", desc: "10년 스테디셀러" },
-              { img: null, cover: "강사 브랜딩", cat: "강사 · 컨설팅", title: "강사 퍼스널 브랜딩 도서", desc: "강의·콘텐츠 자산화" },
-              { img: null, cover: "의료 에세이", cat: "전문직 · 의료", title: "의사 에세이", desc: "환자와의 이야기 기록" },
-              { img: null, cover: "교육·학원", cat: "학원장 · 브랜딩", title: "학원장 교육 철학서", desc: "학부모 신뢰 자산" },
-              { img: null, cover: "법률 안내", cat: "법조인 · 실용서", title: "법률 가이드 도서", desc: "변호사 전문성 입증" },
-              { img: null, cover: "코칭 에세이", cat: "코치 · 라이프", title: "라이프 코칭 에세이", desc: "코칭 프로그램 연동" },
-              { img: null, cover: "회고록", cat: "가족 자서전", title: "가족 회고록 (지인용)", desc: "소량 인쇄 옵션" },
+              { img: "lee-moonho.jpg", cat: "CEO · 자서전", title: "『영혼 있는 도전』 이문호", desc: "기업가 인생 기록" },
+              { img: "ball-boy.jpg", cat: "CEO · 자서전", title: "『공 차던 소년, 세상을 경영하다』 고용필", desc: "경영자 인생 기록" },
+              { img: "seocho-kim.jpg", cat: "정치인 · 자서전", title: "『서초사랑 나의 꿈』 김안숙", desc: "공직자 인생 기록" },
+              { img: "yoon-park.jpg", cat: "정치 · 시사", title: "『윤석열, 대통령 된다』 박서영", desc: "베스트셀러" },
+              { img: "park-service.jpg", cat: "자서전 · 봉사", title: "『나를 위한 봉사(奉仕)의 삶』 박종성", desc: "인생 회고록" },
+              { img: "dream-everyday.jpg", cat: "자서전 · 인생기록", title: "『나는 오늘도 꿈을 꾼다』 이종담", desc: "펼침형 표지" },
+              { img: "esg-kim.jpg", cat: "전문지식 · ESG", title: "『ESG 트렌드』 김상태", desc: "지속가능경영 분야" },
+              { img: "k-beauty.jpg", cat: "전문지식 · 뷰티", title: "『왜 세계는 K-뷰티에 열광하는가』 김민디", desc: "K-콘텐츠 산업" },
+              { img: "livecommerce.jpg", cat: "비즈니스 · 실용서", title: "『돈이 되는 라이브커머스』 외 2인", desc: "공저 3인" },
+              { img: "startup-exit.jpg", cat: "비즈니스 · 스타트업", title: "『창업에서 Exit까지』 정형학", desc: "창업·투자·매각" },
+              { img: "knee-life.jpg", cat: "의료 · 정형외과", title: "『사람을 멈추는건 나이가 아니라 관절이다』 안우찬", desc: "관절 건강서" },
+              { img: "anti-aging.jpg", cat: "의료 · 안티에이징", title: "『안티에이징의 비밀이야기』 정재웅", desc: "뷰티·메디컬" },
+              { img: "leader-talk.jpg", cat: "코칭 · 커뮤니케이션", title: "『리더의 대화과외』 김지엘", desc: "리더십 코칭" },
+              { img: "hope-evidence.jpg", cat: "에세이 · 희망", title: "『약한 자들을 위한 희망의 증거』 이드보라", desc: "내지 칼라 인쇄" },
+              { img: "k-man-report.jpg", cat: "사회 · 문화 비평", title: "『대한민국 남자 레포트』 김태훈", desc: "현대 사회 분석" },
+              { img: "culturen-4th.jpg", cat: "문화산업 · 전문서", title: "『4차 산업혁명과 문화산업』 이서진", desc: "더컬쳐앤 이야기" },
             ].map((p, i) => (
               <div key={i} className="portfolio-card">
                 <div className="cover">
-                  {p.img ? (
-                    <img
-                      src={`/covers/${p.img}`}
-                      alt={p.title}
-                      loading="lazy"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : (
-                    <div className="cover-text">{p.cover}</div>
-                  )}
+                  <img
+                    src={`/covers/${p.img}`}
+                    alt={p.title}
+                    loading="lazy"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
                 </div>
                 <div className="info">
                   <div className="cat-tag">{p.cat}</div>
