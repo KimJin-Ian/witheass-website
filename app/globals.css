@@ -1480,3 +1480,111 @@ a {
   .blog-grid { grid-template-columns: 1fr; gap: 20px; }
   .blog-cta { padding: 28px 20px; }
 }
+
+/* ============================================
+   DYNAMIC SECTIONS (admin /site/sections로 만든 섹션들)
+   ============================================ */
+.dynamic-sections {
+  display: block;
+}
+
+.ds-rich-text {
+  padding: 60px 0;
+}
+.ds-rich-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-700);
+}
+.ds-rich-content h1, .ds-rich-content h2, .ds-rich-content h3 {
+  color: var(--text-900);
+  letter-spacing: -0.02em;
+  margin: 24px 0 12px;
+}
+.ds-rich-content h1 { font-size: 32px; }
+.ds-rich-content h2 { font-size: 26px; }
+.ds-rich-content h3 { font-size: 20px; }
+.ds-rich-content p { margin-bottom: 16px; }
+.ds-rich-content img { border-radius: 8px; margin: 16px 0; max-width: 100%; height: auto; }
+.ds-rich-content a { color: var(--gold-600); text-decoration: underline; }
+.ds-rich-content ul, .ds-rich-content ol { padding-left: 24px; margin: 12px 0; }
+
+.ds-banner {
+  padding: 100px 0;
+  color: #fff;
+  text-align: center;
+}
+.ds-banner-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  color: #fff;
+}
+.ds-banner-subtitle {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ds-gallery {
+  padding: 60px 0;
+}
+.ds-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.ds-gallery-item {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.ds-gallery-item img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+.ds-gallery-item figcaption {
+  padding: 12px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.ds-cta {
+  padding: 60px 0;
+}
+.ds-cta-box {
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+  border-radius: 16px;
+  padding: 48px 32px;
+  text-align: center;
+  color: #fff;
+}
+.ds-cta-box h3 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.ds-cta-box p {
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ds-custom {
+  padding: 40px 0;
+}
+
+@media (max-width: 600px) {
+  .ds-rich-text, .ds-cta, .ds-gallery { padding: 40px 0; }
+  .ds-banner { padding: 60px 0; }
+  .ds-cta-box { padding: 32px 20px; }
+}

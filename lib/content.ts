@@ -169,6 +169,62 @@ export const getFooterLinks = unstable_cache(
   { revalidate: 60, tags: ["footer"] }
 );
 
+/**
+ * GNB 메뉴
+ */
+export const getNavLinks = unstable_cache(
+  async (lang: string = "ko") => {
+    if (!isSupabaseConfigured) return [];
+    try {
+      const { data, error } = await supabase
+        .from("nav_links")
+        .select("id, label, url, is_external, is_cta, sort_order")
+        .eq("site", SITE_KEY)
+        .eq("lang", lang)
+        .eq("is_published", true)
+        .order("sort_order", { ascending: true });
+      if (error) return [];
+      return (data || []) as Array<{
+        id: string; label: string; url: string;
+        is_external: boolean; is_cta: boolean; sort_order: number;
+      }>;
+    } catch {
+      return [];
+    }
+  },
+  ["nav_links"],
+  { revalidate: 60, tags: ["nav"] }
+);
+
+/**
+ * 동적 페이지 섹션
+ */
+export const getPageSections = unstable_cache(
+  async (pageKey: string = "home", lang: string = "ko") => {
+    if (!isSupabaseConfigured) return [];
+    try {
+      const { data, error } = await supabase
+        .from("page_sections")
+        .select("*")
+        .eq("site", SITE_KEY)
+        .eq("page_key", pageKey)
+        .eq("lang", lang)
+        .eq("is_published", true)
+        .is("deleted_at", null)
+        .order("sort_order", { ascending: true });
+      if (error) return [];
+      return (data || []) as Array<{
+        id: string; type: string; title: string | null;
+        props: Record<string, any>; sort_order: number;
+      }>;
+    } catch {
+      return [];
+    }
+  },
+  ["page_sections"],
+  { revalidate: 60, tags: ["sections"] }
+);
+
 export function withFallback<T extends ContentMap>(
   fromDb: ContentMap,
   fallback: T

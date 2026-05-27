@@ -2,6 +2,7 @@
 
 import SiteHeader from "./components/SiteHeader";
 import Faq from "./components/Faq";
+import DynamicSections from "./components/DynamicSections";
 import { useLang } from "./components/LangContext";
 
 export default function Home() {
@@ -559,6 +560,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* 동적 섹션 (admin /site/sections에서 추가) */}
+      <DynamicSections />
       </main>
 
       {/* FOOTER */}
