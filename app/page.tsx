@@ -8,8 +8,10 @@ export default function Home() {
   const { t } = useLang();
   return (
     <>
+      <a href="#main-content" className="skip-link">본문 바로가기</a>
       <SiteHeader />
 
+      <main id="main-content">
       {/* HERO */}
       <section className="hero" id="top">
         <div className="container hero-inner">
@@ -24,8 +26,14 @@ export default function Home() {
             {t("hero.sub2")}
           </p>
           <div className="hero-cta">
-            <a href="#contact" className="cta-btn gold">{t("hero.cta.contact")}</a>
-            <a href="#pricing" className="cta-btn outline">{t("hero.cta.pricing")}</a>
+            <a href="#contact" className="cta-btn gold"
+              data-track="cta_click" data-category="navigation" data-label="hero_contact">
+              {t("hero.cta.contact")}
+            </a>
+            <a href="#pricing" className="cta-btn outline"
+              data-track="cta_click" data-category="navigation" data-label="hero_pricing">
+              {t("hero.cta.pricing")}
+            </a>
           </div>
           <div className="hero-stats">
             <div className="hero-stat"><div className="num">{t("hero.stat.running.num")}</div><div className="lbl">{t("hero.stat.running.lbl")}</div></div>
@@ -532,15 +540,18 @@ export default function Home() {
             </div>
 
             <div className="contact-channels">
-              <a href="http://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer" className="contact-ch">
+              <a href="http://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer" className="contact-ch"
+                data-track="cta_click" data-category="contact" data-label="contact_kakao">
                 <div className="ch-label">KAKAOTALK</div>
                 <div className="ch-val">{t("contact.ch.kakao")}</div>
               </a>
-              <a href="tel:01020680817" className="contact-ch">
+              <a href="tel:01020680817" className="contact-ch"
+                data-track="cta_click" data-category="contact" data-label="contact_phone">
                 <div className="ch-label">PHONE</div>
                 <div className="ch-val">{t("contact.ch.phone")}</div>
               </a>
-              <a href="mailto:dreamwithessmarketing@gmail.com" className="contact-ch">
+              <a href="mailto:dreamwithessmarketing@gmail.com" className="contact-ch"
+                data-track="cta_click" data-category="contact" data-label="contact_email">
                 <div className="ch-label">EMAIL</div>
                 <div className="ch-val">dreamwithessmarketing<br />@gmail.com</div>
               </a>
@@ -548,6 +559,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </main>
 
       {/* FOOTER */}
       <footer className="site-footer">
@@ -584,8 +596,10 @@ export default function Home() {
 
       {/* FLOATING CTA */}
       <div className="float-cta">
-        <a href="http://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer" className="kakao" title="카카오톡 문의">💬</a>
-        <a href="tel:01020680817" title="전화 문의">📞</a>
+        <a href="http://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer" className="kakao" title="카카오톡 문의"
+          data-track="cta_click" data-category="contact" data-label="float_kakao">💬</a>
+        <a href="tel:01020680817" title="전화 문의"
+          data-track="cta_click" data-category="contact" data-label="float_phone">📞</a>
       </div>
     </>
   );

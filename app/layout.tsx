@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { LangProvider } from "./components/LangContext";
+import Analytics from "./components/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const SITE_URL = "https://www.bookpublishingwithess.com";
 
@@ -102,10 +105,14 @@ export const metadata: Metadata = {
     title: "드림위드에스",
   },
   verification: {
-    // 네이버·구글 search console 코드 등록 후 입력
-    // google: "구글-사이트소유확인-코드",
+    // ⚠️ 아래 빈 문자열에 실제 코드 입력 후 재배포 필요
+    // 1. 구글: https://search.google.com/search-console
+    //    → 속성 추가 → HTML 태그 방식 → content="..." 값을 google에 입력
+    // 2. 네이버: https://searchadvisor.naver.com
+    //    → 사이트 등록 → HTML 태그 → content="..." 값을 naver-site-verification에 입력
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
     other: {
-      // "naver-site-verification": "네이버-사이트소유확인-코드",
+      "naver-site-verification": process.env.NEXT_PUBLIC_NAVER_VERIFICATION || "",
     },
   },
   category: "Publishing",
@@ -265,6 +272,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Analytics />
+        <VercelAnalytics />
+        <SpeedInsights />
         <LangProvider>{children}</LangProvider>
       </body>
     </html>
