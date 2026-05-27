@@ -50,10 +50,50 @@ function useClickTracking() {
       } catch {
         // Vercel Analytics 미배포 환경에선 조용히 무시
       }
+
+      // Supabase 자체 트래킹 (admin 실시간 분석용)
+      try {
+        fetch("/api/track", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            event_name: eventName,
+            event_label: label,
+            event_category: category,
+            page_path: window.location.pathname,
+          }),
+          keepalive: true,
+        }).catch(() => {});
+      } catch {
+        // 무시
+      }
     };
 
     document.addEventListener("click", handler, { capture: true });
     return () => document.removeEventListener("click", handler, { capture: true });
+  }, []);
+}
+
+// 페이지뷰 자동 추적 (Supabase로 전송)
+function usePageViewTracking() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    try {
+      fetch("/api/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_name: "page_view",
+          event_label: window.location.pathname,
+          event_category: "navigation",
+          page_path: window.location.pathname,
+        }),
+        keepalive: true,
+      }).catch(() => {});
+    } catch {
+      // 무시
+    }
   }, []);
 }
 
@@ -90,6 +130,7 @@ function useScrollDepthTracking() {
 export default function Analytics() {
   useClickTracking();
   useScrollDepthTracking();
+  usePageViewTracking();
 
   return (
     <>
