@@ -62,6 +62,7 @@ export default function SiteHeader() {
           <a href="#pricing" onClick={closeMenu}>{t("nav.pricing")}</a>
           <a href="#service" onClick={closeMenu}>{t("nav.brand")}</a>
           <a href="#portfolio" onClick={closeMenu}>{t("nav.portfolio")}</a>
+          <a href="/blog" onClick={closeMenu}>블로그</a>
           <a href="#faq" onClick={closeMenu}>{t("nav.faq")}</a>
           <a href="#contact" onClick={closeMenu} style={{ color: "var(--gold-600)" }}>
             {t("nav.consult")} →

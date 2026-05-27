@@ -1,27 +1,18 @@
 /**
  * Supabase에서 사이트 콘텐츠 가져오기 (witheass-website 전용)
  *
- * 사용 방식:
- *   - Server Component에서 호출
- *   - Next.js cache로 자동 캐싱 (60초)
- *   - DB 비어있으면 fallback 사용
- *
- * 예:
- *   const hero = await getContent("hero", "ko");
- *   // hero.title1, hero.title2 ...
+ * 환경변수가 없거나 DB가 비어있어도 안전하게 빈 값/null 반환.
+ * 사이트는 fallback으로 lib/i18n.ts의 기본값 사용.
  */
 
 import { unstable_cache } from "next/cache";
-import { supabase, SITE_KEY } from "./supabase";
+import { supabase, SITE_KEY, isSupabaseConfigured } from "./supabase";
 
 export type ContentMap = Record<string, string>;
 
-/**
- * 특정 섹션의 콘텐츠를 key-value로 반환
- * 예: { title1: "책 한 권으로...", title2: "..." }
- */
 export const getContent = unstable_cache(
   async (section: string, lang: string = "ko"): Promise<ContentMap> => {
+    if (!isSupabaseConfigured) return {};
     try {
       const { data, error } = await supabase
         .from("content")
@@ -30,18 +21,13 @@ export const getContent = unstable_cache(
         .eq("section", section)
         .eq("lang", lang);
 
-      if (error) {
-        console.error(`[getContent] ${section}/${lang}:`, error.message);
-        return {};
-      }
-
+      if (error) return {};
       const map: ContentMap = {};
       for (const row of data || []) {
         map[(row as any).content_key] = (row as any).value;
       }
       return map;
-    } catch (e) {
-      console.error("[getContent] fetch error:", e);
+    } catch {
       return {};
     }
   },
@@ -49,11 +35,9 @@ export const getContent = unstable_cache(
   { revalidate: 60, tags: ["content"] }
 );
 
-/**
- * 사이트 설정 (도메인, 연락처 등)
- */
 export const getSiteSettings = unstable_cache(
-  async (lang: string = "ko") => {
+  async (_lang: string = "ko") => {
+    if (!isSupabaseConfigured) return null;
     try {
       const { data, error } = await supabase
         .from("site_settings")
@@ -61,13 +45,9 @@ export const getSiteSettings = unstable_cache(
         .eq("site", SITE_KEY)
         .maybeSingle();
 
-      if (error) {
-        console.error("[getSiteSettings]:", error.message);
-        return null;
-      }
+      if (error) return null;
       return data as any;
-    } catch (e) {
-      console.error("[getSiteSettings] fetch error:", e);
+    } catch {
       return null;
     }
   },
@@ -75,11 +55,9 @@ export const getSiteSettings = unstable_cache(
   { revalidate: 60, tags: ["settings"] }
 );
 
-/**
- * 발행된 블로그 글 목록
- */
 export const getPublishedPosts = unstable_cache(
   async (lang: string = "ko", limit: number = 20) => {
+    if (!isSupabaseConfigured) return [];
     try {
       const { data, error } = await supabase
         .from("blog_posts")
@@ -91,13 +69,9 @@ export const getPublishedPosts = unstable_cache(
         .order("published_at", { ascending: false })
         .limit(limit);
 
-      if (error) {
-        console.error("[getPublishedPosts]:", error.message);
-        return [];
-      }
+      if (error) return [];
       return (data || []) as any[];
-    } catch (e) {
-      console.error("[getPublishedPosts] fetch error:", e);
+    } catch {
       return [];
     }
   },
@@ -105,11 +79,9 @@ export const getPublishedPosts = unstable_cache(
   { revalidate: 60, tags: ["blog"] }
 );
 
-/**
- * 단일 블로그 글 (slug로 조회)
- */
 export const getPostBySlug = unstable_cache(
   async (slug: string, lang: string = "ko") => {
+    if (!isSupabaseConfigured) return null;
     try {
       const { data, error } = await supabase
         .from("blog_posts")
@@ -121,13 +93,9 @@ export const getPostBySlug = unstable_cache(
         .is("deleted_at", null)
         .maybeSingle();
 
-      if (error) {
-        console.error("[getPostBySlug]:", error.message);
-        return null;
-      }
+      if (error) return null;
       return data as any;
-    } catch (e) {
-      console.error("[getPostBySlug] fetch error:", e);
+    } catch {
       return null;
     }
   },
@@ -135,9 +103,6 @@ export const getPostBySlug = unstable_cache(
   { revalidate: 60, tags: ["blog"] }
 );
 
-/**
- * 폴백 헬퍼: DB 값이 없으면 fallback 사용
- */
 export function withFallback<T extends ContentMap>(
   fromDb: ContentMap,
   fallback: T

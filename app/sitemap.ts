@@ -1,20 +1,15 @@
 import type { MetadataRoute } from "next";
+import { getPublishedPosts } from "@/lib/content";
 
 const SITE_URL = "https://www.bookpublishingwithess.com";
 
 /**
- * 주의: 현재는 단일 페이지(SPA) 구조라 sitemap에 루트 URL만 포함.
- *
- * 이전 버전은 #about, #pricing 같은 앵커(fragment) URL을 포함했으나,
- * 검색엔진은 fragment를 별도 페이지로 인덱싱하지 않으므로 효과가 없음.
- *
- * 섹션을 검색 결과에 별도로 노출하려면:
- *   - /about, /pricing, /portfolio 등 실제 라우트로 분리 필요
- *   - 분리 후 이 파일에 각 URL을 추가하면 됨
+ * Dynamic sitemap — 메인 + /blog 목록 + 블로그 글 모두 포함
  */
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-  return [
+
+  const baseEntries: MetadataRoute.Sitemap = [
     {
       url: SITE_URL,
       lastModified: now,
@@ -29,5 +24,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: `${SITE_URL}/blog`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
   ];
+
+  // 발행된 블로그 글들 동적 추가
+  try {
+    const posts = await getPublishedPosts("ko", 100);
+    const postEntries: MetadataRoute.Sitemap = posts.map((p: any) => ({
+      url: `${SITE_URL}/blog/${p.slug}`,
+      lastModified: p.published_at ? new Date(p.published_at) : now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+    return [...baseEntries, ...postEntries];
+  } catch {
+    return baseEntries;
+  }
 }
