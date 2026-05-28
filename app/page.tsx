@@ -4,18 +4,22 @@ import SiteHeader from "./components/SiteHeader";
 import Faq from "./components/Faq";
 import DynamicSections from "./components/DynamicSections";
 import SiteFooter from "./components/SiteFooter";
+import EditMode from "./components/EditMode";
 import { useLang } from "./components/LangContext";
 
 export default function Home() {
   const { t } = useLang();
   return (
     <>
+      {/* 비주얼 에디터 모드 (?edit=1 시에만 활성화, 일반 방문자에겐 영향 없음) */}
+      <EditMode />
+
       <a href="#main-content" className="skip-link">본문 바로가기</a>
       <SiteHeader />
 
       <main id="main-content">
       {/* HERO */}
-      <section className="hero" id="top">
+      <section className="hero" id="top" data-edit-key="hero">
         <div className="container hero-inner">
           <div className="hero-eyebrow">{t("hero.eyebrow")}</div>
           <h1>
@@ -47,7 +51,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section id="about">
+      <section id="about" data-edit-key="about">
         <div className="container">
           <div className="about-grid">
             <div className="about-text">
@@ -81,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* DIFFERENTIATORS */}
-      <section id="brand" className="alt">
+      <section id="brand" className="alt" data-edit-key="brand">
         <div className="container">
           <div className="section-eyebrow">{t("brand.eyebrow")}</div>
           <h2 className="section-title">{t("brand.title")}</h2>
@@ -119,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* THESIS */}
-      <section id="thesis">
+      <section id="thesis" data-edit-key="thesis">
         <div className="container">
           <div className="about-grid">
             <div className="about-text">
@@ -145,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* PRICING */}
-      <section id="pricing">
+      <section id="pricing" data-edit-key="pricing">
         <div className="container">
           <div className="section-eyebrow">{t("pricing.eyebrow")}</div>
           <h2 className="section-title">{t("pricing.title")}</h2>
@@ -228,7 +232,7 @@ export default function Home() {
       </section>
 
       {/* PROCESS */}
-      <section id="process" className="alt">
+      <section id="process" className="alt" data-edit-key="process">
         <div className="container">
           <div className="section-eyebrow">{t("process.eyebrow")}</div>
           <h2 className="section-title">{t("process.title")}</h2>
@@ -263,7 +267,7 @@ export default function Home() {
       </section>
 
       {/* CASE STUDY */}
-      <section id="case">
+      <section id="case" data-edit-key="case">
         <div className="container">
           <div className="section-eyebrow">{t("case.eyebrow")}</div>
           <h2 className="section-title">{t("case.title1")}<br />{t("case.title2")}</h2>
@@ -301,7 +305,7 @@ export default function Home() {
       </section>
 
       {/* SERVICE */}
-      <section id="service" className="alt">
+      <section id="service" className="alt" data-edit-key="service">
         <div className="container">
           <div className="section-eyebrow">{t("service.eyebrow")}</div>
           <h2 className="section-title">{t("service.title")}</h2>
@@ -320,7 +324,7 @@ export default function Home() {
       </section>
 
       {/* COMMUNITY */}
-      <section className="dark">
+      <section className="dark" id="community" data-edit-key="community">
         <div className="container">
           <div className="section-eyebrow">{t("community.eyebrow")}</div>
           <h2 className="section-title">{t("community.title1")}<br />{t("community.title2")}</h2>
@@ -360,7 +364,7 @@ export default function Home() {
       </section>
 
       {/* PORTFOLIO */}
-      <section id="portfolio">
+      <section id="portfolio" data-edit-key="portfolio">
         <div className="container">
           <div className="section-eyebrow">{t("portfolio.eyebrow")}</div>
           <h2 className="section-title">{t("portfolio.title")}</h2>
@@ -461,7 +465,7 @@ export default function Home() {
       </section>
 
       {/* REAL VOICES — 유형별 출간 후 변화 */}
-      <section id="voices">
+      <section id="voices" data-edit-key="voices">
         <div className="container">
           <div className="section-eyebrow">{t("voices.eyebrow")}</div>
           <h2 className="section-title">{t("voices.title1")}<br />{t("voices.title2")}</h2>
@@ -481,7 +485,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="alt">
+      <section id="faq" className="alt" data-edit-key="faq">
         <div className="container">
           <div className="section-eyebrow">{t("faq.eyebrow")}</div>
           <h2 className="section-title">{t("faq.title")}</h2>
@@ -491,7 +495,7 @@ export default function Home() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact">
+      <section id="contact" data-edit-key="contact">
         <div className="container">
           <div className="contact-grid">
             <div className="contact-text">
