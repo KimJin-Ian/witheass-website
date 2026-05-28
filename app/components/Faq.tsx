@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, ReactNode } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import { useLang } from "./LangContext";
+import { supabase, SITE_KEY, isSupabaseConfigured } from "@/lib/supabase";
 
 type FaqItem = {
   q: string;
@@ -263,10 +264,54 @@ const ITEMS_BY_LANG: Record<string, FaqItem[]> = {
   ja: ITEMS_JA,
 };
 
+// DB FAQ를 화면용 FaqItem 형식으로 변환
+interface DbFaq {
+  id: string;
+  question: string;
+  answer: string;
+  sort_order: number;
+}
+
 export default function Faq() {
   const { lang } = useLang();
-  const ITEMS = ITEMS_BY_LANG[lang] ?? ITEMS_KO;
   const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [dbFaqs, setDbFaqs] = useState<DbFaq[] | null>(null);
+
+  // admin에서 작성한 FAQ를 Supabase에서 가져옴
+  // 없으면 i18n.ts의 하드코딩 FAQ 사용 (폴백)
+  useEffect(() => {
+    if (!isSupabaseConfigured) {
+      setDbFaqs([]);
+      return;
+    }
+    let alive = true;
+    (async () => {
+      try {
+        const { data, error } = await supabase
+          .from("faqs")
+          .select("id, question, answer, sort_order")
+          .eq("site", SITE_KEY)
+          .eq("lang", lang)
+          .eq("is_published", true)
+          .is("deleted_at", null)
+          .order("sort_order", { ascending: true });
+        if (error || !alive) return;
+        setDbFaqs((data as DbFaq[]) || []);
+      } catch {
+        if (alive) setDbFaqs([]);
+      }
+    })();
+    return () => { alive = false; };
+  }, [lang]);
+
+  // dbFaqs가 1개 이상이면 DB 우선 사용, 아니면 i18n 폴백
+  const useDb = dbFaqs !== null && dbFaqs.length > 0;
+  const ITEMS = useDb
+    ? dbFaqs!.map((f) => ({
+        q: f.question,
+        a: <div dangerouslySetInnerHTML={{ __html: f.answer }} />,
+      }))
+    : ITEMS_BY_LANG[lang] ?? ITEMS_KO;
 
   return (
     <div className="faq-list">

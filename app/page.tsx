@@ -3,6 +3,7 @@
 import SiteHeader from "./components/SiteHeader";
 import Faq from "./components/Faq";
 import DynamicSections from "./components/DynamicSections";
+import SiteFooter from "./components/SiteFooter";
 import { useLang } from "./components/LangContext";
 
 export default function Home() {
@@ -564,38 +565,8 @@ export default function Home() {
       <DynamicSections />
       </main>
 
-      {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="container">
-          <div className="ft-grid">
-            <div>
-              <div className="ft-brand">{t("footer.brand")}</div>
-              <p style={{ marginBottom: 8 }}>{t("footer.business")}</p>
-              <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{t("footer.ceo")}</p>
-            </div>
-            <div>
-              <h5>{t("footer.sitemap")}</h5>
-              <ul>
-                <li><a href="#about">{t("nav.about")}</a></li>
-                <li><a href="#thesis">{t("nav.thesis")}</a></li>
-                <li><a href="#pricing">{t("nav.pricing")}</a></li>
-                <li><a href="#process">{t("nav.process")}</a></li>
-                <li><a href="#portfolio">{t("nav.portfolio")}</a></li>
-                <li><a href="#faq">{t("nav.faq")}</a></li>
-              </ul>
-            </div>
-            <div>
-              <h5>{t("footer.contact")}</h5>
-              <ul>
-                <li>Tel · 010-2068-0817</li>
-                <li>Email · dreamwithessmarketing@gmail.com</li>
-                <li>KakaoTalk · {t("contact.ch.kakao")}</li>
-              </ul>
-            </div>
-          </div>
-          <div className="copyright">{t("footer.copyright")}</div>
-        </div>
-      </footer>
+      {/* FOOTER (DB 우선 + 폴백) */}
+      <SiteFooter />
 
       {/* FLOATING CTA */}
       <div className="float-cta">
