@@ -93,11 +93,27 @@ export default async function BlogPostPage({ params }: Props) {
     keywords: post.tags?.join(", ") || "",
   };
 
+  // BreadcrumbList — 검색 결과에 빵부스러기(/홈 > 블로그 > 글 제목) 표시
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "홈", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "블로그", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: url },
+    ],
+  };
+
   return (
     <>
       {/* 조회수 +1 (클라이언트, 세션당 1회) */}
       <BlogViewTracker slug={post.slug} />
 
+      <Script
+        id="breadcrumb-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Script
         id="article-jsonld"
         type="application/ld+json"

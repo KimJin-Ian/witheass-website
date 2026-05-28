@@ -183,8 +183,34 @@ const localBusinessJsonLd = {
     addressCountry: "KR",
     addressLocality: "Seoul",
     addressRegion: "강남구",
+    streetAddress: "강남구 (정확한 주소는 상담 시 안내)",
   },
+  // 강남구 중심 좌표 (대략) — 정확한 주소 확정 시 업데이트
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 37.5172,
+    longitude: 127.0473,
+  },
+  // 영업시간 (평일 10시~19시, 주말 예약제)
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "10:00",
+      closes: "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday", "Sunday"],
+      opens: "10:00",
+      closes: "18:00",
+      description: "주말은 예약제",
+    },
+  ],
   priceRange: "₩₩₩",
+  currenciesAccepted: "KRW",
+  paymentAccepted: "Cash, Credit Card, Bank Transfer",
+  areaServed: { "@type": "Country", name: "KR" },
   description: "자서전·자비출판·논문 컨설팅 전문. 누적 890권+ 출간 노하우.",
 };
 
