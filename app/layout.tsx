@@ -5,10 +5,11 @@ import { LangProvider } from "./components/LangContext";
 import Analytics from "./components/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { getSiteSettings } from "@/lib/content";
 
 const SITE_URL = "https://www.bookpublishingwithess.com";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: "드림위드에스 출판사 | 위드에스마케팅 — 책 한 권으로 시작되는 인생의 다음 챕터",
@@ -99,19 +100,36 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "드림위드에스",
   },
-  verification: {
-    // ⚠️ 아래 빈 문자열에 실제 코드 입력 후 재배포 필요
-    // 1. 구글: https://search.google.com/search-console
-    //    → 속성 추가 → HTML 태그 방식 → content="..." 값을 google에 입력
-    // 2. 네이버: https://searchadvisor.naver.com
-    //    → 사이트 등록 → HTML 태그 → content="..." 값을 naver-site-verification에 입력
-    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
-    other: {
-      "naver-site-verification": process.env.NEXT_PUBLIC_NAVER_VERIFICATION || "",
-    },
-  },
+  // verification은 generateMetadata에서 DB → env 폴백으로 동적 주입
   category: "Publishing",
 };
+
+/**
+ * 검색엔진 verification 코드를 DB(site_settings) → env 폴백으로 동적 주입.
+ * admin /site/settings 에서 저장하면 60초 내 반영됨 (unstable_cache revalidate).
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  let googleVerification = process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "";
+  let naverVerification = process.env.NEXT_PUBLIC_NAVER_VERIFICATION || "";
+
+  try {
+    const settings = await getSiteSettings("ko");
+    if (settings?.google_verification) googleVerification = settings.google_verification;
+    if (settings?.naver_verification) naverVerification = settings.naver_verification;
+  } catch {
+    /* DB 장애 시 env 폴백으로 안전하게 동작 */
+  }
+
+  return {
+    ...baseMetadata,
+    verification: {
+      google: googleVerification,
+      other: {
+        "naver-site-verification": naverVerification,
+      },
+    },
+  };
+}
 
 export const viewport: Viewport = {
   width: "device-width",
