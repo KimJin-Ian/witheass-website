@@ -7,15 +7,34 @@ import SiteHeader from "../components/SiteHeader";
 const SITE_URL = "https://www.bookpublishingwithess.com";
 
 export const metadata: Metadata = {
-  title: "블로그 | 드림위드에스 출판사",
+  title: "출판 블로그 · 자서전·자비출판·논문 컨설팅 노하우 | 드림위드에스",
   description:
-    "출판·자서전·자비출판·논문 컨설팅 관련 노하우와 사례를 공유합니다.",
+    "드림위드에스 출판사가 누적 890권 출간 경험으로 공유하는 책 출판 노하우 — 자서전 대필·자비출판·논문 컨설팅·퍼스널 브랜딩·출판기념회·전국 서점 유통·전자책 등록·인세 45% 등 출판 전 과정의 실전 사례와 가이드를 정리한 블로그입니다.",
+  keywords: [
+    "출판 블로그",
+    "자서전 출판",
+    "자비출판",
+    "책 출판 노하우",
+    "논문 컨설팅",
+    "베스트셀러 출판",
+    "퍼스널 브랜딩",
+    "드림위드에스",
+  ],
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
-    title: "블로그 | 드림위드에스 출판사",
-    description: "출판 노하우와 사례. 누적 890권+ 경험 공유.",
+    title: "출판 블로그 · 자서전·자비출판·논문 컨설팅 노하우",
+    description:
+      "누적 890권+ 출간 경험. 자서전·자비출판·논문 컨설팅·출판기념회·인세 45% — 책 출판 전과정의 실전 노하우를 공유합니다.",
     url: `${SITE_URL}/blog`,
     type: "website",
+    locale: "ko_KR",
+    siteName: "드림위드에스 출판사",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "출판 블로그 | 드림위드에스 출판사",
+    description:
+      "누적 890권+ 출간 경험. 자서전·자비출판·논문 컨설팅 노하우 공유.",
   },
 };
 

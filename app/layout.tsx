@@ -46,12 +46,8 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: SITE_URL,
-    languages: {
-      "ko-KR": SITE_URL,
-      "en-US": SITE_URL,
-      "zh-CN": SITE_URL,
-      "ja-JP": SITE_URL,
-    },
+    // 사이트가 한국어 단일 언어이므로 hreflang을 명시하지 않음.
+    // (예전엔 4개 언어 모두 같은 URL로 매핑되어 있었음 — Google 중복 콘텐츠 경고 위험)
   },
   openGraph: {
     title: "드림위드에스 출판사 | 책 한 권으로 시작되는 인생의 다음 챕터",
@@ -61,7 +57,6 @@ export const metadata: Metadata = {
     siteName: "드림위드에스 출판사",
     type: "website",
     locale: "ko_KR",
-    alternateLocale: ["en_US", "zh_CN", "ja_JP"],
     images: [
       {
         url: `${SITE_URL}/og-image.png?v=2`,
