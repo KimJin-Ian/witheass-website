@@ -158,12 +158,12 @@ export default function Home() {
               <h3>{t("pricing.p1.title")}</h3>
               <div className="price">{t("pricing.p1.price")}<small>{t("pricing.p1.priceSuffix")}</small></div>
               <ul>
-                <li>전자책 단독 (200만)</li>
-                <li>종이책 500권 (300만)</li>
-                <li>종이책 1000권 (400만)</li>
-                <li>표지·내지 디자인</li>
-                <li>네이버 책 등록</li>
-                <li>전국 서점 유통 + 인세 45%</li>
+                <li>{t("pricing.p1.l1")}</li>
+                <li>{t("pricing.p1.l2")}</li>
+                <li>{t("pricing.p1.l3")}</li>
+                <li>{t("pricing.p1.l4")}</li>
+                <li>{t("pricing.p1.l5")}</li>
+                <li>{t("pricing.p1.l6")}</li>
               </ul>
             </div>
 
@@ -172,12 +172,12 @@ export default function Home() {
               <h3>{t("pricing.p2.title")}</h3>
               <div className="price">{t("pricing.p2.price")}<small>{t("pricing.p2.priceSuffix")}</small></div>
               <ul>
-                <li>저자가 1차 원고 작성</li>
-                <li>목차 기획</li>
-                <li>원고 교정·교열</li>
-                <li>전체 구조 설계</li>
-                <li>표지 카피라이팅</li>
-                <li>500권 인쇄 + 유통</li>
+                <li>{t("pricing.p2.l1")}</li>
+                <li>{t("pricing.p2.l2")}</li>
+                <li>{t("pricing.p2.l3")}</li>
+                <li>{t("pricing.p2.l4")}</li>
+                <li>{t("pricing.p2.l5")}</li>
+                <li>{t("pricing.p2.l6")}</li>
               </ul>
             </div>
 
@@ -189,13 +189,13 @@ export default function Home() {
                 {t("pricing.p3.note")}
               </p>
               <ul>
-                <li>인터뷰 기반 기획 (글 없어도 OK)</li>
-                <li>목차 설계 + 원고 집필</li>
-                <li>교정·교열 + 표지·내지 디자인</li>
-                <li>500권 인쇄 (200페이지 기준)</li>
-                <li>전자책 + 밀리의서재 등록</li>
-                <li>ISBN + 네이버 책 등록</li>
-                <li>전국 서점 유통 + 인세 45%</li>
+                <li>{t("pricing.p3.l1")}</li>
+                <li>{t("pricing.p3.l2")}</li>
+                <li>{t("pricing.p3.l3")}</li>
+                <li>{t("pricing.p3.l4")}</li>
+                <li>{t("pricing.p3.l5")}</li>
+                <li>{t("pricing.p3.l6")}</li>
+                <li>{t("pricing.p3.l7")}</li>
               </ul>
             </div>
 
@@ -208,13 +208,13 @@ export default function Home() {
                 {t("pricing.p4.note")}
               </p>
               <ul>
-                <li><strong>책 출판 올인원 전과정 포함</strong> (위 900만원 패키지 전체)</li>
-                <li>블로그·인스타·유튜브 마케팅</li>
-                <li>언론 PR + 포털 검색 브랜딩</li>
-                <li>리뷰단 + 바이럴</li>
-                <li>웹툰형 콘텐츠 20장+</li>
-                <li><strong>강연회 주최·운영</strong> (북토크·강의)</li>
-                <li>강연·클래스 연결 + 퍼스널 브랜딩 로드맵</li>
+                <li>{t("pricing.p4.l1")}</li>
+                <li>{t("pricing.p4.l2")}</li>
+                <li>{t("pricing.p4.l3")}</li>
+                <li>{t("pricing.p4.l4")}</li>
+                <li>{t("pricing.p4.l5")}</li>
+                <li>{t("pricing.p4.l6")}</li>
+                <li>{t("pricing.p4.l7")}</li>
               </ul>
               <a href="#contact" className="cta-btn gold" style={{ marginTop: "auto" }}>{t("pricing.p4.cta")}</a>
             </div>
@@ -236,30 +236,28 @@ export default function Home() {
           <p className="section-lead">{t("process.lead")}</p>
 
           <div className="process-grid">
-            <div className="process-step"><div className="step-num">STEP 01</div><h4>문의 / 견적</h4><p>예산·유입·목적 확인 후 분야별 사례 공유</p></div>
-            <div className="process-step"><div className="step-num">STEP 02</div><h4>계약</h4><p>계약금 600만 원 입금 → 본격 진행 시작</p></div>
-            <div className="process-step"><div className="step-num">STEP 03</div><h4>인터뷰</h4><p>글 없는 경우 2~5회, 회당 2시간 진행</p></div>
-            <div className="process-step"><div className="step-num">STEP 04</div><h4>목차·원고</h4><p>1주 내 목차 → 피드백 2회 → 원고 집필</p></div>
-            <div className="process-step"><div className="step-num">STEP 05</div><h4>교정 + 디자인</h4><p>병렬 진행으로 속도 단축. 표지 2개 시안</p></div>
-            <div className="process-step"><div className="step-num">STEP 06</div><h4>인쇄·유통</h4><p>500권 인쇄 → 전국 서점 + ISBN·네이버 등록</p></div>
-            <div className="process-step"><div className="step-num">STEP 07</div><h4>전자책 등록</h4><p>밀리의서재 + 교보·예스24·리디 전자책</p></div>
-            <div className="process-step"><div className="step-num">STEP 08</div><h4>출간 후 마케팅</h4><p>강연·브랜딩·사업 확장 컨설팅 연결</p></div>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+              <div key={n} className="process-step">
+                <div className="step-num">STEP {String(n).padStart(2, "0")}</div>
+                <h4>{t(`process.s${n}.title`)}</h4>
+                <p>{t(`process.s${n}.desc`)}</p>
+              </div>
+            ))}
           </div>
 
           <h3 style={{ fontSize: 18, color: "var(--navy-900)", marginBottom: 20, textAlign: "center" }}>{t("process.tracks.title")}</h3>
           <div className="tracks-grid">
-            <div className="track-card">
-              <h4>{t("process.track1.title")}</h4>
-              <ol><li>맞춤 리서치 기획</li><li>피드백 1~2회</li><li>원고 집필</li><li>인쇄·출간</li></ol>
-            </div>
-            <div className="track-card">
-              <h4>{t("process.track2.title")}</h4>
-              <ol><li>1차 목차 제안</li><li>목차 기반 원고 집필</li><li>1차 초안</li><li>피드백 → 최종 원고</li></ol>
-            </div>
-            <div className="track-card">
-              <h4>{t("process.track3.title")}</h4>
-              <ol><li>심층 질문지 + 답변</li><li>인터뷰 (가족·지인 포함)</li><li>1차 초안 + 추가 질문</li><li>피드백 → 완성</li></ol>
-            </div>
+            {[1, 2, 3].map((n) => (
+              <div key={n} className="track-card">
+                <h4>{t(`process.t${n}.title`)}</h4>
+                <ol>
+                  <li>{t(`process.t${n}.l1`)}</li>
+                  <li>{t(`process.t${n}.l2`)}</li>
+                  <li>{t(`process.t${n}.l3`)}</li>
+                  <li>{t(`process.t${n}.l4`)}</li>
+                </ol>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -311,12 +309,12 @@ export default function Home() {
           <p className="section-lead">{t("service.lead")}</p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
-            <div className="diff-card"><h3>🏛 정치인 · 공직자</h3><p>출판기념회·선거·임기 일정에 맞춰 자서전 + 공신력 확보형 도서. 천안시장 자서전·서초구의원 자서전 등 사례.</p></div>
-            <div className="diff-card"><h3>💼 CEO · 기업인</h3><p>퍼스널 브랜딩과 사업 확장을 위한 도서. 검색 신뢰도 확보 + 강연·컨설팅 연결까지.</p></div>
-            <div className="diff-card"><h3>⚖️ 전문직 (의사·변호사·교수)</h3><p>전문성과 대중성을 동시에. 안세훈 변호사 『이기적 남자』 등 베스트셀러 사례.</p></div>
-            <div className="diff-card"><h3>📚 강사 · 컨설턴트</h3><p>강연 콘텐츠 자산화. 책 1권으로 유튜브·블로그·강의 자료까지 멀티 활용.</p></div>
-            <div className="diff-card"><h3>📖 개인 자서전 / 회고록</h3><p>인생을 책으로 남기고 싶은 분, 부모님 선물용, 가족 기록용. 인터뷰 기반으로 글솜씨 없어도 가능.</p></div>
-            <div className="diff-card"><h3>🏢 기업 · 기관</h3><p>사례집·연간보고서·브랜드북. 대전신용보증재단 등 기관 도서 사례.</p></div>
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div key={n} className="diff-card">
+                <h3>{t(`service.s${n}.title`)}</h3>
+                <p>{t(`service.s${n}.desc`)}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -331,30 +329,30 @@ export default function Home() {
 
           <div className="community-grid">
             <div className="community-list">
-              <h4>자체 커뮤니티 9개</h4>
+              <h4>{t("community.list1.title")}</h4>
               <ul>
-                <li>2030 여성 인플루언서</li>
-                <li>강남 소셜 네트워크</li>
-                <li>CEO·전문직 네트워크</li>
-                <li>음악인 네트워크</li>
-                <li>엄마 고객층</li>
-                <li>병원·뷰티 관심층</li>
-                <li>문화예술 커뮤니티</li>
-                <li>책 출판 관심층</li>
-                <li>강연·클래스 관심층</li>
+                <li>{t("community.list1.l1")}</li>
+                <li>{t("community.list1.l2")}</li>
+                <li>{t("community.list1.l3")}</li>
+                <li>{t("community.list1.l4")}</li>
+                <li>{t("community.list1.l5")}</li>
+                <li>{t("community.list1.l6")}</li>
+                <li>{t("community.list1.l7")}</li>
+                <li>{t("community.list1.l8")}</li>
+                <li>{t("community.list1.l9")}</li>
               </ul>
             </div>
             <div className="community-list">
-              <h4>오프라인 행사 라인업</h4>
+              <h4>{t("community.list2.title")}</h4>
               <ul>
-                <li>북토크 / 출간 기념 강연회</li>
-                <li>저자와의 만남</li>
-                <li>살롱 토크콘서트 (&ldquo;보이는 라디오&rdquo;)</li>
-                <li>전문직 네트워킹 행사</li>
-                <li>브랜드 콜라보 행사</li>
-                <li>병원·뷰티·문화 커뮤니티 행사</li>
-                <li>더컬쳐앤라운지 공간 홍보</li>
-                <li>VIP 초대 행사</li>
+                <li>{t("community.list2.l1")}</li>
+                <li>{t("community.list2.l2")}</li>
+                <li>{t("community.list2.l3")}</li>
+                <li>{t("community.list2.l4")}</li>
+                <li>{t("community.list2.l5")}</li>
+                <li>{t("community.list2.l6")}</li>
+                <li>{t("community.list2.l7")}</li>
+                <li>{t("community.list2.l8")}</li>
               </ul>
             </div>
           </div>
@@ -412,46 +410,52 @@ export default function Home() {
 
           <div className="portfolio-grid">
             {[
-              { img: "lee-moonho.jpg", cat: "CEO · 자서전", title: "『영혼 있는 도전』 이문호", desc: "기업가 인생 기록" },
-              { img: "ball-boy.jpg", cat: "CEO · 자서전", title: "『공 차던 소년, 세상을 경영하다』 고용필", desc: "경영자 인생 기록" },
-              { img: "seocho-kim.jpg", cat: "정치인 · 자서전", title: "『서초사랑 나의 꿈』 김안숙", desc: "공직자 인생 기록" },
-              { img: "yoon-park.jpg", cat: "정치 · 시사", title: "『윤석열, 대통령 된다』 박서영", desc: "베스트셀러" },
-              { img: "park-service.jpg", cat: "자서전 · 봉사", title: "『나를 위한 봉사(奉仕)의 삶』 박종성", desc: "인생 회고록" },
-              { img: "dream-everyday.jpg", cat: "자서전 · 인생기록", title: "『나는 오늘도 꿈을 꾼다』 이종담", desc: "펼침형 표지" },
-              { img: "esg-kim.jpg", cat: "전문지식 · ESG", title: "『ESG 트렌드』 김상태", desc: "지속가능경영 분야" },
-              { img: "k-beauty.jpg", cat: "전문지식 · 뷰티", title: "『왜 세계는 K-뷰티에 열광하는가』 김민디", desc: "K-콘텐츠 산업" },
-              { img: "livecommerce.jpg", cat: "비즈니스 · 실용서", title: "『돈이 되는 라이브커머스』 외 2인", desc: "공저 3인" },
-              { img: "startup-exit.jpg", cat: "비즈니스 · 스타트업", title: "『창업에서 Exit까지』 정형학", desc: "창업·투자·매각" },
-              { img: "knee-life.jpg", cat: "의료 · 정형외과", title: "『사람을 멈추는건 나이가 아니라 관절이다』 안우찬", desc: "관절 건강서" },
-              { img: "anti-aging.jpg", cat: "의료 · 안티에이징", title: "『안티에이징의 비밀이야기』 정재웅", desc: "뷰티·메디컬" },
-              { img: "leader-talk.jpg", cat: "코칭 · 커뮤니케이션", title: "『리더의 대화과외』 김지엘", desc: "리더십 코칭" },
-              { img: "hope-evidence.jpg", cat: "에세이 · 희망", title: "『약한 자들을 위한 희망의 증거』 이드보라", desc: "내지 칼라 인쇄" },
-              { img: "k-man-report.jpg", cat: "사회 · 문화 비평", title: "『대한민국 남자 레포트』 김태훈", desc: "현대 사회 분석" },
-              { img: "culturen-4th.jpg", cat: "문화산업 · 전문서", title: "『4차 산업혁명과 문화산업』 이서진", desc: "더컬쳐앤 이야기" },
-            ].map((p, i) => (
-              <div key={i} className="portfolio-card">
-                <div className="cover">
-                  <img
-                    src={`/covers/${p.img}`}
-                    alt={`드림위드에스 출판 사례 — ${p.title} (${p.cat})`}
-                    title={p.title}
-                    loading="lazy"
-                    width={720}
-                    height={960}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
+              "lee-moonho.jpg",
+              "ball-boy.jpg",
+              "seocho-kim.jpg",
+              "yoon-park.jpg",
+              "park-service.jpg",
+              "dream-everyday.jpg",
+              "esg-kim.jpg",
+              "k-beauty.jpg",
+              "livecommerce.jpg",
+              "startup-exit.jpg",
+              "knee-life.jpg",
+              "anti-aging.jpg",
+              "leader-talk.jpg",
+              "hope-evidence.jpg",
+              "k-man-report.jpg",
+              "culturen-4th.jpg",
+            ].map((img, i) => {
+              const n = i + 1;
+              const cat = t(`portfolio.b${n}.cat`);
+              const title = t(`portfolio.b${n}.title`);
+              const desc = t(`portfolio.b${n}.desc`);
+              return (
+                <div key={i} className="portfolio-card">
+                  <div className="cover">
+                    <img
+                      src={`/covers/${img}`}
+                      alt={`드림위드에스 출판 사례 — ${title} (${cat})`}
+                      title={title}
+                      loading="lazy"
+                      width={720}
+                      height={960}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                  <div className="info">
+                    <div className="cat-tag">{cat}</div>
+                    <h4>{title}</h4>
+                    <p>{desc}</p>
+                  </div>
                 </div>
-                <div className="info">
-                  <div className="cat-tag">{p.cat}</div>
-                  <h4>{p.title}</h4>
-                  <p>{p.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -465,51 +469,13 @@ export default function Home() {
           <p className="section-lead">{t("voices.lead")}</p>
 
           <div className="voices-grid">
-            <div className="voice-card">
-              <div className="voice-tag">학원·교육 운영</div>
-              <h4>&ldquo;학원 매출이 눈에 띄게 올랐어요.&rdquo;</h4>
-              <p>&ldquo;원장 책이 있으니 학부모 상담 시 신뢰도가 다릅니다. 검색하면 책이 먼저 나오고, 등록률이 확연히 올라갔어요.&rdquo;</p>
-            </div>
-            <div className="voice-card">
-              <div className="voice-tag">정치인 · 공직자</div>
-              <h4>&ldquo;강연회 덕분에 지역에 제대로 알려졌습니다.&rdquo;</h4>
-              <p>&ldquo;출판기념회·북토크 한 번에 수백 명이 모이고, 책 한 권이 명함 역할을 하니까 캠페인 효율이 완전히 달라졌어요.&rdquo;</p>
-            </div>
-            <div className="voice-card">
-              <div className="voice-tag">전문직 (의사·변호사·교수)</div>
-              <h4>&ldquo;나의 브랜딩, 나의 기록 자체가 좋아요.&rdquo;</h4>
-              <p>&ldquo;환자·의뢰인이 검색했을 때 책이 보이는 게 다르더라고요. 본업의 신뢰도가 책으로 자연스럽게 연결됩니다.&rdquo;</p>
-            </div>
-            <div className="voice-card">
-              <div className="voice-tag">CEO · 기업인</div>
-              <h4>&ldquo;돈 벌 때보다 책 쓰고 강연 부수입이 더 행복하더라고요.&rdquo;</h4>
-              <p>&ldquo;사업으로 만든 노하우가 책이 되니 강연 의뢰가 끊이질 않아요. 인생의 두 번째 챕터를 시작한 기분입니다.&rdquo;</p>
-            </div>
-            <div className="voice-card">
-              <div className="voice-tag">강사 · 컨설턴트</div>
-              <h4>&ldquo;강의료 단가가 올라갔어요.&rdquo;</h4>
-              <p>&ldquo;책이 있는 강사와 없는 강사는 단가부터 다릅니다. 한 권의 책이 강사 커리어 전체를 한 단계 위로 올려줬어요.&rdquo;</p>
-            </div>
-            <div className="voice-card">
-              <div className="voice-tag">자영업자 · 소상공인</div>
-              <h4>&ldquo;검색하면 신뢰가 먼저 보입니다.&rdquo;</h4>
-              <p>&ldquo;가게 이름 옆에 &lsquo;저자&rsquo; 타이틀 하나가 붙으니까 소개·납품·제휴 제안이 자연스럽게 들어와요.&rdquo;</p>
-            </div>
-            <div className="voice-card">
-              <div className="voice-tag">자서전 · 회고록</div>
-              <h4>&ldquo;가족이 더 자랑스러워해 줍니다.&rdquo;</h4>
-              <p>&ldquo;돈으로 살 수 없는 기록을 남겼다는 만족감. 자녀·손주에게 남길 수 있어 인생에서 가장 잘한 일 같아요.&rdquo;</p>
-            </div>
-            <div className="voice-card">
-              <div className="voice-tag">코치 · 트레이너</div>
-              <h4>&ldquo;코칭 프로그램 전환율이 올라갔어요.&rdquo;</h4>
-              <p>&ldquo;콘텐츠가 책으로 정리되니 고객이 미리 신뢰를 가지고 옵니다. 무료 상담 → 유료 프로그램 전환률이 확연히 늘었어요.&rdquo;</p>
-            </div>
-            <div className="voice-card">
-              <div className="voice-tag">작가 · 콘텐츠 크리에이터</div>
-              <h4>&ldquo;다음 작품·콜라보 제안이 자연스럽게 들어옵니다.&rdquo;</h4>
-              <p>&ldquo;첫 책이 나오니 출판사·플랫폼에서 두 번째 책 제안이 옵니다. 인스타·블로그 팔로워도 한 번에 늘었어요.&rdquo;</p>
-            </div>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
+              <div key={n} className="voice-card">
+                <div className="voice-tag">{t(`voices.v${n}.tag`)}</div>
+                <h4>{t(`voices.v${n}.title`)}</h4>
+                <p>{t(`voices.v${n}.desc`)}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
