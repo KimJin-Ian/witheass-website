@@ -1266,6 +1266,12 @@ a {
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s, box-shadow 0.2s;
 }
+.blog-card.no-thumb {
+  border-top: 3px solid var(--gold-400);
+}
+.blog-card.no-thumb .blog-card-body {
+  padding: 28px;
+}
 .blog-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);

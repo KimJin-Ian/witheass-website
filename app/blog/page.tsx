@@ -80,21 +80,8 @@ export default async function BlogIndexPage() {
                   <Link
                     key={post.id}
                     href={`/blog/${post.slug}`}
-                    className="blog-card"
+                    className="blog-card no-thumb"
                   >
-                    {post.cover_image_url ? (
-                      <div className="blog-card-img">
-                        <img
-                          src={post.cover_image_url}
-                          alt={post.title}
-                          loading="lazy"
-                        />
-                      </div>
-                    ) : (
-                      <div className="blog-card-img blog-card-img-placeholder">
-                        <span>📖</span>
-                      </div>
-                    )}
                     <div className="blog-card-body">
                       {post.tags && post.tags.length > 0 && (
                         <div className="blog-card-tags">
