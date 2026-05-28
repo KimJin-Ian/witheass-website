@@ -120,24 +120,31 @@ export default function EditMode() {
         .forEach((el) => el.classList.remove("__edit-selected"));
       target.classList.add("__edit-selected");
 
-      if (isInAdmin) {
+      // 항상 parent에 클릭 이벤트 전달 (iframe 밖에선 parent === window 라 영향 없음)
+      if (window.parent !== window) {
         window.parent.postMessage(
           { type: "visual-editor:click", key, source: "homepage" },
           "*"
         );
-      } else {
-        console.log("[edit-mode] clicked:", key);
       }
+      console.log("[edit-mode] clicked:", key);
     }
 
     document.addEventListener("click", onClick, { capture: true });
 
-    // parent로 ready 신호
-    if (isInAdmin && window.parent !== window) {
+    // parent로 ready 신호 — iframe 안이면 무조건 송신 (보안: 수신측에서 origin 검증)
+    if (window.parent !== window) {
       window.parent.postMessage(
         { type: "visual-editor:ready", source: "homepage" },
         "*"
       );
+      // 1초 후 재송신 (parent 리스너가 마운트 전에 first ready를 놓친 경우 대비)
+      setTimeout(() => {
+        window.parent.postMessage(
+          { type: "visual-editor:ready", source: "homepage" },
+          "*"
+        );
+      }, 1000);
     }
 
     // cleanup (사실상 페이지 떠나면 자동 정리됨)
