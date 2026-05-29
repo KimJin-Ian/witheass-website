@@ -40,19 +40,15 @@ export default function IntroVideoPopup() {
   } | null>(null);
 
   // 마운트 시 모바일 여부 + 초기 모드
+  // SEO 최적화: 데스크탑/모바일 모두 플로팅으로 시작 (intrusive interstitial 방지)
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const mobile = window.innerWidth < MOBILE_BREAKPOINT;
-    setIsMobile(mobile);
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     try {
       const closed = sessionStorage.getItem(STORAGE_KEY);
-      if (closed === "1") {
-        setMode("hidden");
-      } else {
-        setMode(mobile ? "floating" : "fullscreen");
-      }
+      setMode(closed === "1" ? "hidden" : "floating");
     } catch {
-      setMode(mobile ? "floating" : "fullscreen");
+      setMode("floating");
     }
   }, []);
 
@@ -300,7 +296,7 @@ export default function IntroVideoPopup() {
               fontFamily: '-apple-system, "Pretendard", sans-serif',
             }}
           >
-            {isMobile ? "👆 탭 = 크게" : "🤚 드래그"}
+            👆 탭 = 크게 {!isMobile && "· 🤚 드래그"}
           </div>
           <div style={{ display: "flex", gap: 4 }}>
             <button
