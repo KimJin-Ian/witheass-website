@@ -5,6 +5,7 @@ import Faq from "./components/Faq";
 import DynamicSections from "./components/DynamicSections";
 import SiteFooter from "./components/SiteFooter";
 import EditMode from "./components/EditMode";
+import IntroVideoPopup from "./components/IntroVideoPopup";
 import { useLang } from "./components/LangContext";
 
 export default function Home() {
@@ -13,6 +14,9 @@ export default function Home() {
     <>
       {/* 비주얼 에디터 모드 (?edit=1 시에만 활성화, 일반 방문자에겐 영향 없음) */}
       <EditMode />
+
+      {/* 인트로 영상 팝업 (방문 시 풀스크린 → 작게 → 드래그 가능) */}
+      <IntroVideoPopup />
 
       <a href="#main-content" className="skip-link">본문 바로가기</a>
       <SiteHeader />
