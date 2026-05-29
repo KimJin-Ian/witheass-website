@@ -115,9 +115,8 @@ export default function IntroVideoPopup() {
     const moved = dragStart.current?.moved ?? 0;
     setDragging(false);
     if (moved < TAP_THRESHOLD_PX && mode === "floating") {
-      // 탭으로 풀스크린 확대 (사용자 상호작용 → 소리 ON)
-      setUserInteracted(true);
-      setMode("fullscreen");
+      // 탭으로 풀스크린 확대 (사용자 상호작용 → 처음부터 재생 + 소리 ON)
+      expandToFullscreen();
     }
     dragStart.current = null;
   }
@@ -145,6 +144,16 @@ export default function IntroVideoPopup() {
     setMode("floating");
   }
   function expandToFullscreen() {
+    // 사용자가 풀스크린으로 확대할 때:
+    //  1. 영상을 처음부터 재생
+    //  2. 음소거 해제 + 적정 볼륨
+    //  3. play() 즉시 호출
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.muted = false;
+      videoRef.current.volume = 0.8;
+      videoRef.current.play().catch(() => {});
+    }
     setUserInteracted(true);
     setMode("fullscreen");
   }
