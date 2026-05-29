@@ -32,7 +32,9 @@ export default function IntroVideoPopup() {
   const [mode, setMode] = useState<Mode>("hidden");
   const [isMobile, setIsMobile] = useState(false);
   const [userInteracted, setUserInteracted] = useState(false); // 풀스크린 소리 켜기 가능 여부
-  const [position, setPosition] = useState({ x: 16, y: 16 });
+  // 우하단 플로팅 CTA (카톡·전화 56px×2개 + bottom:24px) 위로 위치
+  // y는 우하단 모서리로부터의 거리 (bottom)
+  const [position, setPosition] = useState({ x: 16, y: 100 });
   const [dragging, setDragging] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const dragStart = useRef<{
