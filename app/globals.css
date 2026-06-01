@@ -103,7 +103,7 @@ button { font-family: inherit; }
   .portfolio-card:hover,
   .price-card:hover,
   .contact-ch:hover,
-  .float-cta a:hover,
+  .float-cta-btn:hover,
   .cta-btn:hover {
     transform: none !important;
     box-shadow: var(--shadow-sm) !important;
@@ -990,22 +990,64 @@ footer li a:hover { color: var(--gold-600); }
 @media (max-width: 700px) { footer .ft-grid { grid-template-columns: 1fr; } }
 
 /* FLOATING CTA */
-.float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 50; display: flex; gap: 8px; }
-.float-cta a {
-  width: 56px;
-  height: 56px;
-  background: var(--gold-600);
-  color: var(--navy-900);
-  border-radius: 50%;
+/* FLOATING CTA — premium pill style */
+.float-cta {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-lg);
-  font-size: 24px;
-  transition: transform 0.15s;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
 }
-.float-cta a:hover { transform: scale(1.08); }
-.float-cta a.kakao { background: #fee500; color: #000; }
+.float-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px 13px 18px;
+  background: var(--navy-900);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  box-shadow:
+    0 10px 28px rgba(26, 26, 46, 0.28),
+    0 2px 6px rgba(26, 26, 46, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.22s ease;
+  will-change: transform;
+}
+.float-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 36px rgba(26, 26, 46, 0.36),
+    0 4px 12px rgba(26, 26, 46, 0.2);
+}
+.float-cta-btn.kakao {
+  background: linear-gradient(135deg, #ffe812 0%, #fee500 100%);
+  color: #1a1a2e;
+  border-color: rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 10px 28px rgba(254, 229, 0, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.float-cta-btn.kakao:hover {
+  box-shadow:
+    0 16px 36px rgba(254, 229, 0, 0.55),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.float-cta-icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+.float-cta-text {
+  white-space: nowrap;
+}
 
 .text-center { text-align: center; }
 .mb-32 { margin-bottom: 32px; }
@@ -1223,11 +1265,31 @@ footer li a:hover { color: var(--gold-600); }
 
 /* Smaller float CTA on tiny screens */
 @media (max-width: 600px) {
-  .float-cta a {
-    width: 52px;
-    height: 52px;
-    font-size: 22px;
+  .float-cta {
+    bottom: 16px;
+    right: 16px;
+    gap: 8px;
   }
+  .float-cta-btn {
+    padding: 11px 18px 11px 14px;
+    font-size: 12.5px;
+  }
+  .float-cta-icon { width: 16px; height: 16px; }
+}
+
+/* Tiny phones (≤ 400px) — icon-only circles to save space */
+@media (max-width: 400px) {
+  .float-cta-btn {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .float-cta-text {
+    display: none;
+  }
+  .float-cta-icon { width: 20px; height: 20px; }
 }
 
 /* Minimum 44px touch targets for accessibility */
@@ -1235,7 +1297,7 @@ footer li a:hover { color: var(--gold-600); }
 .faq-q,
 .contact-ch,
 .hamburger,
-.float-cta a {
+.float-cta-btn {
   min-height: 44px;
 }
 
@@ -1290,6 +1352,7 @@ a {
   html, body { font-size: 11pt; background: white; }
   header.site-header { position: static; border-bottom: none; }
   .hamburger, .float-cta { display: none !important; }
+  .float-cta-btn { display: none !important; }
   .cta-btn { background: var(--navy-900) !important; color: white !important; }
   .faq-item { page-break-inside: avoid; }
   .faq-q::after { content: "" !important; }

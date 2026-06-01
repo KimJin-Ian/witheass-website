@@ -652,12 +652,36 @@ export default function Home() {
       {/* FOOTER (DB 우선 + 폴백) */}
       <SiteFooter />
 
-      {/* FLOATING CTA */}
+      {/* FLOATING CTA — premium pill style with inline SVG */}
       <div className="float-cta">
-        <a href="http://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer" className="kakao" title="카카오톡 문의"
-          data-track="cta_click" data-category="contact" data-label="float_kakao">💬</a>
-        <a href="tel:01020680817" title="전화 문의"
-          data-track="cta_click" data-category="contact" data-label="float_phone">📞</a>
+        <a
+          href="http://pf.kakao.com/_QkZhd"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="float-cta-btn kakao"
+          aria-label="카카오톡 상담"
+          data-track="cta_click"
+          data-category="contact"
+          data-label="float_kakao"
+        >
+          <svg className="float-cta-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 3C6.477 3 2 6.55 2 10.93c0 2.79 1.86 5.24 4.65 6.59-.18.65-.72 2.65-.83 3.06-.13.51.19.51.4.37.16-.11 2.61-1.77 3.66-2.49.7.1 1.41.16 2.12.16 5.523 0 10-3.55 10-7.93C22 6.55 17.523 3 12 3z" />
+          </svg>
+          <span className="float-cta-text">카카오톡 상담</span>
+        </a>
+        <a
+          href="tel:01020680817"
+          className="float-cta-btn phone"
+          aria-label="전화 상담"
+          data-track="cta_click"
+          data-category="contact"
+          data-label="float_phone"
+        >
+          <svg className="float-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          <span className="float-cta-text">전화 상담</span>
+        </a>
       </div>
     </>
   );
