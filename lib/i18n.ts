@@ -177,6 +177,14 @@ const ko: Dict = {
   "portfolio.naverHint": "📚 드림위드에스에서 출간된 전체 책 보기 — 네이버 책에서 직접 확인 가능합니다",
   "portfolio.naverCta": "네이버 책 \"드림위드에스\" 전체 보기 →",
 
+  // Team (출판팀 작가진)
+  "team.eyebrow": "TEAM · 전문 작가진",
+  "team.title1": "드림위드에스의",
+  "team.titleEm": "전문 작가진",
+  "team.lead": "저자가 혼자 책을 내는 것이 아닙니다. 박사급 컨설턴트와 30+ 분야 전문 작가가 한 권 한 권에 직접 참여합니다.",
+  "team.suffix": "외 다수 책 기획 및 편집",
+  "team.privacy": "※ 작가 개인정보 보호를 위해 이름 일부만 공개합니다. 자세한 매칭은 상담 시 안내드립니다.",
+
   // FAQ
   "faq.eyebrow": "FAQ",
   "faq.title": "자주 묻는 질문",
@@ -565,6 +573,13 @@ const en: Dict = {
   "portfolio.naverHint": "📚 See all Dream With Ess books — directly on Naver Book Search",
   "portfolio.naverCta": "View all on Naver Book Search →",
 
+  "team.eyebrow": "TEAM",
+  "team.title1": "Meet our",
+  "team.titleEm": "expert writing team",
+  "team.lead": "Authors don't write alone. PhD-level consultants and writers across 30+ fields work directly on every book.",
+  "team.suffix": "+ many more books planned and edited",
+  "team.privacy": "※ For privacy, only partial names are shown. Detailed matching will be guided during consultation.",
+
   "faq.eyebrow": "FAQ",
   "faq.title": "Frequently Asked Questions",
 
@@ -866,6 +881,13 @@ const zh: Dict = {
   "portfolio.naverHint": "📚 Dream With Ess全部出版书目 — 可在Naver书店直接查看",
   "portfolio.naverCta": "在Naver书店查看全部 →",
 
+  "team.eyebrow": "团队 · 专业作家",
+  "team.title1": "Dream With Ess的",
+  "team.titleEm": "专业作家团队",
+  "team.lead": "作者并非独自完成书籍。博士级顾问与30+领域专业作家直接参与每一本书。",
+  "team.suffix": "等多本图书策划及编辑",
+  "team.privacy": "※ 出于隐私保护，仅公开姓氏。详细匹配将在咨询时介绍。",
+
   "faq.eyebrow": "常见问题",
   "faq.title": "常见问题",
 
@@ -1166,6 +1188,13 @@ const ja: Dict = {
   "portfolio.copyright": "※ 著作権保護対象につき、閲覧後の保存・配布はお控えください。",
   "portfolio.naverHint": "📚 Dream With Essから出版された全書籍 — Naver Bookで直接確認できます",
   "portfolio.naverCta": "Naver Bookで全て見る →",
+
+  "team.eyebrow": "TEAM · 専門ライター",
+  "team.title1": "Dream With Essの",
+  "team.titleEm": "専門ライターチーム",
+  "team.lead": "著者が一人で本を書くのではありません。博士級コンサルタントと30以上の分野の専門ライターが一冊一冊に直接関わります。",
+  "team.suffix": "他多数の書籍企画・編集",
+  "team.privacy": "※ プライバシー保護のため、姓のみ公開。詳細マッチングは相談時にご案内します。",
 
   "faq.eyebrow": "FAQ",
   "faq.title": "よくある質問",

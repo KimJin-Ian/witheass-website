@@ -629,6 +629,112 @@ section.dark .section-lead { color: rgba(255, 255, 255, 0.75); }
   line-height: 1.7;
 }
 
+/* TEAM — 출판팀 작가 이력 */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 40px;
+}
+.team-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--gold-600);
+  border-radius: var(--radius-md);
+  padding: 26px 24px 22px;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.team-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-top-color: var(--navy-900);
+}
+.team-card .team-role {
+  display: inline-block;
+  background: var(--navy-900);
+  color: var(--white);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+.team-card .team-name {
+  font-size: 19px;
+  color: var(--navy-900);
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.team-card .team-education {
+  font-size: 13px;
+  color: var(--text-500);
+  line-height: 1.6;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px dashed var(--line);
+}
+.team-card .team-section-label {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--gold-600);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.team-card .team-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  flex: 1;
+}
+.team-card .team-list li {
+  position: relative;
+  font-size: 13px;
+  color: var(--text-700, var(--ink-soft));
+  line-height: 1.6;
+  padding-left: 14px;
+  margin-bottom: 6px;
+}
+.team-card .team-list li::before {
+  content: "·";
+  position: absolute;
+  left: 4px;
+  top: 0;
+  color: var(--gold-600);
+  font-weight: 700;
+}
+.team-card .team-suffix {
+  font-size: 12px;
+  color: var(--text-500);
+  font-style: italic;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.team-privacy-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-500);
+  margin-top: 32px;
+  padding: 14px 20px;
+  background: var(--gold-50);
+  border: 1px solid var(--gold-100);
+  border-radius: var(--radius-md);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 600px) {
+  .team-grid { grid-template-columns: 1fr; gap: 16px; }
+  .team-card { padding: 22px 20px 20px; }
+}
+
 /* PRICING */
 #pricing { background: var(--gold-50); }
 .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
