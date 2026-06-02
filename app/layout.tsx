@@ -120,12 +120,14 @@ export async function generateMetadata(): Promise<Metadata> {
     /* DB 장애 시 env 폴백으로 안전하게 동작 */
   }
 
+  // ⚠ trim() 필수 — Vercel 환경변수에 trailing newline 들어가면
+  //   네이버가 '메타 태그를 찾을 수 없습니다' 오류로 검증 실패함.
   return {
     ...baseMetadata,
     verification: {
-      google: googleVerification,
+      google: googleVerification.trim(),
       other: {
-        "naver-site-verification": naverVerification,
+        "naver-site-verification": naverVerification.trim(),
       },
     },
   };
