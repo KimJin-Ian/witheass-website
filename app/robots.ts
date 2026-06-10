@@ -22,6 +22,21 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Bingbot", allow: "/", disallow },
       { userAgent: "Daumoa", allow: "/", disallow }, // 다음 (Kakao)
       { userAgent: "Baiduspider", allow: "/", disallow }, // 바이두 (중국)
+      // AI 검색·LLM 크롤러 — 인용·노출을 위해 명시적으로 허용 (관리/API만 차단)
+      { userAgent: "GPTBot", allow: "/", disallow }, // OpenAI
+      { userAgent: "OAI-SearchBot", allow: "/", disallow }, // ChatGPT Search
+      { userAgent: "ChatGPT-User", allow: "/", disallow }, // ChatGPT 브라우징
+      { userAgent: "ClaudeBot", allow: "/", disallow }, // Anthropic Claude
+      { userAgent: "anthropic-ai", allow: "/", disallow },
+      { userAgent: "Claude-Web", allow: "/", disallow },
+      { userAgent: "PerplexityBot", allow: "/", disallow }, // Perplexity
+      { userAgent: "Perplexity-User", allow: "/", disallow },
+      { userAgent: "Google-Extended", allow: "/", disallow }, // Gemini grounding
+      { userAgent: "Applebot-Extended", allow: "/", disallow }, // Apple Intelligence
+      { userAgent: "CCBot", allow: "/", disallow }, // Common Crawl (다수 LLM 학습)
+      { userAgent: "Amazonbot", allow: "/", disallow },
+      { userAgent: "Bytespider", allow: "/", disallow }, // ByteDance
+      { userAgent: "meta-externalagent", allow: "/", disallow }, // Meta AI
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,
