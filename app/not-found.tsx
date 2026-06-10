@@ -59,6 +59,43 @@ export default function NotFound() {
       >
         홈으로 돌아가기
       </Link>
+
+      {/* 주요 섹션 바로가기 — 옛 링크/잘못된 주소로 들어와도 길을 잃지 않도록 */}
+      <nav
+        style={{
+          marginTop: 28,
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px 22px",
+          justifyContent: "center",
+          fontSize: 13,
+        }}
+      >
+        {[
+          { href: "/#about", label: "회사 소개" },
+          { href: "/#pricing", label: "출판 안내" },
+          { href: "/#portfolio", label: "포트폴리오" },
+          { href: "/#faq", label: "자주 묻는 질문" },
+          { href: "/blog", label: "블로그" },
+        ].map((l) => (
+          <Link
+            key={l.href}
+            href={l.href}
+            style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}
+          >
+            {l.label}
+          </Link>
+        ))}
+      </nav>
+
+      <a
+        href="http://pf.kakao.com/_QkZhd"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ marginTop: 22, fontSize: 13, color: "var(--gold-600, #c4a661)", textDecoration: "none" }}
+      >
+        카카오톡으로 바로 문의하기 →
+      </a>
     </main>
   );
 }

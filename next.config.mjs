@@ -10,6 +10,27 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
 
+  // 옛 아임웹(imweb) 사이트 URL → 새 사이트로 301 영구 리다이렉트.
+  // 네이버/구글에 아직 남아있는 구버전 색인(예: /53, /HOME/?bmode=view&idx=...)을
+  // 클릭하면 새 사이트에 해당 경로가 없어 404가 떴음. 홈으로 보내 404 제거 +
+  // 검색엔진에 "영구 이전" 신호를 줘 인덱스 통합을 가속.
+  async redirects() {
+    return [
+      // 아임웹 게시판/페이지 뷰 시그니처(?bmode=...) — 모든 경로에서 홈으로
+      {
+        source: "/:path*",
+        has: [{ type: "query", key: "bmode" }],
+        destination: "/",
+        permanent: true,
+      },
+      // 아임웹 기본 경로 /HOME, /HOME/...
+      { source: "/HOME", destination: "/", permanent: true },
+      { source: "/HOME/:path*", destination: "/", permanent: true },
+      // 아임웹 숫자형 페이지 ID(최상위 단일 숫자 경로: /53 등)
+      { source: "/:id(\\d+)", destination: "/", permanent: true },
+    ];
+  },
+
   // 보안 헤더 (모든 페이지 적용)
   async headers() {
     return [
