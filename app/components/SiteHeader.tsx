@@ -92,19 +92,32 @@ export default function SiteHeader() {
           aria-hidden={!open}
         >
           {useDbNav ? (
-            // DB 메뉴 사용 (admin /site/nav)
-            dbNav!.map((item) => (
-              <a
-                key={item.id}
-                href={item.url}
-                onClick={closeMenu}
-                target={item.is_external ? "_blank" : undefined}
-                rel={item.is_external ? "noopener noreferrer" : undefined}
-                style={item.is_cta ? { color: "var(--gold-600)" } : undefined}
-              >
-                {item.label}
-              </a>
-            ))
+            // DB 메뉴 사용 (admin /site/nav) — '전문 작가진'(/team)은 코드에서 항상 보강
+            (() => {
+              const items = dbNav!.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.url}
+                  onClick={closeMenu}
+                  target={item.is_external ? "_blank" : undefined}
+                  rel={item.is_external ? "noopener noreferrer" : undefined}
+                  style={item.is_cta ? { color: "var(--gold-600)" } : undefined}
+                >
+                  {item.label}
+                </a>
+              ));
+              // DB에 /team 메뉴가 없으면 CTA 앞(없으면 맨 끝)에 끼워 넣는다
+              if (!dbNav!.some((it) => it.url === "/team")) {
+                const ctaIdx = dbNav!.findIndex((it) => it.is_cta);
+                const at = ctaIdx === -1 ? items.length : ctaIdx;
+                items.splice(
+                  at,
+                  0,
+                  <a key="team-link" href="/team" onClick={closeMenu}>전문 작가진</a>
+                );
+              }
+              return items;
+            })()
           ) : (
             // 폴백: 기존 하드코딩 메뉴
             <>
