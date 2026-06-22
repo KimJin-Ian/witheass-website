@@ -78,7 +78,7 @@ export default function SiteHeader() {
   return (
     <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
       <div className="container header-inner">
-        <a href="#top" className="logo" onClick={closeMenu} aria-label="드림위드에스 출판사 홈으로">
+        <a href="/" className="logo" onClick={closeMenu} aria-label="드림위드에스 출판사 홈으로">
           <img
             src="/logo.png"
             alt="드림위드에스 출판사 — 위드에스마케팅"
@@ -108,14 +108,14 @@ export default function SiteHeader() {
           ) : (
             // 폴백: 기존 하드코딩 메뉴
             <>
-              <a href="#about" onClick={closeMenu}>{t("nav.about")}</a>
-              <a href="#thesis" onClick={closeMenu}>{t("nav.thesis")}</a>
-              <a href="#pricing" onClick={closeMenu}>{t("nav.pricing")}</a>
-              <a href="#service" onClick={closeMenu}>{t("nav.brand")}</a>
-              <a href="#portfolio" onClick={closeMenu}>{t("nav.portfolio")}</a>
+              <a href="/#about" onClick={closeMenu}>{t("nav.about")}</a>
+              <a href="/#thesis" onClick={closeMenu}>{t("nav.thesis")}</a>
+              <a href="/#pricing" onClick={closeMenu}>{t("nav.pricing")}</a>
+              <a href="/#service" onClick={closeMenu}>{t("nav.brand")}</a>
+              <a href="/#portfolio" onClick={closeMenu}>{t("nav.portfolio")}</a>
               <a href="/blog" onClick={closeMenu}>블로그</a>
-              <a href="#faq" onClick={closeMenu}>{t("nav.faq")}</a>
-              <a href="#contact" onClick={closeMenu} style={{ color: "var(--gold-600)" }}>
+              <a href="/#faq" onClick={closeMenu}>{t("nav.faq")}</a>
+              <a href="/#contact" onClick={closeMenu} style={{ color: "var(--gold-600)" }}>
                 {t("nav.consult")} →
               </a>
             </>
@@ -123,7 +123,7 @@ export default function SiteHeader() {
         </nav>
         <div className="header-right desktop-only">
           <LangSwitcher />
-          <a href="#contact" className="cta-btn gold" onClick={closeMenu}>
+          <a href="/#contact" className="cta-btn gold" onClick={closeMenu}>
             {t("nav.consult")} →
           </a>
         </div>
