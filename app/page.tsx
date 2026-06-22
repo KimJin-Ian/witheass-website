@@ -51,39 +51,24 @@ export default function Home() {
             <div className="hero-stat"><div className="num">{t("hero.stat.royalty.num")}</div><div className="lbl">{t("hero.stat.royalty.lbl")}</div></div>
             <div className="hero-stat"><div className="num">{t("hero.stat.time.num")}</div><div className="lbl">{t("hero.stat.time.lbl")}</div></div>
           </div>
+          <div className="hero-extra">✓ {t("hero.extra")}</div>
         </div>
       </section>
 
       {/* ABOUT */}
       <section id="about" data-edit-key="about">
         <div className="container">
-          <div className="about-grid">
-            <div className="about-text">
-              <div className="section-eyebrow">{t("about.eyebrow")}</div>
-              <h2 className="section-title">{t("about.title1")}<br />{t("about.title2")}</h2>
-              <div className="section-rule"></div>
-              <div className="quote">
-                {t("about.quote1")}<br />
-                <strong>{t("about.quote2")}</strong>
-              </div>
-              <p>{t("about.p1")}</p>
-              <p>{t("about.p2")}</p>
-              <p>{t("about.p3")}</p>
+          <div className="about-text" style={{ maxWidth: 820 }}>
+            <div className="section-eyebrow">{t("about.eyebrow")}</div>
+            <h2 className="section-title">{t("about.title1")}<br />{t("about.title2")}</h2>
+            <div className="section-rule"></div>
+            <div className="quote">
+              {t("about.quote1")}<br />
+              <strong>{t("about.quote2")}</strong>
             </div>
-
-            <div className="about-portrait">
-              <div className="badge">{t("about.promise.badge")}</div>
-              <h3>{t("about.promise.title1")}<br /><span style={{ color: "var(--gold-500)", fontSize: 14, letterSpacing: "0.2em" }}>{t("about.promise.title2")}</span></h3>
-              <p style={{ fontSize: 14.5, lineHeight: 1.8, color: "rgba(255,255,255,0.85)" }}>
-                {t("about.promise.desc")}
-              </p>
-              <ul>
-                <li><span>{t("hero.stat.running.lbl")}</span><span>{t("hero.stat.running.num")}</span></li>
-                <li><span>{t("hero.stat.published.lbl")}</span><span>{t("hero.stat.published.num")}</span></li>
-                <li><span>{t("hero.stat.royalty.lbl")}</span><span>{t("hero.stat.royalty.num")}</span></li>
-                <li><span>{t("hero.stat.time.lbl")}</span><span>{t("hero.stat.time.num")}</span></li>
-              </ul>
-            </div>
+            <p>{t("about.p1")}</p>
+            <p>{t("about.p2")}</p>
+            <p>{t("about.p3")}</p>
           </div>
         </div>
       </section>
@@ -110,7 +95,7 @@ export default function Home() {
             <div className="diff-card">
               <div className="num">03</div>
               <h3>{t("brand.c3.title")}</h3>
-              <p>{t("brand.c3.desc")}</p>
+              <p style={{ color: "var(--navy-900)", fontWeight: 700 }}>{t("brand.c3.desc")}</p>
             </div>
             <div className="diff-card">
               <div className="num">04</div>
@@ -121,6 +106,11 @@ export default function Home() {
               <div className="num">05</div>
               <h3>{t("brand.c5.title")}</h3>
               <p>{t("brand.c5.desc")}</p>
+            </div>
+            <div className="diff-card">
+              <div className="num">06</div>
+              <h3>{t("brand.c6.title")}</h3>
+              <p>{t("brand.c6.desc")}</p>
             </div>
           </div>
         </div>
@@ -160,33 +150,25 @@ export default function Home() {
           <div className="section-rule"></div>
           <p className="section-lead">{t("pricing.lead")}</p>
 
-          <div className="pricing-grid">
-            <div className="price-card">
-              <div className="cat">{t("pricing.p1.cat")}</div>
-              <h3>{t("pricing.p1.title")}</h3>
-              <div className="price">{t("pricing.p1.price")}<small>{t("pricing.p1.priceSuffix")}</small></div>
+          <div className="pricing-grid two">
+            <div className="price-card featured">
+              <div className="tag">{t("pricing.p4.tag")}</div>
+              <div className="cat">{t("pricing.p4.cat")}</div>
+              <h3>{t("pricing.p4.title1")}<br />{t("pricing.p4.title2")}</h3>
+              <div className="price">{t("pricing.p4.price")}<small>{t("pricing.p4.priceSuffix")}</small></div>
+              <p style={{ fontSize: 12.5, color: "rgba(255,255,255,0.75)", marginTop: -8, marginBottom: 12, lineHeight: 1.5 }}>
+                {t("pricing.p4.note")}
+              </p>
               <ul>
-                <li>{t("pricing.p1.l1")}</li>
-                <li>{t("pricing.p1.l2")}</li>
-                <li>{t("pricing.p1.l3")}</li>
-                <li>{t("pricing.p1.l4")}</li>
-                <li>{t("pricing.p1.l5")}</li>
-                <li>{t("pricing.p1.l6")}</li>
+                <li>{t("pricing.p4.l1")}</li>
+                <li>{t("pricing.p4.l2")}</li>
+                <li>{t("pricing.p4.l3")}</li>
+                <li>{t("pricing.p4.l4")}</li>
+                <li>{t("pricing.p4.l5")}</li>
+                <li>{t("pricing.p4.l6")}</li>
+                <li>{t("pricing.p4.l7")}</li>
               </ul>
-            </div>
-
-            <div className="price-card">
-              <div className="cat">{t("pricing.p2.cat")}</div>
-              <h3>{t("pricing.p2.title")}</h3>
-              <div className="price">{t("pricing.p2.price")}<small>{t("pricing.p2.priceSuffix")}</small></div>
-              <ul>
-                <li>{t("pricing.p2.l1")}</li>
-                <li>{t("pricing.p2.l2")}</li>
-                <li>{t("pricing.p2.l3")}</li>
-                <li>{t("pricing.p2.l4")}</li>
-                <li>{t("pricing.p2.l5")}</li>
-                <li>{t("pricing.p2.l6")}</li>
-              </ul>
+              <a href="#fullpkg" className="cta-btn gold" style={{ marginTop: "auto" }}>{t("pricing.p4.cta")}</a>
             </div>
 
             <div className="price-card">
@@ -206,32 +188,74 @@ export default function Home() {
                 <li>{t("pricing.p3.l7")}</li>
               </ul>
             </div>
-
-            <div className="price-card featured">
-              <div className="tag">{t("pricing.p4.tag")}</div>
-              <div className="cat">{t("pricing.p4.cat")}</div>
-              <h3>{t("pricing.p4.title1")}<br />{t("pricing.p4.title2")}</h3>
-              <div className="price">{t("pricing.p4.price")}<small>{t("pricing.p4.priceSuffix")}</small></div>
-              <p style={{ fontSize: 12.5, color: "rgba(255,255,255,0.75)", marginTop: -8, marginBottom: 12, lineHeight: 1.5 }}>
-                {t("pricing.p4.note")}
-              </p>
-              <ul>
-                <li>{t("pricing.p4.l1")}</li>
-                <li>{t("pricing.p4.l2")}</li>
-                <li>{t("pricing.p4.l3")}</li>
-                <li>{t("pricing.p4.l4")}</li>
-                <li>{t("pricing.p4.l5")}</li>
-                <li>{t("pricing.p4.l6")}</li>
-                <li>{t("pricing.p4.l7")}</li>
-              </ul>
-              <a href="#contact" className="cta-btn gold" style={{ marginTop: "auto" }}>{t("pricing.p4.cta")}</a>
-            </div>
           </div>
 
           <div className="pricing-note">
             <div style={{ fontSize: 22 }}>💡</div>
             <p>{t("pricing.note")}</p>
           </div>
+        </div>
+      </section>
+
+      {/* FULL 패키지 상세 — 전문직·CEO·정치인 전용 */}
+      <section id="fullpkg" className="fullpkg" data-edit-key="fullpkg">
+        <div className="container" style={{ textAlign: "center" }}>
+          <span className="fullpkg-tag">전문직 · CEO · 정치인 전용</span>
+          <h2 className="section-title">도서 출판 &amp; 퍼스널 브랜딩 통합 마케팅</h2>
+          <p className="fullpkg-lead">책을 내는 목적이 <strong>검색 시 나오는 공신력과 브랜드</strong>라면, 책만 내는 것으로는 의미가 없습니다. 출간 소식이 알려지면 지인·고객·거래처·동료가 한 번쯤 저자 이름을 검색합니다 — 바로 그 시점에 정보와 콘텐츠가 준비돼 있어야 전문성과 공신력이 형성됩니다.</p>
+          <ul className="fullpkg-points">
+            <li><b>검색의 순간이 핵심</b> — 출간 직후가 가장 관심이 집중되는 시기. “나중에 천천히”는 그 골든타임을 놓칩니다.</li>
+            <li><b>단순 업로드가 아닌, 납득되는 리뷰</b> — 모든 플랫폼에 자연스러운 후기·콘텐츠가 검색되어야 합니다.</li>
+            <li><b>통합으로 맡겨야 하는 이유</b> — 책은 저자 개인의 이미지·전문성과 직결됩니다. 처음부터 함께 기획해 이해도 높은 드림위드에스에 통합으로.</li>
+            <li><b>평생 남는 이미지</b> — 금액보다 처음부터 제대로가 중요합니다.</li>
+          </ul>
+          <p className="fullpkg-quote">“단순 마케팅 대행이 아니라, 개인을 전문 브랜딩하고<br />책을 처음부터 함께 기획하는 통합 파트너.”</p>
+
+          <details className="mk-acc">
+            <summary>📦 통합 퍼스널 브랜딩 마케팅 패키지 — 전체 항목 보기</summary>
+            <div className="mk-body">
+              <div className="mk-sec">
+                <h4>1. 저자 인터뷰 영상 콘텐츠 제작 및 배포</h4>
+                <div className="mk-sub">인터뷰 제작</div>
+                <ul><li>전문 사회자 진행 인터뷰 촬영</li><li>10분 이내 편집 영상 1편 + 쇼츠 2편 + 풀버전</li></ul>
+                <div className="mk-sub">대형 채널 · 멀티 배포</div>
+                <ul><li>월 1,000만 뷰+ 협업 유튜브 채널 업로드</li><li>유튜브·틱톡·인스타·페북·네이버TV·스레드 동시 배포</li><li>영상 내/설명란 도서 구매 링크 삽입 · 하루 2~3개 지속 업로드</li></ul>
+              </div>
+              <div className="mk-sec">
+                <h4>2. 블로그 마케팅 및 검색 노출</h4>
+                <ul><li>블로그 포스팅 10건 제작·배포</li><li>저자명·전문분야·도서 키워드 SEO 검색 노출</li><li>전문성·경험·사례 중심 후기형 콘텐츠 운영</li></ul>
+              </div>
+              <div className="mk-sec">
+                <h4>3. SNS 콘텐츠 제작</h4>
+                <ul><li>인스타 카드뉴스 10장 1세트</li><li>인플루언서 리뷰형 콘텐츠</li><li>유튜브 롱폼 1편 + 쇼츠 2편 (별도 촬영) · MC 단독 인터뷰</li></ul>
+              </div>
+              <div className="mk-sec">
+                <h4>4. 언론홍보(PR)</h4>
+                <ul><li>언론 기사 2건+ 배포 · 포털 검색 브랜딩</li><li>저자 소개/전문분야 인터뷰/출간 기사로 신뢰도 확보</li></ul>
+              </div>
+              <div className="mk-sec">
+                <h4>5. 리뷰 및 바이럴 마케팅</h4>
+                <ul><li>리뷰단 모집·운영</li><li>블로그·카페·SNS 후기 기반 바이럴</li><li>독자·경험·전문성 리뷰 등 다양한 콘텐츠 생성</li></ul>
+              </div>
+              <div className="mk-sec">
+                <h4>6. 웹툰형 콘텐츠 제작</h4>
+                <ul><li>10컷+ 웹툰형 콘텐츠 — 책 내용을 스토리텔링으로 전달</li></ul>
+              </div>
+              <div className="mk-sec">
+                <h4>7. 강연·클래스·컨설팅 연계 전략</h4>
+                <ul><li>강연·클래스 상품화 / 컨설팅 상품 연결 전략 설계</li><li>책 판매 이후 추가 수익 모델 구축</li></ul>
+              </div>
+              <div className="mk-sec">
+                <h4>8. 퍼스널 브랜딩 로드맵 제공</h4>
+                <ul><li>저자 포지셔닝·전문가 브랜드·검색/SNS 브랜딩 방향 설정</li><li>강연·클래스·컨설팅·전문가 활동으로 연결되는 장기 성장 로드맵</li></ul>
+              </div>
+              <div className="mk-extra"><b>추가 진행 가능(별도 비용)</b> — 대형 서점 광고 · 지하철 광고 · 오프라인 홍보물 제작/운영</div>
+              <div className="mk-sub" style={{ textAlign: "center", marginTop: 22 }}>기대 효과</div>
+              <div className="mk-effect">
+                <span>도서 인지도 ↑</span><span>저자 브랜드 구축</span><span>검색 노출 확대</span><span>SNS 영향력 ↑</span><span>언론 노출 확보</span><span>후기·바이럴 확산</span><span>강연·클래스 기회</span><span>컨설팅·사업 확장</span>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 
@@ -416,54 +440,42 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="portfolio-grid">
-            {[
-              "lee-moonho.jpg",
-              "ball-boy.jpg",
-              "seocho-kim.jpg",
-              "yoon-park.jpg",
-              "park-service.jpg",
-              "dream-everyday.jpg",
-              "esg-kim.jpg",
-              "k-beauty.jpg",
-              "livecommerce.jpg",
-              "startup-exit.jpg",
-              "knee-life.jpg",
-              "anti-aging.jpg",
-              "leader-talk.jpg",
-              "hope-evidence.jpg",
-              "k-man-report.jpg",
-              "culturen-4th.jpg",
-            ].map((img, i) => {
-              const n = i + 1;
-              const cat = t(`portfolio.b${n}.cat`);
-              const title = t(`portfolio.b${n}.title`);
-              const desc = t(`portfolio.b${n}.desc`);
-              return (
-                <div key={i} className="portfolio-card">
-                  <div className="cover">
-                    <img
-                      src={`/covers/${img}`}
-                      alt={`드림위드에스 출판 사례 — ${title} (${cat})`}
-                      title={title}
-                      loading="lazy"
-                      width={720}
-                      height={960}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="info">
-                    <div className="cat-tag">{cat}</div>
-                    <h4>{title}</h4>
-                    <p>{desc}</p>
-                  </div>
-                </div>
-              );
-            })}
+          <p className="belt-hint">누적 890명 · 끊임없이 출간 중</p>
+          <div className="portfolio-belt">
+            <div className="belt-track">
+              {(() => {
+                const covers = [
+                  "lee-moonho.jpg", "ball-boy.jpg", "seocho-kim.jpg", "yoon-park.jpg",
+                  "park-service.jpg", "dream-everyday.jpg", "esg-kim.jpg", "k-beauty.jpg",
+                  "livecommerce.jpg", "startup-exit.jpg", "knee-life.jpg", "anti-aging.jpg",
+                  "leader-talk.jpg", "hope-evidence.jpg", "k-man-report.jpg", "culturen-4th.jpg",
+                ];
+                return [...covers, ...covers].map((img, i) => {
+                  const n = (i % covers.length) + 1;
+                  const cat = t(`portfolio.b${n}.cat`);
+                  const title = t(`portfolio.b${n}.title`);
+                  return (
+                    <div key={i} className="portfolio-card" aria-hidden={i >= covers.length || undefined}>
+                      <div className="cover">
+                        <img
+                          src={`/covers/${img}`}
+                          alt={`드림위드에스 출판 사례 — ${title} (${cat})`}
+                          title={title}
+                          loading="lazy"
+                          width={720}
+                          height={960}
+                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        />
+                      </div>
+                      <div className="info">
+                        <div className="cat-tag">{cat}</div>
+                        <h4>{title}</h4>
+                      </div>
+                    </div>
+                  );
+                });
+              })()}
+            </div>
           </div>
         </div>
       </section>
@@ -476,102 +488,12 @@ export default function Home() {
           <div className="section-rule"></div>
           <p className="section-lead">{t("team.lead")}</p>
 
-          <div className="team-grid">
-            {[
-              {
-                role: "출판부 팀장",
-                name: "김00 작가",
-                education: "이화여대 국어교육학 졸업",
-                projectsLabel: "주요 출간",
-                projects: [
-                  "『비만, 이럴거면 차라리 하지 마라』",
-                  "『MBA의 모든 것』",
-                  "『나만의 영어 비법』",
-                  "『주식 투자 성공기』",
-                ],
-                careerExtra: "기출의 품격·엘리트 모의고사 등 문제집 검토진·집필진. EBSi 푸리봇 학습 데이터 프로젝트 참여.",
-              },
-              {
-                role: "출판 기획·컨설팅",
-                name: "김00 작가",
-                education: "서울대학교 소비자아동학부 (국제정치학 부전공)",
-                projectsLabel: "주요 컨설팅",
-                projects: [
-                  "삼성전자 — 중장기 IT 투자 계획 (보고서)",
-                  "SK매직 — 영업 Risk 관리 체계 개선",
-                  "(주)두산 — Digital Transformation S&OP",
-                  "보건복지부 — 복지전달체계 개선 방안",
-                ],
-                careerExtra: "Kearney·PwC 컨설턴트, 삼성전자·LG전자 전략기획 출신.",
-              },
-              {
-                role: "논문 컨설팅",
-                name: "전00 작가",
-                education: "교육학 박사",
-                projectsLabel: "저서·논문 분야",
-                projects: [
-                  "『관광 경영학 개론』",
-                  "『ESG 경영학』",
-                  "『식당 경영학』",
-                  "평생교육 정책·경영학·관광호텔 등 다수 논문",
-                ],
-                careerExtra: "평생교육·경영학·관광 분야 컨설팅 전담.",
-              },
-              {
-                role: "출판 실무·교육",
-                name: "양00 작가",
-                education: "연세대학교 교육대학원 교육학 석사",
-                projectsLabel: "주요 활동",
-                projects: [
-                  "기업 교육 컨설팅 1,000회+",
-                  "L기업 교육팀장 / S기업 전략기획팀장",
-                  "B대학 강의전담교수",
-                  "코칭·러닝지도사·평생교육사 등 약 30개 자격증",
-                ],
-                careerExtra: "현 교육컨설팅·강의·대필작가 N잡러.",
-              },
-              {
-                role: "기획 작가",
-                name: "조00 작가",
-                education: "교육학 석사 · 일반대학원 아동학 박사",
-                projectsLabel: "주요 출간",
-                projects: [
-                  "『그 소년의 빛』",
-                  "『약한 자들을 향한 희망의 증거』",
-                  "『잡큐베이터』",
-                  "『8년 고시실패자 연봉1억맨되다』",
-                ],
-                careerExtra: "경기도여성가족개발원 위촉 강사. 창의·인성·습관교육 콘텐츠 개발.",
-              },
-              {
-                role: "출판 작가",
-                name: "이00 작가",
-                education: "베스트셀러 다수 집필 · 정치/사회/경영 전문",
-                projectsLabel: "주요 출간",
-                projects: [
-                  "『윤석열, 대통령 된다』 (베스트셀러)",
-                  "『중국 스마트시티 도전과 혁신』",
-                  "『서초사랑 나의 꿈』 김안숙",
-                  "『나를 위한 봉사(奉仕)의 삶』 박종성",
-                ],
-                careerExtra: "요양시설·소방안전·물류 등 폭넓은 분야 논문 컨설팅.",
-              },
-            ].map((member, i) => (
-              <div key={i} className="team-card">
-                <span className="team-role">{member.role}</span>
-                <h3 className="team-name">{member.name}</h3>
-                <div className="team-education">{member.education}</div>
-                <div className="team-section-label">{member.projectsLabel}</div>
-                <ul className="team-list">
-                  {member.projects.map((p, j) => (
-                    <li key={j}>{p}</li>
-                  ))}
-                </ul>
-                {member.careerExtra && (
-                  <div className="team-suffix">{member.careerExtra}</div>
-                )}
-              </div>
-            ))}
+          <div className="team-compact">
+            <p style={{ fontSize: 15.5, color: "var(--text-700)" }}>저자가 혼자 책을 내는 것이 아닙니다. <strong>박사급 컨설턴트와 30+ 분야 전문 작가</strong>가 한 권 한 권에 직접 참여합니다.</p>
+            <div className="roles">
+              <span>출판부 팀장</span><span>출판 기획·컨설팅</span><span>논문 컨설팅</span><span>출판 실무·교육</span><span>기획 작가</span><span>출판 작가</span>
+            </div>
+            <a href="/team" className="cta-btn">작가진 이력 자세히 보기 →</a>
           </div>
 
           <div className="team-privacy-note">{t("team.privacy")}</div>
