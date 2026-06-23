@@ -32,7 +32,7 @@ const ko: Dict = {
   "nav.consult": "상담 신청",
 
   // Hero
-  "hero.eyebrow": "COMPANY · 위드에스마케팅 · 더컬쳐앤",
+  "hero.eyebrow": "자비출판 · 자서전출판 · 책출판 · 퍼스널브랜딩 전문",
   "hero.title1": "책 한 권으로 시작되는",
   "hero.title2": "인생의",
   "hero.titleEm": "다음 챕터",
@@ -100,8 +100,8 @@ const ko: Dict = {
 
   // Pricing
   "pricing.eyebrow": "PRICING",
-  "pricing.title": "출판 패키지",
-  "pricing.lead": "많은 분들이 책 출판부터 마케팅·강연회까지를 함께 진행하는 풀패키지를 선택하십니다.",
+  "pricing.title": "자비출판·책출판 패키지",
+  "pricing.lead": "많은 분들이 책출판부터 마케팅·강연회까지를 함께 진행하는 풀패키지를 선택하십니다.",
   "pricing.p1.cat": "단순 제작",
   "pricing.p1.title": "전자책 / 종이책 인쇄",
   "pricing.p1.price": "200",
@@ -205,7 +205,7 @@ const ko: Dict = {
 
   // Footer
   "footer.brand": "드림위드에스 / 위드에스마케팅 / 더컬쳐앤",
-  "footer.business": "책 출판 · 자서전 출판 · 논문 컨설팅 · 자비출판",
+  "footer.business": "자비출판 · 자서전출판 · 책출판 · 퍼스널브랜딩 · 논문 컨설팅",
   "footer.ceo": "대표이사 이서진 | 사업자등록번호 859-24-00524",
   "footer.sitemap": "SITE MAP",
   "footer.contact": "CONTACT",

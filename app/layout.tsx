@@ -12,11 +12,11 @@ const SITE_URL = "https://www.bookpublishingwithess.com";
 const baseMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "드림위드에스 출판사 | 위드에스마케팅 — 책 한 권으로 시작되는 인생의 다음 챕터",
+    default: "드림위드에스 출판사 | 자비출판·자서전출판·책출판·퍼스널브랜딩 전문",
     template: "%s | 드림위드에스 출판사",
   },
   description:
-    "드림위드에스 출판사 | 누적 890권+ 출간 · 베스트셀러 다수 배출. 책 출판·자서전·자비출판·논문 컨설팅 전문. 인터뷰 기반 집필 + 표절 검수 전담팀 + 출판→마케팅→강연·사업 확장까지 원스톱. 강남 위치, 정가의 45% 인세, 3개월 출간. 책 한 권으로 시작되는 인생의 다음 챕터.",
+    "드림위드에스 출판사 | 자비출판·자서전출판·책출판·퍼스널브랜딩·논문 컨설팅 전문. 누적 890권+ 출간 · 베스트셀러 다수 배출. 인터뷰 기반 집필 + 표절 검수 전담팀 + 출판→마케팅→강연·사업 확장까지 원스톱. 강남 위치, 정가의 45% 인세, 3개월 출간.",
   applicationName: "드림위드에스 출판사",
   authors: [{ name: "드림위드에스 출판사", url: SITE_URL }],
   generator: "Next.js",
@@ -26,12 +26,15 @@ const baseMetadata: Metadata = {
     "위드에스마케팅",
     "더컬쳐앤",
     "자비출판",
+    "자서전출판",
     "자서전 출판",
     "자서전 대필",
     "논문 컨설팅",
     "박사 논문 컨설팅",
     "책 출판",
+    "책출판",
     "퍼스널 브랜딩",
+    "퍼스널브랜딩",
     "기업 도서 출판",
     "출판기념회",
     "북토크",
@@ -51,9 +54,9 @@ const baseMetadata: Metadata = {
     // (예전엔 4개 언어 모두 같은 URL로 매핑되어 있었음 — Google 중복 콘텐츠 경고 위험)
   },
   openGraph: {
-    title: "드림위드에스 출판사 | 책 한 권으로 시작되는 인생의 다음 챕터",
+    title: "드림위드에스 출판사 | 자비출판·자서전출판·책출판·퍼스널브랜딩 전문",
     description:
-      "누적 890권+ 출간. 인터뷰 기반 출판 + 표절 검수 전담팀 + 마케팅·강연 원스톱. 자서전·자비출판·논문 컨설팅 전문.",
+      "자비출판·자서전출판·책출판·퍼스널브랜딩·논문 컨설팅 전문. 누적 890권+ 출간 · 베스트셀러 다수. 인터뷰 기반 집필 + 표절 검수 + 마케팅·강연 원스톱.",
     url: SITE_URL,
     siteName: "드림위드에스 출판사",
     type: "website",
@@ -70,8 +73,8 @@ const baseMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "드림위드에스 출판사 | 책 한 권으로 시작되는 인생의 다음 챕터",
-    description: "누적 890권+ 출간. 인터뷰 기반 출판 + 마케팅·강연 원스톱.",
+    title: "드림위드에스 출판사 | 자비출판·자서전출판·책출판·퍼스널브랜딩 전문",
+    description: "자비출판·자서전출판·책출판·퍼스널브랜딩 전문. 누적 890권+ 출간, 마케팅·강연 원스톱.",
     images: [`${SITE_URL}/og-image.png?v=2`],
   },
   icons: {
@@ -154,7 +157,8 @@ const organizationJsonLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   description:
-    "누적 890권+ 출간한 출판사. 인터뷰 기반 출판 + 표절 검수 전담팀 + 출판→마케팅→강연·사업 확장까지 원스톱.",
+    "자비출판·자서전출판·책출판·퍼스널브랜딩 전문. 누적 890권+ 출간한 출판사. 인터뷰 기반 출판 + 표절 검수 전담팀 + 출판→마케팅→강연·사업 확장까지 원스톱.",
+  keywords: "자비출판, 자서전출판, 책출판, 퍼스널브랜딩, 논문 컨설팅, 자서전 대필, 출판기념회, 전국 서점 유통",
   founder: { "@type": "Person", name: "이서진" },
   address: {
     "@type": "PostalAddress",
@@ -231,7 +235,7 @@ const localBusinessJsonLd = {
   currenciesAccepted: "KRW",
   paymentAccepted: "Cash, Credit Card, Bank Transfer",
   areaServed: { "@type": "Country", name: "KR" },
-  description: "자서전·자비출판·논문 컨설팅 전문. 누적 890권+ 출간 노하우.",
+  description: "자비출판·자서전출판·책출판·퍼스널브랜딩·논문 컨설팅 전문. 누적 890권+ 출간 노하우.",
 };
 
 // FAQPage JSON-LD — 홈페이지 <Faq /> 컴포넌트(20개)와 동일.
@@ -269,7 +273,7 @@ const offerJsonLd = {
   serviceType: "Book Publishing",
   provider: { "@type": "Organization", name: "드림위드에스 출판사", url: SITE_URL },
   areaServed: { "@type": "Country", name: "KR" },
-  description: "누적 890권+ 출간 경험의 책 출판·자서전·논문 컨설팅·자비출판 서비스",
+  description: "누적 890권+ 출간 경험의 자비출판·자서전출판·책출판·퍼스널브랜딩·논문 컨설팅 서비스",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "출판 패키지",

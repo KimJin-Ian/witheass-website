@@ -201,7 +201,7 @@ export default function Home() {
       <section id="fullpkg" className="fullpkg" data-edit-key="fullpkg">
         <div className="container" style={{ textAlign: "center" }}>
           <span className="fullpkg-tag">전문직 · CEO · 정치인 전용</span>
-          <h2 className="section-title">도서 출판 &amp; 퍼스널 브랜딩 통합 마케팅</h2>
+          <h2 className="section-title">책출판 &amp; 퍼스널브랜딩 통합 마케팅</h2>
           <p className="fullpkg-lead">책을 내는 목적이 <strong>검색 시 나오는 공신력과 브랜드</strong>라면, 책만 내는 것으로는 의미가 없습니다. 출간 소식이 알려지면 지인·고객·거래처·동료가 한 번쯤 저자 이름을 검색합니다 — 바로 그 시점에 정보와 콘텐츠가 준비돼 있어야 전문성과 공신력이 형성됩니다.</p>
           <ul className="fullpkg-points">
             <li><b>검색의 순간이 핵심</b> — 출간 직후가 가장 관심이 집중되는 시기. “나중에 천천히”는 그 골든타임을 놓칩니다.</li>
