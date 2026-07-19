@@ -332,6 +332,83 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PROMO — 더컬쳐앤 무료 강연회 대행 프로모션 */}
+      <section id="promo" className="promo-section" data-edit-key="promo">
+        <div className="container">
+          <div className="section-eyebrow">{t("promo.eyebrow")}</div>
+          <h2 className="section-title">
+            {t("promo.title1")}<br />
+            {t("promo.title2")}<em>{t("promo.titleEm")}</em>{t("promo.title3")}
+          </h2>
+          <div className="section-rule"></div>
+          <p className="section-lead">{t("promo.lead1")}<br />{t("promo.lead2")}</p>
+
+          {/* 가격 배너 */}
+          <div className="promo-banner">
+            <div className="promo-banner-name">
+              <span className="promo-free-pill">{t("promo.freePill")}</span>
+              <h3>{t("promo.name1")}<br />{t("promo.name2")}</h3>
+            </div>
+            <div className="promo-banner-price">
+              <span className="promo-was">{t("promo.was")}</span>
+              <span className="promo-arrow">→</span>
+              <span className="promo-now">{t("promo.now")}<small>{t("promo.nowUnit")}</small></span>
+            </div>
+          </div>
+
+          {/* 포함 서비스 10가지 */}
+          <ul className="promo-checks">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+              <li key={n}>{t(`promo.c${n}`)}</li>
+            ))}
+          </ul>
+
+          {/* 오프라인 신뢰 / 온라인 확산 */}
+          <div className="promo-duo">
+            <div className="promo-value-card">
+              <div className="promo-vc-label">{t("promo.off.label")}</div>
+              <h4>{t("promo.off.title")}</h4>
+              <p>{t("promo.off.desc")}</p>
+            </div>
+            <div className="promo-value-card">
+              <div className="promo-vc-label">{t("promo.on.label")}</div>
+              <h4>{t("promo.on.title")}</h4>
+              <p>{t("promo.on.desc")}</p>
+            </div>
+          </div>
+
+          {/* 기회 연결 체인 */}
+          <div className="promo-chain">
+            <p className="promo-chain-lead">{t("promo.chainLead")}</p>
+            <div className="promo-pills">
+              {[1, 2, 3, 4, 5].map((n) => (
+                <span key={n}>{t(`promo.chain${n}`)}</span>
+              ))}
+            </div>
+          </div>
+
+          <p className="promo-quote">
+            {t("promo.quote1")}<br />
+            <strong>{t("promo.quote2")}</strong>{t("promo.quote3")}
+          </p>
+
+          <div className="promo-cta-row">
+            <div className="promo-btns">
+              <a href="#contact" className="cta-btn gold"
+                data-track="cta_click" data-category="promotion" data-label="promo_contact">
+                {t("promo.cta1")}
+              </a>
+              <a href="http://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer"
+                className="cta-btn promo-ghost"
+                data-track="cta_click" data-category="promotion" data-label="promo_kakao">
+                {t("promo.cta2")}
+              </a>
+            </div>
+            <p className="promo-fine">{t("promo.fine")}</p>
+          </div>
+        </div>
+      </section>
+
       {/* SERVICE */}
       <section id="service" className="alt" data-edit-key="service">
         <div className="container">

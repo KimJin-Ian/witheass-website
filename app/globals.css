@@ -860,6 +860,99 @@ section.dark .section-lead { color: rgba(255, 255, 255, 0.75); }
 .case-result blockquote { font-style: italic; color: var(--gold-500); font-size: 14px; line-height: 1.6; margin-top: 16px; }
 @media (max-width: 900px) { .case-hero { grid-template-columns: 1fr; padding: 40px 28px; gap: 32px; } }
 
+/* PROMO — 더컬쳐앤 무료 강연회 대행 프로모션 (다크 프리미엄) */
+.promo-section {
+  background:
+    radial-gradient(ellipse 720px 420px at 85% -10%, rgba(196, 166, 97, 0.16), transparent 65%),
+    linear-gradient(180deg, var(--navy-900) 0%, #101b3a 100%);
+  color: white;
+}
+.promo-section .section-eyebrow { color: var(--gold-500); }
+.promo-section h2.section-title { color: white; }
+.promo-section h2.section-title em { color: var(--gold-600); font-style: normal; }
+.promo-section .section-lead { color: rgba(255, 255, 255, 0.78); }
+
+.promo-banner {
+  margin: 40px 0 44px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(196, 166, 97, 0.45);
+  border-radius: var(--radius-md);
+  padding: 30px 34px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 22px 44px;
+}
+.promo-banner-name { flex: 1 1 240px; }
+.promo-free-pill {
+  display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: 0.1em;
+  background: var(--gold-600); color: var(--navy-900);
+  padding: 4px 12px; border-radius: 99px; margin-bottom: 10px;
+}
+.promo-banner-name h3 { font-size: 21px; font-weight: 800; line-height: 1.35; color: white; }
+.promo-banner-price { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+.promo-was {
+  font-size: 17px; color: rgba(255, 255, 255, 0.45); text-decoration: line-through;
+  font-variant-numeric: tabular-nums;
+}
+.promo-arrow { color: var(--gold-600); font-size: 18px; }
+.promo-now {
+  font-size: clamp(34px, 5vw, 46px); font-weight: 800; color: var(--gold-500);
+  letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1;
+}
+.promo-now small { font-size: 15px; font-weight: 600; color: rgba(255, 255, 255, 0.65); margin-left: 4px; }
+
+.promo-checks {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 36px;
+  margin-bottom: 44px; list-style: none; padding: 0;
+}
+.promo-checks li {
+  display: flex; gap: 11px; align-items: flex-start;
+  font-size: 15px; color: rgba(255, 255, 255, 0.92); padding: 7px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-wrap: anywhere;
+}
+.promo-checks li::before {
+  content: "✔"; color: var(--gold-600); font-size: 13px; flex-shrink: 0; margin-top: 2px;
+}
+
+.promo-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 44px; }
+.promo-value-card {
+  background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md); padding: 26px 28px;
+}
+.promo-vc-label {
+  font-size: 11px; letter-spacing: 0.28em; font-weight: 700;
+  color: var(--gold-600); margin-bottom: 10px;
+}
+.promo-value-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 1.45; color: white; }
+.promo-value-card p { font-size: 13.5px; color: rgba(255, 255, 255, 0.7); line-height: 1.75; }
+
+.promo-chain { text-align: center; margin-bottom: 44px; }
+.promo-chain-lead { font-size: 15px; color: rgba(255, 255, 255, 0.75); margin-bottom: 14px; }
+.promo-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.promo-pills span {
+  font-size: 13px; font-weight: 600; color: var(--gold-500);
+  border: 1px solid rgba(196, 166, 97, 0.5); border-radius: 99px; padding: 7px 16px;
+  white-space: nowrap;
+}
+
+.promo-quote {
+  text-align: center; font-size: clamp(18px, 2.6vw, 23px); font-weight: 700;
+  line-height: 1.6; margin: 0 auto 40px; max-width: 34ch; color: white;
+}
+.promo-quote strong { color: var(--gold-500); }
+
+.promo-cta-row { text-align: center; }
+.promo-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+.cta-btn.promo-ghost { border: 1px solid rgba(255, 255, 255, 0.45); color: white; background: transparent; }
+.cta-btn.promo-ghost:hover { background: rgba(255, 255, 255, 0.08); }
+.promo-fine { font-size: 12.5px; color: rgba(255, 255, 255, 0.5); }
+
+@media (max-width: 760px) {
+  .promo-checks, .promo-duo { grid-template-columns: 1fr; }
+  .promo-banner { padding: 24px 22px; }
+  .promo-checks { gap: 4px; margin-bottom: 36px; }
+  .promo-duo { gap: 12px; margin-bottom: 36px; }
+}
+
 /* PORTFOLIO */
 .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .portfolio-card {
