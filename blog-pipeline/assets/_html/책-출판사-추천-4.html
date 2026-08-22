@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>인세율</title>
+<style>
+  :root{
+    --navy-900:#0a1228; --navy-700:#1a2547;
+    --gold-600:#c4a661; --gold-500:#d4b870; --gold-50:#fbf8f1;
+    --text-700:#464d5e; --line:#e9e5db; --white:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    width:1200px;height:675px;overflow:hidden;
+    font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    background:var(--gold-50); color:var(--navy-900);
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    padding:64px 76px; word-break:keep-all; text-align:center;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow{
+    font-size:16px;letter-spacing:.32em;color:#8a6d2f;
+    font-weight:700;margin-bottom:16px;
+  }
+  h1{font-size:40px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+  .rule{width:56px;height:4px;background:var(--gold-600);margin:0 auto 54px}
+  .cards{display:flex;gap:28px}
+  .card{
+    background:var(--white);border:1px solid var(--line);border-radius:20px;
+    padding:44px 68px;min-width:340px;
+  }
+  .card .label{
+    font-size:21px;color:var(--text-700);font-weight:600;margin-bottom:12px;
+  }
+  .card .num{
+    font-size:104px;font-weight:800;line-height:1;letter-spacing:-.04em;
+    color:var(--gold-600);font-variant-numeric:tabular-nums;
+  }
+  .card .num small{font-size:52px;font-weight:700;margin-left:2px}
+  .foot{margin-top:44px;font-size:19px;color:var(--text-700)}
+  .foot b{color:var(--navy-900);font-weight:700}
+</style>
+</head>
+<body data-w="1200" data-h="675">
+  <div class="eyebrow">ROYALTY</div>
+  <h1>드림위드에스 인세율</h1>
+  <div class="rule"></div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">종이책</div>
+      <div class="num">45<small>%</small></div>
+    </div>
+    <div class="card">
+      <div class="label">전자책</div>
+      <div class="num">20<small>%</small></div>
+    </div>
+  </div>
+
+  <div class="foot">ISBN과 저작권은 <b>저자 본인 명의</b>로 등록됩니다.</div>
+</body>
+</html>

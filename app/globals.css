@@ -1712,6 +1712,62 @@ a {
   font-family: ui-monospace, "SF Mono", monospace;
 }
 
+/* 본문 표 — AI 검색(AEO)이 표를 그대로 인용하므로 이미지가 아닌 실제 <table>로 넣는다.
+   좁은 화면에서는 표만 가로 스크롤되고 페이지 자체는 가로로 밀리지 않게 처리. */
+.blog-article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  /* display:block 을 여기 쓰면 width:100% 가 무력화되어 표가 본문 폭을 못 채운다.
+     넓은 화면에서는 table 로 두고, 좁은 화면에서만 스크롤 박스로 전환한다. */
+  display: table;
+  table-layout: auto;
+}
+.blog-article-body table thead {
+  background: var(--navy-900);
+}
+.blog-article-body table th {
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  padding: 13px 18px;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+.blog-article-body table th:first-child { border-radius: 8px 0 0 0; }
+.blog-article-body table th:last-child { border-radius: 0 8px 0 0; }
+.blog-article-body table td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-700);
+  vertical-align: top;
+  word-break: keep-all;
+}
+.blog-article-body table tbody tr:last-child td { border-bottom: none; }
+.blog-article-body table tbody tr:nth-child(even) { background: var(--gold-50); }
+/* 첫 열은 항목명 역할 — 진하게 */
+.blog-article-body table td:first-child {
+  font-weight: 600;
+  color: var(--text-900);
+  white-space: nowrap;
+}
+/* 숫자가 섞인 열 정렬 안정화 */
+.blog-article-body table td { font-variant-numeric: tabular-nums; }
+
+@media (max-width: 600px) {
+  /* 좁은 화면에서만 표 자체를 가로 스크롤 박스로 — 페이지 본문은 가로로 밀리지 않는다 */
+  .blog-article-body table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 14px;
+  }
+  .blog-article-body table th,
+  .blog-article-body table td { padding: 11px 14px; }
+}
+
 /* CTA */
 .blog-cta {
   margin: 60px 0 0;

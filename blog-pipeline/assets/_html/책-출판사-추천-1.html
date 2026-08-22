@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>출판 방식 비교</title>
+<style>
+  :root{
+    --navy-900:#0a1228; --navy-700:#1a2547;
+    --gold-600:#c4a661; --gold-500:#d4b870; --gold-50:#fbf8f1;
+    --text-700:#464d5e; --line:#e9e5db; --white:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    width:1200px;height:675px;overflow:hidden;
+    font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    background:var(--white); color:var(--navy-900);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:64px 76px; word-break:keep-all;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow{
+    font-size:16px;letter-spacing:.32em;color:var(--gold-600);
+    font-weight:700;margin-bottom:14px;
+  }
+  h1{font-size:44px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+  .rule{width:56px;height:4px;background:var(--gold-600);margin-bottom:34px}
+  table{width:100%;border-collapse:collapse;font-size:24px}
+  thead th{
+    background:var(--navy-900);color:#fff;font-weight:700;font-size:22px;
+    padding:18px 24px;text-align:left;
+  }
+  thead th:first-child{border-radius:10px 0 0 0}
+  thead th:last-child{border-radius:0 10px 0 0}
+  tbody td{padding:20px 24px;border-bottom:1px solid var(--line);color:var(--text-700)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody td:first-child{font-weight:700;color:var(--navy-900)}
+  tbody tr.ours{background:var(--gold-50)}
+  tbody tr.ours td{color:var(--navy-900);font-weight:600}
+  tbody tr.ours td:last-child{color:#8a6d2f;font-weight:800}
+  .foot{margin-top:26px;font-size:16px;color:#8f96a6}
+</style>
+</head>
+<body data-w="1200" data-h="675">
+  <div class="eyebrow">PUBLISHING TYPE</div>
+  <h1>출판 방식 비교</h1>
+  <div class="rule"></div>
+
+  <table>
+    <thead>
+      <tr><th>방식</th><th>제작비 부담</th><th>저자 인세</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>기획출판</td><td>출판사</td><td>통상 8~10%</td></tr>
+      <tr><td>자비출판</td><td>저자</td><td>출판사별 상이</td></tr>
+      <tr class="ours"><td>드림위드에스</td><td>저자</td><td>종이책 45% · 전자책 20%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">※ 인세율은 제작비를 누가 부담하는지에 따라 달라집니다. 단순 비교 대상이 아닙니다.</div>
+</body>
+</html>

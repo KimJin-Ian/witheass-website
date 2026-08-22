@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>견적 비교 3단계</title>
+<style>
+  :root{
+    --navy-900:#0a1228; --gold-600:#c4a661; --gold-50:#fbf8f1;
+    --text-700:#464d5e; --line:#e9e5db; --white:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    width:1200px;height:675px;overflow:hidden;
+    font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    background:var(--white); color:var(--navy-900);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:64px 76px; word-break:keep-all;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow{
+    font-size:16px;letter-spacing:.32em;color:var(--gold-600);
+    font-weight:700;margin-bottom:14px;
+  }
+  h1{font-size:44px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+  .rule{width:56px;height:4px;background:var(--gold-600);margin-bottom:52px}
+  .steps{display:flex;align-items:stretch;gap:0}
+  .step{
+    flex:1;background:var(--gold-50);border:1px solid var(--line);
+    border-radius:16px;padding:34px 28px;text-align:center;
+  }
+  .num{
+    width:60px;height:60px;border-radius:50%;
+    background:var(--navy-900);color:var(--gold-600);
+    font-size:26px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 20px;
+  }
+  .step h2{font-size:27px;font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+  .step p{font-size:18px;color:var(--text-700);line-height:1.55}
+  .arrow{
+    display:flex;align-items:center;justify-content:center;
+    width:56px;font-size:32px;color:var(--gold-600);flex-shrink:0;
+  }
+</style>
+</head>
+<body data-w="1200" data-h="675">
+  <div class="eyebrow">HOW TO COMPARE</div>
+  <h1>견적 비교, 이 순서로</h1>
+  <div class="rule"></div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h2>계약 형태</h2>
+      <p>양도인가 설정인가<br>ISBN은 누구 명의인가</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="num">2</div>
+      <h2>포함 범위</h2>
+      <p>기획·집필·교정·디자인<br>인쇄·유통 중 어디까지</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="num">3</div>
+      <h2>사후 지원</h2>
+      <p>유통 기간·수정 횟수<br>출간 후 마케팅 여부</p>
+    </div>
+  </div>
+</body>
+</html>

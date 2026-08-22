@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>양도 vs 설정</title>
+<style>
+  :root{
+    --navy-900:#0a1228; --gold-600:#c4a661; --gold-50:#fbf8f1;
+    --text-700:#464d5e; --line:#e9e5db; --white:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    width:1200px;height:675px;overflow:hidden;
+    font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    background:var(--white); color:var(--navy-900);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:60px 76px; word-break:keep-all;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow{
+    font-size:16px;letter-spacing:.32em;color:var(--gold-600);
+    font-weight:700;margin-bottom:14px;
+  }
+  h1{font-size:44px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+  h1 em{font-style:normal;color:var(--gold-600)}
+  .rule{width:56px;height:4px;background:var(--gold-600);margin-bottom:30px}
+  table{width:100%;border-collapse:collapse;font-size:23px}
+  thead th{
+    background:var(--navy-900);color:#fff;font-weight:700;font-size:21px;
+    padding:17px 22px;text-align:left;
+  }
+  thead th:first-child{border-radius:10px 0 0 0;width:210px}
+  thead th:last-child{border-radius:0 10px 0 0}
+  tbody td{padding:19px 22px;border-bottom:1px solid var(--line);color:var(--text-700);line-height:1.45}
+  tbody tr:last-child td{border-bottom:none}
+  tbody td:first-child{font-weight:700;color:var(--navy-900)}
+  .warn{color:#a04b32;font-weight:700}
+  .safe{color:#8a6d2f;font-weight:700}
+  .foot{
+    margin-top:24px;font-size:17px;color:var(--text-700);
+    background:var(--gold-50);border-left:4px solid var(--gold-600);
+    padding:14px 20px;border-radius:0 8px 8px 0;line-height:1.5;
+  }
+</style>
+</head>
+<body data-w="1200" data-h="675">
+  <div class="eyebrow">CONTRACT TYPE</div>
+  <h1>'양도'와 '설정'은 <em>다릅니다</em></h1>
+  <div class="rule"></div>
+
+  <table>
+    <thead>
+      <tr><th>구분</th><th>저작재산권 양도</th><th>출판권 설정</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>권리 귀속</td>
+        <td class="warn">출판사로 이전</td>
+        <td class="safe">저자가 계속 보유</td>
+      </tr>
+      <tr>
+        <td>출판사가<br>갖는 것</td>
+        <td>저작재산권 자체</td>
+        <td>발행할 권한만</td>
+      </tr>
+      <tr>
+        <td>되돌릴 수<br>있는가</td>
+        <td class="warn">어려움</td>
+        <td class="safe">계약 종료 시 회복</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="foot">종이책은 '출판권', 전자책·오디오북은 '배타적발행권'으로 서로 별개 권리입니다.</div>
+</body>
+</html>
