@@ -4,6 +4,14 @@ import { getPublishedPosts } from "@/lib/content";
 const SITE_URL = "https://www.bookpublishingwithess.com";
 
 /**
+ * 1시간마다 재생성.
+ * 이 설정이 없으면 sitemap.xml 이 빌드 타임에 고정(Static)되어, DB에 새 블로그 글을
+ * 넣어도 재배포 전까지 사이트맵에 반영되지 않는다. 블로그 자동발행 파이프라인은
+ * 재배포 없이 글만 추가하므로 이 값이 반드시 필요하다.
+ */
+export const revalidate = 3600;
+
+/**
  * Dynamic sitemap — 메인 + /blog 목록 + 블로그 글 모두 포함
  * (witheass-website는 단일 언어 사이트이므로 hreflang alternates 미사용)
  */
