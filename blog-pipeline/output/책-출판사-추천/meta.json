@@ -13,10 +13,9 @@
     "ISBN"
   ],
   "reading_time": 8,
-  "cover_image_url": "/blog-images/book-publisher-checklist-assign-vs-setup.png",
+  "cover_image_url": null,
   "author_name": "드림위드에스 출판사 이서진 대표",
   "site": "witheass",
   "lang": "ko",
-  "status": "draft",
-  "cover_image_alt": "저작재산권 양도와 출판권 설정의 차이 비교표"
+  "status": "published"
 }
