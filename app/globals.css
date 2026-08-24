@@ -1712,6 +1712,34 @@ a {
   font-family: ui-monospace, "SF Mono", monospace;
 }
 
+/* 예시 블록 — 가정으로 든 숫자를 사실과 눈으로 구분한다.
+   독자가 "이건 가정이구나"를 알아야 하고, 품질검사도 이 표시를 보고 대조에서 제외한다. */
+.blog-article-body .example {
+  margin: 28px 0;
+  padding: 20px 22px;
+  border-left: 3px solid #cbd5e1;
+  border-radius: 0 8px 8px 0;
+  background: #f8fafc;
+}
+.blog-article-body .example::before {
+  content: "예시";
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.blog-article-body .example > *:last-child {
+  margin-bottom: 0;
+}
+.blog-article-body .example table {
+  margin: 14px 0 0;
+}
+
 /* 본문 표 — AI 검색(AEO)이 표를 그대로 인용하므로 이미지가 아닌 실제 <table>로 넣는다.
    좁은 화면에서는 표만 가로 스크롤되고 페이지 자체는 가로로 밀리지 않게 처리. */
 .blog-article-body table {
