@@ -1,65 +1,68 @@
-# 블로그 자동발행 팀 — 사용법
+# 블로그 자동발행 팀
 
-## 지금 단계: 이 창에서 한 명씩 불러서 검증
-아직 API 자동화는 안 만듦. 지금은 Claude Code(이 창)에서 팀원을 하나씩 직접 불러 결과물을 확인하고,
-지침(`agents/*.md`, `company-guide.md`, `style-guide.md`, `seo-guide.md`)을 다듬는 단계다.
-검증이 끝나면 이 파일 구조 그대로 API 자동발행 시스템으로 옮긴다 (나중에).
+드림위드에스 출판사 블로그 글을 **3일에 1건 자동 생성 → 품질 검사 → 자동 발행**한다.
 
-## 팀원 한 명 불러보는 법
-그냥 채팅창에 이렇게 요청하면 된다:
+## 지금 구조
 
 ```
-blog-pipeline/agents/researcher.md 지침대로
-"자비출판 비용" 키워드 리서치해줘
+Vercel Cron (3일 주기)
+   ↓
+① 리서처 → ② 전략가 → ③ 작가 → ④ 조립 → ⑤ 품질 검사 6종
+                                              ├ 통과 → 자동 발행
+                                              └ 실패 → blocked + 알림
 ```
 
-```
-blog-pipeline/agents/strategist.md 지침대로
-research/자비출판-비용.md 보고 전략 짜줘
-```
-
-한 단계씩 결과를 보면서 지침 파일을 고치면 된다. 예:
-```
-writer.md 지침대로 다시 써줘. style-guide.md 톤이 덜 반영됐어.
-```
-
-## 전체 파이프라인 한 번에 돌리기
-```
-blog-pipeline/CLAUDE.md 지침대로 큐에서 다음 키워드 하나 처리해줘
-```
-→ 리서치 → 전략 → 작성 → 이미지 → 조립까지 순서대로 진행되고,
-`output/[키워드]/`에 최종 결과가 쌓인다. **자동 발행은 안 됨** — 검토 후 "발행해줘"라고 말해야 함.
+**사람 승인 단계가 없다.** 품질 검사가 유일한 관문이다.
+관리·피드백은 admin의 `/site/blog-auto` 화면에서 한다.
 
 ## 폴더 구조
 ```
 blog-pipeline/
-  CLAUDE.md          ← 팀장 (오케스트레이션만, 직접 작업 안 함)
-  company-guide.md    ← 전략가의 뇌 (회사 백서 기반 — 여기가 회사 지식의 실제 저장소)
-  style-guide.md       ← 톤 가이드 (녹음 분석 기반)
-  seo-guide.md          ← SEO·AEO·GEO 규칙 (2026.08 최신 리서치)
-  image-guide.md         ← 이미지 스타일 (사이트 디자인 토큰)
-  queue.md                ← 처리할 키워드 목록
+  CLAUDE.md            ← 팀장 (오케스트레이션만)
+  quality-gates.md      ← ⭐ 발행 관문 6종 — 자동 발행의 유일한 방어선
+  company-guide.md       ← 회사 사실·가격 (여기 없는 숫자는 검사에서 걸림)
+  style-guide.md          ← 톤 (상담 녹음 20건 분석 기반)
+  seo-guide.md             ← 네이버 노출 + AEO + GEO 규칙
+  queue.md                  ← 처리할 키워드 목록 (순서 = 발행 순서)
   agents/
-    researcher.md          ← ① 리서처
-    strategist.md            ← ② 전략가
-    writer.md                  ← ④ 작가 (③ 마케터 지식은 seo-guide.md로 흡수)
-    image-maker.md              ← ⑤ 표·그래프
-    assembler.md                  ← ⑥ 조립·최종검토
-  research/    strategy/    drafts/    assets/    output/   ← 산출물 저장
-  scripts/                                                    ← 나중에 publish 스크립트 추가
+    researcher.md            ← ① 키워드 발굴 + 상위 글 구조 분석
+    strategist.md             ← ② 앵글 결정
+    writer.md                  ← ③ 본문 작성 (표는 HTML, 이미지 없음)
+    assembler.md                ← ④ 채널별 재구성 + 최종 검문
+  research/  strategy/  drafts/  output/  qa-notes/   ← 산출물
+  scripts/
+    publish-to-homepage.mjs   ← Supabase 발행
+    capture.mjs                ← (미사용 — 이미지 단계 제거됨)
 ```
 
-## "회사 지식"은 누가 가지고 있나
-**전략가(strategist)** 가 회사 지식을 담당한다. 다만 실제 저장소는 사람이 아니라
-`company-guide.md` 파일이다 — 서브에이전트는 매번 새로 호출되므로 기억이 없고, 호출될 때마다
-이 파일을 처음부터 다시 읽는다. **"직원을 학습시킨다" = 이 파일을 더 채운다**와 같은 뜻이다.
+## 지침 파일은 어디가 진실인가
 
-현재 `company-guide.md`는 `_out/위드에스마케팅_회사_종합백서.md`(25p) 기반으로 채워져 있고,
-`style-guide.md`는 `_out/녹음파일_분석_보고서.md`(상담 녹음 20건 분석) 기반으로 채워져 있다.
-더 채우고 싶으면 두 파일에 내용을 추가하면 그대로 전략가·작가의 지식이 늘어난다.
+| 위치 | 역할 |
+|---|---|
+| 이 저장소의 `.md` | **최초 시드용 원본** |
+| Supabase `pipeline_guides` | **런타임 진실** — 에이전트가 매번 읽음 |
+| admin `/site/blog-auto/guides` | 편집 화면 |
 
-## 나중에 API 자동화로 옮길 때
-- 이 `.md` 파일들이 그대로 API 호출의 system prompt가 된다 (다시 쓸 필요 없음)
-- `CLAUDE.md`의 오케스트레이션 순서가 그대로 서버 스크립트의 파이프라인 순서가 된다
-- 트리거는 3일 주기 예약 실행(cron 등)으로 `queue.md`에서 다음 항목을 뽑아 처리
-- 발행 승인 게이트는 반드시 유지한다 (자동 발행 금지 원칙은 그대로 옮겨감)
+admin은 별도 저장소·별도 배포라 이 파일들을 디스크에서 읽을 수 없다.
+그래서 최초 1회 시드 후에는 **DB가 기준**이고, 수정은 admin에서 한다.
+
+## 이미지가 없는 이유
+표를 PNG로 만들면 **AI 검색이 그 안의 글자를 읽지 못한다.** AEO 효과가 0이 된다.
+그래서 표는 본문 안에 실제 `<table>` 로 넣는다.
+부수 효과로 Playwright·Chromium 의존이 사라져 서버리스에서 안정적으로 돌고,
+글당 비용도 약 330원 줄었다 (비전 토큰 5,500 절약).
+
+## 손으로 한 번 돌려보려면
+Claude Code 에서:
+```
+blog-pipeline/CLAUDE.md 지침대로 큐에서 다음 키워드 하나 처리해줘
+```
+단계별로 하나씩 부를 수도 있다:
+```
+blog-pipeline/agents/researcher.md 지침대로 "자비출판 비용" 리서치해줘
+```
+
+## 실전에서 잡힌 개선점 (지침에 반영됨)
+1. 표 마커에 데이터를 안 적으면 근거 없는 숫자가 생성됨 → `writer.md`
+2. `sitemap.ts` 에 revalidate 가 없어 새 글이 사이트맵에 영원히 미노출 → 수정됨
+3. 커버 이미지로 본문 표를 재사용하면 맥락 없이 표부터 보임 → `assembler.md`
