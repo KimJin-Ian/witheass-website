@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getPostBySlug, getPublishedPosts } from "@/lib/content";
 import SiteHeader from "../../components/SiteHeader";
 import BlogViewTracker from "../../components/BlogViewTracker";
+import { faqJsonLd } from "@/lib/faq-schema";
 
 const SITE_URL = "https://www.bookpublishingwithess.com";
 const KAKAO_URL = "http://pf.kakao.com/_QkZhd";
@@ -79,10 +80,20 @@ export default async function BlogPostPage({ params }: Props) {
     image: post.cover_image_url || `${SITE_URL}/og-image.png`,
     datePublished: post.published_at,
     dateModified: post.updated_at,
+    // 저자를 Organization 이 아니라 Person 으로 밝힌다.
+    // 2026년 3월 코어 업데이트 이후 "누가 직접 겪고 썼는가"의 비중이 크게 올랐다.
+    // 회사 이름만 적힌 글과 사람 이름·경력이 붙은 글은 다르게 평가된다.
     author: {
-      "@type": "Organization",
-      name: post.author_name || "드림위드에스 출판사",
-      url: SITE_URL,
+      "@type": "Person",
+      name: "이서진",
+      jobTitle: "드림위드에스 출판사 대표",
+      description: "출판사 운영 10년, 누적 890권 이상 출간",
+      url: `${SITE_URL}/team`,
+      worksFor: {
+        "@type": "Organization",
+        name: "드림위드에스 출판사",
+        url: SITE_URL,
+      },
     },
     publisher: {
       "@type": "Organization",
@@ -92,6 +103,11 @@ export default async function BlogPostPage({ params }: Props) {
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     keywords: post.tags?.join(", ") || "",
   };
+
+  // FAQPage — 본문의 "자주 묻는 질문"을 질문-답 쌍으로 내보낸다.
+  // 구글이 2026년 5월 FAQ 리치결과는 없앴지만, AI 검색은 이 스키마를 그대로 읽어
+  // 답변에 인용한다. 글에 FAQ가 없으면 null 이라 아무것도 나가지 않는다.
+  const faqLd = faqJsonLd(post.body || "");
 
   // BreadcrumbList — 검색 결과에 빵부스러기(/홈 > 블로그 > 글 제목) 표시
   const breadcrumbJsonLd = {
@@ -119,6 +135,13 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      {faqLd && (
+        <Script
+          id="faq-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+      )}
 
       <SiteHeader />
 

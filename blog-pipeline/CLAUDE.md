@@ -15,7 +15,7 @@
 | ② 전략가 | 리서치 빈틈 × 회사 차별점으로 앵글 결정 | `agents/strategist.md` |
 | ③ 작가 | 톤·SEO 규칙 지켜 본문 작성 (표는 HTML) | `agents/writer.md` |
 | ④ 조립 | 채널별 재구성 (홈페이지 / 네이버) | `agents/assembler.md` |
-| ⑤ 품질 검사 | **발행 관문** — 6종 자동 검사 | `quality-gates.md` |
+| ⑤ 품질 검사 | **발행 관문** — 8종 자동 검사 | `quality-gates.md` |
 
 이미지 제작 에이전트는 없다. **표는 이미지가 아니라 HTML `<table>` 로 만든다** —
 AI 검색이 이미지 속 글자를 읽지 못하기 때문이다.
@@ -35,7 +35,7 @@ writer       → drafts/[키워드].md        (style-guide + seo-guide 참고)
    ↓
 assembler    → output/[키워드]/ home.html · naver.md · meta.json
    ↓
-품질 검사 6종  ─── 전부 통과 → 자동 발행 (status=published)
+품질 검사 8종  ─── 전부 통과 → 자동 발행 (status=published)
               └── 1종이라도 실패 → blocked + 알림, 발행 안 함
 ```
 
@@ -45,11 +45,11 @@ assembler    → output/[키워드]/ home.html · naver.md · meta.json
 [2/5] 전략가 완료 — 앵글: "숨은 비용 항목 비교"
 [3/5] 작가 완료 — 2,340자, 표 3개
 [4/5] 조립 완료 — output/자비출판-비용/ 저장
-[5/5] 품질 검사 — 6종 통과 → 발행됨 /blog/self-publishing-cost
+[5/5] 품질 검사 — 8종 통과 → 발행됨 /blog/self-publishing-cost
 ```
 
 ## ⚠️ 자동 발행 — 관문은 검사뿐이다
-사람 승인 단계가 없다. `quality-gates.md` 의 6종이 유일한 방어선이므로
+사람 승인 단계가 없다. `quality-gates.md` 의 8종이 유일한 방어선이므로
 **검사를 우회하거나 실패를 무시하고 발행하지 않는다.**
 
 실패한 글은 자동 재시도하지 않는다. 같은 지침으로 다시 만들면 같은 결과가 나온다.

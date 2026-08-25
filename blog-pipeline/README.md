@@ -7,7 +7,7 @@
 ```
 Vercel Cron (3일 주기)
    ↓
-① 리서처 → ② 전략가 → ③ 작가 → ④ 조립 → ⑤ 품질 검사 6종
+① 리서처 → ② 전략가 → ③ 작가 → ④ 조립 → ⑤ 품질 검사 8종
                                               ├ 통과 → 자동 발행
                                               └ 실패 → blocked + 알림
 ```
@@ -19,7 +19,7 @@ Vercel Cron (3일 주기)
 ```
 blog-pipeline/
   CLAUDE.md            ← 팀장 (오케스트레이션만)
-  quality-gates.md      ← ⭐ 발행 관문 6종 — 자동 발행의 유일한 방어선
+  quality-gates.md      ← ⭐ 발행 관문 8종 — 자동 발행의 유일한 방어선
   company-guide.md       ← 회사 사실·가격 (여기 없는 숫자는 검사에서 걸림)
   style-guide.md          ← 톤 (상담 녹음 20건 분석 기반)
   seo-guide.md             ← 네이버 노출 + AEO + GEO 규칙
