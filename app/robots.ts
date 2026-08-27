@@ -26,7 +26,9 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "GPTBot", allow: "/", disallow }, // OpenAI
       { userAgent: "OAI-SearchBot", allow: "/", disallow }, // ChatGPT Search
       { userAgent: "ChatGPT-User", allow: "/", disallow }, // ChatGPT 브라우징
-      { userAgent: "ClaudeBot", allow: "/", disallow }, // Anthropic Claude
+      { userAgent: "ClaudeBot", allow: "/", disallow }, // Anthropic Claude (학습)
+      { userAgent: "Claude-SearchBot", allow: "/", disallow }, // Claude 검색 색인
+      { userAgent: "Claude-User", allow: "/", disallow }, // Claude 실시간 열람
       { userAgent: "anthropic-ai", allow: "/", disallow },
       { userAgent: "Claude-Web", allow: "/", disallow },
       { userAgent: "PerplexityBot", allow: "/", disallow }, // Perplexity
