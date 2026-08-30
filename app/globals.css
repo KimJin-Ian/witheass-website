@@ -2021,3 +2021,18 @@ a {
   .team-compact .roles span { font-size: 12px; padding: 6px 12px; }
   .belt-hint { font-size: 12px; }
 }
+
+/* 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다 */
+.sec-group { padding: 88px 0; background: #f8fafc; }
+.group-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 40px; }
+.group-card { display: flex; flex-direction: column; gap: 10px; padding: 30px 26px; border-radius: 16px;
+  background: #fff; border: 1px solid #e2e8f0; text-decoration: none; color: inherit;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.group-card:hover { transform: translateY(-3px); border-color: #cbd5e1; box-shadow: 0 12px 30px rgba(15,23,42,.09); }
+.group-ico { font-size: 30px; line-height: 1; }
+.group-name { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
+.group-desc { font-size: 14px; line-height: 1.75; color: #475569; flex: 1; }
+.group-link { font-size: 13px; font-weight: 700; color: #1e40af; margin-top: 4px; }
+.group-note { margin-top: 30px; text-align: center; font-size: 14.5px; color: #475569; }
+.float-cta-btn.whatsapp { background: #25D366; color: #fff; }
+@media (max-width: 640px) { .sec-group { padding: 60px 0; } .group-card { padding: 24px 20px; } }

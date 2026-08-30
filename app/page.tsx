@@ -644,6 +644,44 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다 */}
+      <section id="group" className="sec-group">
+        <div className="wrap">
+          <div className="section-head">
+            <span className="section-tag">그룹 사업</span>
+            <h2 className="section-title">더컬쳐앤이 만드는 <strong>세 가지 사업</strong></h2>
+            <p className="section-sub">
+              의료관광, 책 출판, 문화 콘텐츠. 세 사업이 서로 연결되어 있습니다. 협업 문의 환영합니다.
+            </p>
+          </div>
+
+          <div className="group-grid">
+            {[
+              { ico: "🏥", name: "더웰니스앤 · 의료관광",
+                desc: "외국인 환자 유치부터 회복까지 — 병원·웰니스 연결",
+                href: "https://www.thewellnessn.com", key: "wellness" },
+              { ico: "📚", name: "드림위드에스 · 책 출판",
+                desc: "인터뷰만 하면 3개월 안에 책 출판",
+                href: "https://www.bookpublishingwithess.com", key: "publish" },
+              { ico: "🎭", name: "더컬쳐앤 · 문화·컬쳐",
+                desc: "CEO·전문직 비즈니스 커뮤니티와 문화 콘텐츠",
+                href: "https://www.theculturen.com", key: "culture" },
+            ].map((g) => (
+              <a key={g.key} href={g.href} target="_blank" rel="noopener noreferrer"
+                 className="group-card"
+                 data-track="cta_click" data-category="group" data-label={`group_${g.key}`}>
+                <span className="group-ico" aria-hidden="true">{g.ico}</span>
+                <span className="group-name">{g.name}</span>
+                <span className="group-desc">{g.desc}</span>
+                <span className="group-link">바로가기 →</span>
+              </a>
+            ))}
+          </div>
+
+          <p className="group-note">협업·제휴 문의는 아래 채널로 편하게 연락 주세요 🙏</p>
+        </div>
+      </section>
+
       {/* 동적 섹션 (admin /site/sections에서 추가) */}
       <DynamicSections />
       </main>
@@ -680,6 +718,21 @@ export default function Home() {
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
           </svg>
           <span className="float-cta-text">전화 상담</span>
+        </a>
+        <a
+          href="https://whatsapp.com/channel/0029VbD3dlqGU3BBeU7sKN15"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="float-cta-btn whatsapp"
+          aria-label="WhatsApp inquiry"
+          data-track="cta_click"
+          data-category="contact"
+          data-label="float_whatsapp"
+        >
+          <svg className="float-cta-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.14c-.25.69-1.43 1.32-1.98 1.4-.53.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.4-5.21-4.6-.15-.2-1.25-1.66-1.25-3.17s.79-2.25 1.07-2.56c.28-.31.61-.38.81-.38.2 0 .41 0 .58.01.19.01.44-.07.69.53.25.6.86 2.08.93 2.23.08.15.13.33.02.53-.1.2-.16.32-.31.5-.15.18-.32.4-.46.53-.15.15-.31.32-.13.62.18.31.79 1.3 1.69 2.11 1.16 1.03 2.14 1.35 2.45 1.5.31.15.49.13.67-.08.18-.2.77-.9.98-1.21.2-.31.41-.26.69-.15.28.1 1.76.83 2.07.98.31.15.51.23.58.36.08.13.08.74-.17 1.43z" />
+          </svg>
+          <span className="float-cta-text">WhatsApp</span>
         </a>
       </div>
     </>
