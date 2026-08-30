@@ -2024,7 +2024,7 @@ a {
 
 /* 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다 */
 .sec-group { padding: 88px 0; background: #f8fafc; }
-.group-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 40px; }
+.group-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 40px; max-width: 980px; margin-left: auto; margin-right: auto; }
 .group-card { display: flex; flex-direction: column; gap: 10px; padding: 30px 26px; border-radius: 16px;
   background: #fff; border: 1px solid #e2e8f0; text-decoration: none; color: inherit;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
@@ -2036,3 +2036,5 @@ a {
 .group-note { margin-top: 30px; text-align: center; font-size: 14.5px; color: #475569; }
 .float-cta-btn.whatsapp { background: #25D366; color: #fff; }
 @media (max-width: 640px) { .sec-group { padding: 60px 0; } .group-card { padding: 24px 20px; } }
+
+@media (max-width: 860px) { .group-grid { grid-template-columns: 1fr; } }
