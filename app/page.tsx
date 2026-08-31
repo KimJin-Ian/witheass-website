@@ -644,43 +644,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* 그룹 사업 소개 — 세 회사가 한 그룹임을 밝혀 협업 문의를 받는다 */}
-      <section id="group" className="sec-group">
-        <div className="container">
-          <div className="section-head">
-            <span className="section-tag">그룹 사업</span>
-            <h2 className="section-title">더컬쳐앤이 만드는 <strong>세 가지 사업</strong></h2>
-            <p className="section-sub">
-              의료관광, 책 출판, 문화 콘텐츠. 세 사업이 서로 연결되어 있습니다. 협업 문의 환영합니다.
-            </p>
-          </div>
-
-          <div className="group-grid">
-            {[
-              { ico: "🏥", name: "더웰니스앤 · 의료관광",
-                desc: "외국인 환자 유치부터 회복까지 — 병원·웰니스 연결",
-                href: "https://www.thewellnessn.com", key: "wellness" },
-              { ico: "📚", name: "드림위드에스 · 책 출판",
-                desc: "인터뷰만 하면 3개월 안에 책 출판",
-                href: "https://www.bookpublishingwithess.com", key: "publish" },
-              { ico: "🎭", name: "더컬쳐앤 · 문화·컬쳐",
-                desc: "CEO·전문직 비즈니스 커뮤니티와 문화 콘텐츠",
-                href: "https://www.theculturen.com", key: "culture" },
-            ].map((g) => (
-              <a key={g.key} href={g.href} target="_blank" rel="noopener noreferrer"
-                 className="group-card"
-                 data-track="cta_click" data-category="group" data-label={`group_${g.key}`}>
-                <span className="group-ico" aria-hidden="true">{g.ico}</span>
-                <span className="group-name">{g.name}</span>
-                <span className="group-desc">{g.desc}</span>
-                <span className="group-link">바로가기 →</span>
-              </a>
-            ))}
-          </div>
-
-          <p className="group-note">협업·제휴 문의는 아래 채널로 편하게 연락 주세요 🙏</p>
-        </div>
-      </section>
 
       {/* 동적 섹션 (admin /site/sections에서 추가) */}
       <DynamicSections />
