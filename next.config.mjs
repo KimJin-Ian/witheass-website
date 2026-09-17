@@ -16,13 +16,9 @@ const nextConfig = {
   // 검색엔진에 "영구 이전" 신호를 줘 인덱스 통합을 가속.
   async redirects() {
     return [
-      // 아임웹 게시판/페이지 뷰 시그니처(?bmode=...) — 모든 경로에서 홈으로
-      {
-        source: "/:path*",
-        has: [{ type: "query", key: "bmode" }],
-        destination: "/",
-        permanent: true,
-      },
+      // 아임웹 게시판 주소(?bmode=...)는 여기서 처리하지 않는다 — middleware.ts 참고.
+      // 여기 두면 Next 가 쿼리를 목적지에 그대로 붙여 "/?bmode=..." 로 보내고,
+      // 그 주소가 같은 규칙에 또 걸려 끝없이 돌았다 (서치콘솔 "리디렉션 오류").
       // 아임웹 기본 경로 /HOME, /HOME/...
       { source: "/HOME", destination: "/", permanent: true },
       { source: "/HOME/:path*", destination: "/", permanent: true },
