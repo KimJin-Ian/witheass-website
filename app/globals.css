@@ -2024,3 +2024,36 @@ a {
 
 .float-cta-btn.whatsapp { background: #25D366; color: #fff; }
 
+
+
+/* 글 중간 상담 상자 — 이미 검색에 뜨는 옛 글에 넣었다 (2026-09 주간 보고서 피드백).
+   글 끝 상담 버튼까지 내려오지 않는 사람을 30% 지점에서 잡는다.
+   클릭은 data-track="cta_click" 으로 자동 기록되어 주간 보고서에 "어느 글에서 눌렸나" 로 뜬다 */
+.blog-article-body .blog-inline-cta {
+  margin: 28px 0;
+  padding: 18px 20px;
+  border-radius: 10px;
+  background: #fff8e1;
+  border: 1px solid #f5d77a;
+}
+.blog-article-body .blog-inline-cta-q {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: 1.02em;
+}
+.blog-article-body .blog-inline-cta-a {
+  margin: 0 0 12px;
+  font-size: 0.95em;
+  color: #555;
+}
+.blog-article-body .blog-inline-cta a {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: #1f1f1f;
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.92em;
+  text-decoration: none;
+}
+.blog-article-body .blog-inline-cta a:hover { background: #000; }
