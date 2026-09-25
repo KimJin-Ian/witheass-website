@@ -84,6 +84,10 @@
     ❌ success · business growth · money · ceo · people       엉뚱한 사람 얼굴이 나온다
 
 - 실존 인물 · 회사 이름을 검색어에 넣지 않는다
+- **c1 검색어는 훅의 주인공 사물이 화면을 채우게 쓴다.** 장소·보관 방법을 붙이면 그게 주인공이 된다
+
+    ⭕ bento box sushi close up
+    ❌ bento lunch box rows refrigerated shelf      냉장고 안 반찬통이 걸렸다 (첫 자동 렌더)
 
 훅 컷(c1)에만 `ai_prompt` 를 적어도 된다. AI 영상 생성용 영어 프롬프트다.
 **9:16 vertical, no faces, no text, no logos** 를 반드시 넣는다. 안 적으면 스톡으로 간다.
