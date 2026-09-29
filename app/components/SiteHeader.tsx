@@ -121,6 +121,7 @@ export default function SiteHeader() {
           ) : (
             // 폴백: 기존 하드코딩 메뉴
             <>
+              <a href="/about" onClick={closeMenu}>About us</a>
               <a href="/#about" onClick={closeMenu}>{t("nav.about")}</a>
               <a href="/#thesis" onClick={closeMenu}>{t("nav.thesis")}</a>
               <a href="/#pricing" onClick={closeMenu}>{t("nav.pricing")}</a>
