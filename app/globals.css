@@ -178,6 +178,20 @@ nav.main-nav a::after {
   transition: transform 0.2s;
 }
 nav.main-nav a:hover::after { transform: scaleX(1); }
+/*
+ * 메뉴가 열 개로 늘면서(About us 추가) 1024~1100px 폭에서 "회사 소개 · 전문 작가진" 과
+ * 오른쪽 "상담 신청" 버튼이 두세 줄로 꺾였다. 줄바꿈을 막고, 좁은 데스크톱 폭에서만 간격 · 글씨를 줄인다.
+ * (900px 이하는 햄버거 메뉴라 상관없다)
+ */
+nav.main-nav a, .header-right .cta-btn { white-space: nowrap; }
+@media (min-width: 901px) and (max-width: 1240px) { nav.main-nav { gap: 16px; } nav.main-nav a { font-size: 13.5px; } }
+@media (min-width: 901px) and (max-width: 1060px) { nav.main-nav { gap: 11px; } nav.main-nav a { font-size: 13px; } }
+@media (min-width: 901px) and (max-width: 990px) {
+  nav.main-nav { gap: 8px; }
+  nav.main-nav a { font-size: 12.5px; }
+  .header-right { gap: 8px; }
+  .header-right .cta-btn { padding-left: 12px; padding-right: 12px; }
+}
 
 .cta-btn {
   display: inline-flex;
