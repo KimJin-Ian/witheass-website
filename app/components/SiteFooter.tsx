@@ -10,6 +10,7 @@
 import { useEffect, useState } from "react";
 import { useLang } from "./LangContext";
 import { supabase, SITE_KEY, isSupabaseConfigured } from "@/lib/supabase";
+import { siteHref } from "@/lib/links";
 
 interface DbLink {
   id: string;
@@ -72,6 +73,7 @@ export default function SiteFooter() {
             <div className="ft-brand">{t("footer.brand")}</div>
             <p style={{ marginBottom: 8 }}>{t("footer.business")}</p>
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{t("footer.ceo")}</p>
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{t("footer.inquiry")}</p>
           </div>
 
           {useDb ? (
@@ -80,17 +82,22 @@ export default function SiteFooter() {
               <div key={colName}>
                 <h5>{colName}</h5>
                 <ul>
-                  {columns[colName].items.map((link) => (
-                    <li key={link.id}>
-                      <a
-                        href={link.url}
-                        target={link.is_external ? "_blank" : undefined}
-                        rel={link.is_external ? "noopener noreferrer" : undefined}
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
+                  {columns[colName].items.map((link) => {
+                    // DB 주소는 예전 메인 기준("/#pricing")이라 지금 구조로 옮겨 보낸다 (lib/links.ts)
+                    const h = siteHref(link.url);
+                    const ext = link.is_external || h.external;
+                    return (
+                      <li key={link.id}>
+                        <a
+                          href={h.href}
+                          target={ext ? "_blank" : undefined}
+                          rel={ext ? "noopener noreferrer" : undefined}
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))
@@ -100,13 +107,13 @@ export default function SiteFooter() {
               <div>
                 <h5>{t("footer.sitemap")}</h5>
                 <ul>
-                  <li><a href="#about">{t("nav.about")}</a></li>
-                  <li><a href="#thesis">{t("nav.thesis")}</a></li>
-                  <li><a href="#pricing">{t("nav.pricing")}</a></li>
-                  <li><a href="#process">{t("nav.process")}</a></li>
-                  <li><a href="#portfolio">{t("nav.portfolio")}</a></li>
+                  <li><a href="/about#about">{t("nav.about")}</a></li>
+                  <li><a href="/about#thesis">{t("nav.thesis")}</a></li>
+                  <li><a href="/about#pricing">{t("nav.pricing")}</a></li>
+                  <li><a href="/about#process">{t("nav.process")}</a></li>
+                  <li><a href="/about#portfolio">{t("nav.portfolio")}</a></li>
                   <li><a href="/blog">블로그</a></li>
-                  <li><a href="#faq">{t("nav.faq")}</a></li>
+                  <li><a href="/about#faq">{t("nav.faq")}</a></li>
                 </ul>
               </div>
               <div>

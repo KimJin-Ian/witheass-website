@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useLang } from "./LangContext";
 import LangSwitcher from "./LangSwitcher";
 import { supabase, SITE_KEY, isSupabaseConfigured } from "@/lib/supabase";
+import { KAKAO_CHAT, siteHref } from "@/lib/links";
 
 interface DbNavItem {
   id: string;
@@ -94,18 +95,23 @@ export default function SiteHeader() {
           {useDbNav ? (
             // DB 메뉴 사용 (admin /site/nav) — '전문 작가진'(/team)은 코드에서 항상 보강
             (() => {
-              const items = dbNav!.map((item) => (
-                <a
-                  key={item.id}
-                  href={item.url}
-                  onClick={closeMenu}
-                  target={item.is_external ? "_blank" : undefined}
-                  rel={item.is_external ? "noopener noreferrer" : undefined}
-                  style={item.is_cta ? { color: "var(--gold-600)" } : undefined}
-                >
-                  {item.label}
-                </a>
-              ));
+              // DB 주소는 예전 메인 기준("/#pricing")이라 지금 구조로 옮겨 보낸다 — 상담 버튼은 카톡 (lib/links.ts)
+              const items = dbNav!.map((item) => {
+                const h = siteHref(item.url, { cta: item.is_cta });
+                const ext = item.is_external || h.external;
+                return (
+                  <a
+                    key={item.id}
+                    href={h.href}
+                    onClick={closeMenu}
+                    target={ext ? "_blank" : undefined}
+                    rel={ext ? "noopener noreferrer" : undefined}
+                    style={item.is_cta ? { color: "var(--gold-600)" } : undefined}
+                  >
+                    {item.label}
+                  </a>
+                );
+              });
               // DB에 /team 메뉴가 없으면 CTA 앞(없으면 맨 끝)에 끼워 넣는다
               if (!dbNav!.some((it) => it.url === "/team")) {
                 const ctaIdx = dbNav!.findIndex((it) => it.is_cta);
@@ -122,15 +128,15 @@ export default function SiteHeader() {
             // 폴백: 기존 하드코딩 메뉴
             <>
               <a href="/about" onClick={closeMenu}>About us</a>
-              <a href="/#about" onClick={closeMenu}>{t("nav.about")}</a>
-              <a href="/#thesis" onClick={closeMenu}>{t("nav.thesis")}</a>
-              <a href="/#pricing" onClick={closeMenu}>{t("nav.pricing")}</a>
-              <a href="/#service" onClick={closeMenu}>{t("nav.brand")}</a>
-              <a href="/#portfolio" onClick={closeMenu}>{t("nav.portfolio")}</a>
+              <a href="/about#about" onClick={closeMenu}>{t("nav.about")}</a>
+              <a href="/about#thesis" onClick={closeMenu}>{t("nav.thesis")}</a>
+              <a href="/about#pricing" onClick={closeMenu}>{t("nav.pricing")}</a>
+              <a href="/about#service" onClick={closeMenu}>{t("nav.brand")}</a>
+              <a href="/about#portfolio" onClick={closeMenu}>{t("nav.portfolio")}</a>
               <a href="/team" onClick={closeMenu}>전문 작가진</a>
               <a href="/blog" onClick={closeMenu}>블로그</a>
-              <a href="/#faq" onClick={closeMenu}>{t("nav.faq")}</a>
-              <a href="/#contact" onClick={closeMenu} style={{ color: "var(--gold-600)" }}>
+              <a href="/about#faq" onClick={closeMenu}>{t("nav.faq")}</a>
+              <a href={KAKAO_CHAT} target="_blank" rel="noopener noreferrer" onClick={closeMenu} style={{ color: "var(--gold-600)" }}>
                 {t("nav.consult")} →
               </a>
             </>
@@ -138,7 +144,8 @@ export default function SiteHeader() {
         </nav>
         <div className="header-right desktop-only">
           <LangSwitcher />
-          <a href="/#contact" className="cta-btn gold" onClick={closeMenu}>
+          <a href={KAKAO_CHAT} target="_blank" rel="noopener noreferrer" className="cta-btn gold" onClick={closeMenu}
+             data-track="cta_click" data-category="navigation" data-label="header_kakao">
             {t("nav.consult")} →
           </a>
         </div>

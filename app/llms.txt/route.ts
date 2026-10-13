@@ -87,7 +87,8 @@ export async function GET() {
 - 유통: 기본 2년, 전국 서점 + 전자책(밀리의서재·교보·예스24·리디)
 
 ## 핵심 페이지
-- [홈](${SITE_URL}): 회사 소개·서비스·가격
+- [홈](${SITE_URL}): 출판 상담 신청서 · 왜 드림위드에스인가 · 사례
+- [About us](${SITE_URL}/about): 회사 소개·서비스·패키지 가격·진행 과정·출간 사례·자주 묻는 질문
 - [블로그](${SITE_URL}/blog): 출판 절차·계약·비용에 대한 안내 글
 - [팀](${SITE_URL}/team): 운영 주체와 구성원
 - [네이버 책 — 출간 도서 전체](https://search.shopping.naver.com/book/search?query=드림위드에스)

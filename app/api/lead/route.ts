@@ -1,5 +1,10 @@
 /**
- * 상담 신청 받기 — About us(/about) 폼
+ * 상담 신청 받기 — 첫 화면(/) 상담 신청서 (2026-10-13 개편 전에는 About us 폼)
+ *
+ * 새 신청서 칸: 책을 쓰는 이유 · 걱정되는 점(여러 개) · 희망 패키지 · 이메일 · 요청사항.
+ * 이유 · 걱정은 answers(jsonb), 패키지 · 이메일은 칸을 따로 둔다 (witheass-admin/supabase/leads-form-v2.sql).
+ * 그 SQL 을 돌리기 전에는 칸이 없어서 넣기가 실패한다 — 그때는 같은 내용을 요청사항(message)에
+ * 글로 붙여 다시 넣는다. 신청이 사라지는 것보다 한 칸에 몰려 있는 편이 낫다.
  *
  * Supabase leads 표에 넣는다. 방문자 키(anon)로는 넣기만 되고 읽을 수 없다
  * (RLS — witheass-admin/supabase/leads-schema.sql). 관리자는 admin 의 "상담 신청 DB" 에서 본다.
@@ -19,6 +24,10 @@ export const runtime = "nodejs";
 
 const SITE_KEY = "witheass" as const;
 const cut = (v: unknown, n: number) => (typeof v === "string" && v.trim() ? v.trim().slice(0, n) : null);
+const list = (v: unknown, n: number) =>
+  (Array.isArray(v) ? v : []).map((x) => cut(x, 120)).filter((x): x is string => !!x).slice(0, n);
+/** "칸이 없다" — 새 칸 SQL 을 아직 안 돌렸다 */
+const missingColumn = (msg: string) => /column .* does not exist|Could not find the '.*' column/i.test(msg);
 
 export async function POST(req: Request) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -51,9 +60,16 @@ export async function POST(req: Request) {
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || req.headers.get("x-real-ip") || "";
   const ip_hash = ip ? createHash("sha256").update(`${ip}|witheass-leads`).digest("hex").slice(0, 32) : null;
 
+  const email = cut(b.email, 80);
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json({ error: "이메일 주소를 확인해주세요." }, { status: 400 });
+  }
+  const reasons = list(b.reasons, 8);
+  const worries = list(b.worries, 8);
+  const pkg = cut(b.package, 120);
+
   const supabase = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
-  // 넣기만 한다 — 방문자 키로는 읽을 수 없으니 넣은 행을 돌려받지 않는다
-  const { error } = await supabase.from("leads").insert({
+  const row: Record<string, unknown> = {
     site: SITE_KEY,
     source: cut(b.source, 40) ?? "about",
     name,
@@ -72,7 +88,26 @@ export async function POST(req: Request) {
     page_url: cut(b.pageUrl, 500),
     user_agent: cut(req.headers.get("user-agent"), 300),
     ip_hash,
-  } as any);
+  };
+  const extra = {
+    email,
+    package: pkg,
+    answers: reasons.length || worries.length ? { reasons, worries } : null,
+  };
+
+  // 넣기만 한다 — 방문자 키로는 읽을 수 없으니 넣은 행을 돌려받지 않는다
+  let { error } = await supabase.from("leads").insert({ ...row, ...extra } as any);
+  if (error && missingColumn(String(error.message ?? ""))) {
+    // 새 칸이 아직 없다 — 같은 내용을 요청사항 앞에 글로 붙여 넣는다
+    const folded = [
+      reasons.length ? `[책을 쓰는 이유] ${reasons.join(", ")}` : "",
+      worries.length ? `[걱정되는 점] ${worries.join(", ")}` : "",
+      pkg ? `[희망 패키지] ${pkg}` : "",
+      email ? `[이메일] ${email}` : "",
+      row.message ? `[요청사항] ${row.message}` : "",
+    ].filter(Boolean).join("\n");
+    ({ error } = await supabase.from("leads").insert({ ...row, message: folded.slice(0, 2000) || null } as any));
+  }
 
   if (error) {
     const msg = String(error.message ?? "");

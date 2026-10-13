@@ -249,7 +249,8 @@ const ko: Dict = {
   // Footer
   "footer.brand": "드림위드에스 / 위드에스마케팅 / 더컬쳐앤",
   "footer.business": "자비출판 · 자서전출판 · 책출판 · 퍼스널브랜딩 · 논문 컨설팅",
-  "footer.ceo": "대표이사 이서진 | 사업자등록번호 859-24-00524",
+  "footer.ceo": "사업자등록번호 110-29-55972 · 드림위드에스 출판사",
+  "footer.inquiry": "문의 dreamwithessmarketing@gmail.com",
   "footer.sitemap": "SITE MAP",
   "footer.contact": "CONTACT",
   "footer.copyright": "© 2026 위드에스마케팅 (드림위드에스 / 더컬쳐앤). All rights reserved.",
@@ -684,7 +685,8 @@ const en: Dict = {
 
   "footer.brand": "Dream With Ess / With-Ess Marketing / TheCulturen",
   "footer.business": "Book Publishing · Memoir · Thesis Consulting · Self-Publishing",
-  "footer.ceo": "CEO Lee Seo-jin | Business Reg. No. 859-24-00524",
+  "footer.ceo": "Business Reg. No. 110-29-55972 · Dream With Ess Publishing",
+  "footer.inquiry": "Contact dreamwithessmarketing@gmail.com",
   "footer.sitemap": "SITE MAP",
   "footer.contact": "CONTACT",
   "footer.copyright": "© 2026 With-Ess Marketing (Dream With Ess / TheCulturen). All rights reserved.",
@@ -1035,7 +1037,8 @@ const zh: Dict = {
 
   "footer.brand": "Dream With Ess / With-Ess Marketing / The Culturen",
   "footer.business": "图书出版 · 自传 · 论文咨询 · 自费出版",
-  "footer.ceo": "代表理事 李瑞珍 | 营业许可证号 859-24-00524",
+  "footer.ceo": "营业许可证号 110-29-55972 · Dream With Ess 出版社",
+  "footer.inquiry": "咨询 dreamwithessmarketing@gmail.com",
   "footer.sitemap": "网站地图",
   "footer.contact": "联系方式",
   "footer.copyright": "© 2026 With-Ess Marketing (Dream With Ess / The Culturen). 版权所有.",
@@ -1386,7 +1389,8 @@ const ja: Dict = {
 
   "footer.brand": "Dream With Ess / With-Ess Marketing / The Culturen",
   "footer.business": "書籍出版 · 自伝 · 論文コンサル · 自費出版",
-  "footer.ceo": "代表理事 イ・ソジン | 事業者登録番号 859-24-00524",
+  "footer.ceo": "事業者登録番号 110-29-55972 · Dream With Ess 出版社",
+  "footer.inquiry": "お問い合わせ dreamwithessmarketing@gmail.com",
   "footer.sitemap": "サイトマップ",
   "footer.contact": "CONTACT",
   "footer.copyright": "© 2026 With-Ess Marketing (Dream With Ess / The Culturen). All rights reserved.",
