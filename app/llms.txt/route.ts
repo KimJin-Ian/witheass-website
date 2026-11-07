@@ -89,6 +89,8 @@ export async function GET() {
 ## 핵심 페이지
 - [홈](${SITE_URL}): 출판 상담 신청서 · 왜 드림위드에스인가 · 사례
 - [About us](${SITE_URL}/about): 회사 소개·서비스·패키지 가격·진행 과정·출간 사례·자주 묻는 질문
+- [출판 가이드](${SITE_URL}/guide): 처음 책을 내는 분을 위한 주제별 정리 글
+- [책출판 방법 총정리](${SITE_URL}/guide/book-publishing): 기획출판·자비출판·반기획출판·독립출판·전자책·인터뷰 출판 비교와 고르는 법
 - [블로그](${SITE_URL}/blog): 출판 절차·계약·비용에 대한 안내 글
 - [팀](${SITE_URL}/team): 운영 주체와 구성원
 - [네이버 책 — 출간 도서 전체](https://search.shopping.naver.com/book/search?query=드림위드에스)

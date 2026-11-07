@@ -134,6 +134,7 @@ export default function SiteHeader() {
               <a href="/about#service" onClick={closeMenu}>{t("nav.brand")}</a>
               <a href="/about#portfolio" onClick={closeMenu}>{t("nav.portfolio")}</a>
               <a href="/team" onClick={closeMenu}>전문 작가진</a>
+              <a href="/guide" onClick={closeMenu}>출판 가이드</a>
               <a href="/blog" onClick={closeMenu}>블로그</a>
               <a href="/about#faq" onClick={closeMenu}>{t("nav.faq")}</a>
               <a href={KAKAO_CHAT} target="_blank" rel="noopener noreferrer" onClick={closeMenu} style={{ color: "var(--gold-600)" }}>
