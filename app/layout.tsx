@@ -281,6 +281,7 @@ const offerJsonLd = {
       { "@type": "Offer", name: "전자책 / 종이책 인쇄", description: "표지·내지 디자인 + 네이버 책 등록 + 전국 서점 유통", price: "2000000", priceCurrency: "KRW" },
       { "@type": "Offer", name: "완성도 패키지", description: "목차 기획·교정·교열·표지·500권 인쇄·유통", price: "6000000", priceCurrency: "KRW" },
       { "@type": "Offer", name: "책 출판 올인원 패키지", description: "인터뷰 기반 기획·집필·디자인·인쇄·전자책·유통", price: "9000000", priceCurrency: "KRW" },
+      { "@type": "Offer", name: "전문직 전문 패키지", description: "의사·변호사·세무사·회계사·컨설턴트·CEO를 위한 브랜딩 출판", price: "15000000", priceCurrency: "KRW" },
       { "@type": "Offer", name: "책 출판 & 마케팅 올인원 풀패키지", description: "출판 전과정 + 블로그·인스타·언론 PR + 강연회 주최", price: "20000000", priceCurrency: "KRW" }
     ],
   },

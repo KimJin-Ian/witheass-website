@@ -158,7 +158,7 @@ export default function AboutClient() {
           <div className="section-rule"></div>
           <p className="section-lead">{t("pricing.lead")}</p>
 
-          <div className="pricing-grid two">
+          <div className="pricing-grid three">
             <div className="price-card featured">
               <div className="tag">{t("pricing.p4.tag")}</div>
               <div className="cat">{t("pricing.p4.cat")}</div>
@@ -177,6 +177,21 @@ export default function AboutClient() {
                 <li>{t("pricing.p4.l7")}</li>
               </ul>
               <a href="#fullpkg" className="cta-btn gold" style={{ marginTop: "auto" }}>{t("pricing.p4.cta")}</a>
+            </div>
+
+            <div className="price-card">
+              <div className="cat">{t("pricing.p15.cat")}</div>
+              <h3>{t("pricing.p15.title")}</h3>
+              <div className="price">{t("pricing.p15.price")}<small>{t("pricing.p15.priceSuffix")}</small></div>
+              <p style={{ fontSize: 12.5, color: "var(--text-500)", marginTop: -8, marginBottom: 12, lineHeight: 1.5 }}>
+                {t("pricing.p15.note")}
+              </p>
+              <ul>
+                <li>{t("pricing.p15.l1")}</li>
+                <li>{t("pricing.p15.l2")}</li>
+                <li>{t("pricing.p15.l3")}</li>
+                <li>{t("pricing.p15.l4")}</li>
+              </ul>
             </div>
 
             <div className="price-card">

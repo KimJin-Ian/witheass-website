@@ -1965,6 +1965,9 @@ a {
 /* 가격 2장 중앙 */
 .pricing-grid.two { grid-template-columns: repeat(2, minmax(280px, 430px)); justify-content: center; }
 @media (max-width: 760px) { .pricing-grid.two { grid-template-columns: 1fr; max-width: 430px; margin: 0 auto; } }
+/* 2,000 · 1,500 · 900 카드 셋 (11/9) */
+.pricing-grid.three { grid-template-columns: repeat(3, minmax(0, 380px)); justify-content: center; }
+@media (max-width: 960px) { .pricing-grid.three { grid-template-columns: 1fr; max-width: 430px; margin: 0 auto; } }
 
 /* FULL 패키지 상세 (전문직·CEO·정치인 전용) */
 .fullpkg { background: var(--navy-900); color: #fff; }
