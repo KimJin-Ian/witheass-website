@@ -106,7 +106,7 @@ const ko: Dict = {
   "pricing.p1.title": "전자책 / 종이책 인쇄",
   "pricing.p1.price": "200",
   "pricing.p1.priceSuffix": "만원~",
-  "pricing.p2.cat": "기획·컨설팅",
+  "pricing.p2.cat": "원고 보유형 출판",
   "pricing.p2.title": "완성도 패키지",
   "pricing.p2.price": "600",
   "pricing.p2.priceSuffix": "만원",

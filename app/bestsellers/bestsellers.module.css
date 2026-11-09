@@ -1,0 +1,54 @@
+/* 분야별 베스트셀러 · 대표 도서 (2026-11-10) — 색 · 글씨는 첫 화면(home.module.css)의 .page 것을 쓴다 */
+
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+.head { background: var(--navy-deep); color: #c9d0df; padding: 56px 0 40px; }
+.eyebrow { margin: 0 0 6px; font-size: 13px; font-weight: 800; color: var(--gold); letter-spacing: 0.12em; }
+.root .head h1 { color: #fff; font-size: clamp(28px, 5vw, 42px); font-weight: 800; letter-spacing: -0.025em; }
+.lead { margin: 10px 0 0; font-size: 17px; max-width: 40em; }
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.jump a { padding: 8px 14px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 999px; color: #fff; font-size: 14.5px; font-weight: 700; text-decoration: none; }
+.jump a:hover { border-color: #fff; }
+.jump a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* 사이트 공통 section 여백(globals.css)을 덮는다 */
+.root .group { padding: 48px 0 0; scroll-margin-top: 90px; }
+.root .group h2 { font-size: clamp(21px, 3.2vw, 25px); font-weight: 800; padding-bottom: 12px; border-bottom: 2px solid var(--navy); }
+.list { display: grid; gap: 0; }
+.card { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 26px; padding: 26px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 90px; }
+.card img { width: 160px; height: auto; border-radius: 4px; box-shadow: 0 10px 22px rgba(10, 18, 40, 0.18); background: #fff; }
+.info { min-width: 0; }
+.cat { font-size: 13.5px; font-weight: 800; color: var(--gold-ink); }
+.root .card h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 800; margin-top: 4px; }
+.author { margin: 4px 0 0; font-size: 15px; color: var(--muted); }
+.record {
+  display: inline-block; margin: 12px 0 0; padding: 5px 12px; border-radius: 999px;
+  background: var(--navy); color: #fff; font-size: 14px; font-weight: 800; font-variant-numeric: tabular-nums;
+}
+.intro { margin: 12px 0 0; font-size: 16.5px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.links a {
+  padding: 7px 13px; border: 1px solid var(--line); border-radius: 8px; color: var(--navy);
+  font-size: 14.5px; font-weight: 700; text-decoration: none; background: #fff;
+}
+.links a:hover { border-color: var(--navy); }
+.links a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+@media (max-width: 560px) {
+  .card { grid-template-columns: 104px minmax(0, 1fr); gap: 16px; }
+  .card img { width: 104px; }
+  .intro { font-size: 15.5px; }
+}
+
+.note { margin: 18px 0 0; font-size: 14px; color: var(--muted); }
+
+.root .ask { margin: 48px 0 72px; padding: 30px 28px; border-radius: 16px; background: var(--tint); border: 1px solid var(--line); }
+.root .ask h2 { font-size: clamp(21px, 3.2vw, 26px); font-weight: 800; }
+.ask p { margin: 8px 0 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.primary {
+  display: inline-flex; align-items: center; text-decoration: none;
+  background: var(--navy); color: #fff; font-weight: 800; font-size: 17px; padding: 15px 24px; border-radius: 12px;
+}
+.primary:hover { background: var(--navy-deep); }
+.primary:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+@media (max-width: 560px) { .head { padding: 36px 0 30px; } .actions a { width: 100%; justify-content: center; } }

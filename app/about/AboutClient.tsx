@@ -158,7 +158,7 @@ export default function AboutClient() {
           <div className="section-rule"></div>
           <p className="section-lead">{t("pricing.lead")}</p>
 
-          <div className="pricing-grid three">
+          <div className="pricing-grid four">
             <div className="price-card featured">
               <div className="tag">{t("pricing.p4.tag")}</div>
               <div className="cat">{t("pricing.p4.cat")}</div>
@@ -209,6 +209,20 @@ export default function AboutClient() {
                 <li>{t("pricing.p3.l5")}</li>
                 <li>{t("pricing.p3.l6")}</li>
                 <li>{t("pricing.p3.l7")}</li>
+              </ul>
+            </div>
+
+            <div className="price-card">
+              <div className="cat">{t("pricing.p2.cat")}</div>
+              <h3>{t("pricing.p2.title")}</h3>
+              <div className="price">{t("pricing.p2.price")}<small>{t("pricing.p2.priceSuffix")}</small></div>
+              <ul>
+                <li>{t("pricing.p2.l1")}</li>
+                <li>{t("pricing.p2.l2")}</li>
+                <li>{t("pricing.p2.l3")}</li>
+                <li>{t("pricing.p2.l4")}</li>
+                <li>{t("pricing.p2.l5")}</li>
+                <li>{t("pricing.p2.l6")}</li>
               </ul>
             </div>
           </div>

@@ -227,6 +227,14 @@ textarea.input { resize: vertical; min-height: 110px; }
 .book { flex: 0 0 150px; margin: 0; scroll-snap-align: start; }
 .book img { display: block; width: 150px; height: 222px; object-fit: cover; object-position: left center; border-radius: 4px; background: #fff; box-shadow: 0 8px 18px rgba(10, 18, 40, 0.16); }
 .book figcaption { margin-top: 10px; font-size: 13.5px; line-height: 1.4; color: var(--muted); text-align: center; }
+/* 베스트셀러 (11/10) — 앞표지만 있는 그림은 자르지 않고, 제목 · 표시를 붙인다 */
+.coverBox { position: relative; display: block; }
+.book img.coverFull { object-position: center; }
+.badge { position: absolute; left: 8px; top: 8px; padding: 3px 8px; border-radius: 6px; background: var(--navy); color: var(--gold); font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; }
+.bookTitle { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 2px; color: var(--navy); font-size: 14px; font-weight: 700; }
+.bookLink { display: block; color: inherit; text-decoration: none; border-radius: 6px; }
+.bookLink:hover .bookTitle { text-decoration: underline; }
+.bookLink:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 .bookBtn {
   position: absolute; top: 92px; z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
   background: #fff; color: var(--navy); font-size: 26px; line-height: 1; cursor: pointer; box-shadow: 0 6px 16px rgba(10, 18, 40, 0.14);

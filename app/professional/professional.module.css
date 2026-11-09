@@ -82,6 +82,13 @@
 .doneBody { margin: 12px 0 20px; font-size: 16.5px; }
 .doneNote { margin: 10px 0 0; font-size: 14.5px; color: var(--muted); }
 
+/* ── 책이 하는 일 ── */
+.benefits { list-style: none; margin: 30px 0 0; padding: 0; display: grid; gap: 12px; }
+@media (min-width: 760px) { .benefits { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.benefits li { display: grid; gap: 4px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.benefits b { color: var(--navy); font-size: 17.5px; }
+.benefits span { font-size: 15.5px; line-height: 1.55; }
+
 /* ── 망설이는 이유 ── */
 .stops { display: grid; gap: 0; margin-top: 34px; border-top: 1px solid var(--line); }
 .stop { display: grid; gap: 6px 40px; padding: 24px 0; border-bottom: 1px solid var(--line); }

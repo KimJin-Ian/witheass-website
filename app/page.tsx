@@ -4,6 +4,7 @@ import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import ConsultForm from "./components/ConsultForm";
 import BookRail from "./components/BookRail";
+import { BESTSELLERS } from "@/lib/bestsellers";
 import { KAKAO_CHAT, KAKAO_PATH } from "@/lib/links";
 import s from "./home.module.css";
 
@@ -13,6 +14,7 @@ import s from "./home.module.css";
  *   한 줄 약속 → 상담 신청서(주인공) → 고민 해결 → 왜 우리인가 → 무엇이 다른가 → 출간 도서 → 사례 → 바로가기 → 회사 소개(About us)로 가는 칸
  *   (고민 해결 · 무엇이 다른가 · 출간 도서 · 바로가기 · 전화 버튼은 2026-11-09 대표님 메모로 보충)
  *   11/10 대표님: 인터뷰 횟수는 쓰지 않는다 · 전문직 패키지는 상단 메뉴로만 · 바로가기는 Q&A 모음집 하나 · 예시 안내문 삭제
+ *   11/10 매뉴얼 #5 대조: 베스트셀러 슬라이드(lib/bestsellers.ts) · 연 100권 · 비교표 '견적에 담긴 것'
  *
  * 예전 첫 화면(회사 소개 전체)은 /about 으로 옮겼다 (app/about/AboutClient.tsx).
  * 상담 · 문의 버튼은 전부 카카오톡 채팅으로 간다. 신청서는 저장 + 카톡으로 간다 (ConsultForm).
@@ -45,6 +47,7 @@ const AUTHORS = [
 
 // 다른 곳의 이름 · 금액은 쓰지 않는다. 일반적인 경우라고 아래에 밝힌다
 const COMPARE: [string, string, string][] = [
+  ["견적에 담긴 것", "인쇄 · 납품 위주입니다. 300만원 안팎 견적도 있습니다", "기획 · 인터뷰 · 집필 · 디자인 · 인쇄 · 유통까지 한 번에 담습니다"],
   ["원고", "저자가 완성해서 보냅니다", "인터뷰로 작가가 함께 씁니다"],
   ["기획", "받은 원고를 책 모양으로 만듭니다", "기획자가 목차부터 책의 방향을 잡습니다"],
   ["출간 전 검수", "저자가 직접 확인합니다", "표절 · 저작권 · 초상권을 전담팀이 먼저 검수합니다"],
@@ -137,6 +140,7 @@ export default function HomePage() {
             <dl className={s.stats}>
               <div><dt>890권+</dt><dd>누적 출간</dd></div>
               <div><dt>10년+</dt><dd>출판 운영</dd></div>
+              <div><dt>연 100권+</dt><dd>연간 출간</dd></div>
               <div><dt>45%</dt><dd>종이책 인세</dd></div>
             </dl>
           </div>
@@ -210,6 +214,18 @@ export default function HomePage() {
               <p><b>이런 분께 맞습니다</b>책을 전문성 · 사업 · 인생 기록에 제대로 쓰고 싶은 분, 글 쓸 시간이 없는 분</p>
               <p><b>이런 분께는 맞지 않습니다</b>가장 낮은 인쇄비만 찾는 분</p>
             </div>
+          </div>
+        </section>
+
+        {/* ── 베스트셀러 — 옆으로 넘긴다 (11/10 대표님) ─────── */}
+        <section className={`${s.section} ${s.tint}`} id="bestsellers">
+          <div className={s.wrap}>
+            <p className={s.eyebrow}>BESTSELLERS</p>
+            <h2 className={s.h2}>분야별 베스트셀러 · 대표 도서</h2>
+            <p className={s.sub}>메디컬 · 건강 · 자기계발 · 진로 · 문학까지, 저자와 함께 만든 책입니다. 옆으로 넘겨 보세요.</p>
+            <BookRail label="드림위드에스 베스트셀러 · 대표 도서"
+                      books={BESTSELLERS.map((x) => ({ src: `/bestsellers/${x.key}.jpg`, title: x.title, cat: x.cat, badge: x.record ? "BEST" : undefined, href: `/bestsellers#${x.key}` }))} />
+            <p className={s.moreBooks}><Link href="/bestsellers" data-track="cta_click" data-category="navigation" data-label="home_bestsellers_more">베스트셀러 전체 보기 →</Link></p>
           </div>
         </section>
 
