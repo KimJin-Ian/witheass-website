@@ -60,6 +60,20 @@
   .stats { margin-top: 28px; }
 }
 
+/* ── 전문직 패키지로 가는 띠 (11/9) ── */
+.proBanner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px;
+  margin-top: 32px; padding: 20px 24px; border-radius: 14px; text-decoration: none;
+  background: var(--navy-deep); color: #fff;
+}
+.proBanner:hover { background: var(--navy); }
+.proBanner:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.proText { display: grid; gap: 2px; }
+.proWho { font-size: 14.5px; color: #c9d0df; }
+.proText b { font-size: clamp(20px, 3vw, 24px); font-weight: 800; letter-spacing: -0.02em; }
+.proText em { font-style: normal; color: var(--gold); font-variant-numeric: tabular-nums; }
+.proGo { font-size: 16px; font-weight: 700; color: var(--gold); }
+
 /* ── 상담 신청서 ── */
 .apply { background: var(--tint); padding: 56px 0 64px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .sheet { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 36px 32px; box-shadow: 0 18px 50px rgba(10, 18, 40, 0.07); }
@@ -180,6 +194,76 @@ textarea.input { resize: vertical; min-height: 110px; }
 .aboutLink p { margin: 8px 0 0; font-size: 15.5px; }
 .go { justify-self: start; background: var(--gold); color: var(--navy-deep); font-weight: 800; padding: 14px 22px; border-radius: 12px; white-space: nowrap; }
 .aboutLink:hover .go { filter: brightness(1.05); }
+
+/* ── 2026-11-09 보충 (대표님 메모) ── */
+.btnTel {
+  display: inline-flex; align-items: center; text-decoration: none; background: #fff; color: var(--navy);
+  border: 1.5px solid var(--navy); font-weight: 800; font-size: 17px; padding: 14px 22px; border-radius: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.btnTel:hover { background: var(--tint); }
+
+/* 고민 해결 — 질문 하나에 답 하나 */
+.worries { display: grid; gap: 14px; margin-top: 32px; }
+@media (min-width: 760px) { .worries { grid-template-columns: 1fr 1fr; } }
+.worries article { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: #fff; }
+.page .worries h3 { font-size: 19px; font-weight: 800; }
+.worries p { margin: 8px 0 0; font-size: 16px; }
+.page .authorsHead { margin-top: 36px; font-size: 19px; font-weight: 800; }
+.authors { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; }
+.authors li { padding: 7px 14px; border-radius: 999px; background: var(--gold-soft); color: var(--navy); font-size: 15px; font-weight: 700; line-height: 1.4; }
+
+/* 무엇이 다른가 — 표 (휴대폰에서는 줄마다 위아래로 쌓는다 — 옆으로 밀면 우리 칸이 화면 밖에 숨는다) */
+.cmpWrap { margin-top: 32px; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.cmpTable { width: 100%; border-collapse: collapse; font-size: 16px; line-height: 1.55; }
+@media (max-width: 620px) {
+  .cmpTable thead { display: none; }
+  .cmpTable, .cmpTable tbody, .cmpTable tr, .cmpTable th, .cmpTable td { display: block; width: 100%; }
+  .cmpTable tbody tr + tr { border-top: 1px solid var(--line); }
+  .cmpTable th, .cmpTable td { border-top: 0; padding: 12px 16px; }
+  .cmpTable td::before { content: attr(data-l); display: block; font-size: 13px; font-weight: 800; color: var(--muted); }
+  .cmpTable td.cmpUs::before { color: var(--gold-ink); }
+}
+.cmpTable th, .cmpTable td { padding: 16px 18px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+.cmpTable thead th { border-top: 0; font-size: 15px; color: var(--muted); font-weight: 800; }
+.cmpTable tbody th { color: var(--navy); font-weight: 800; white-space: nowrap; }
+.cmpTable .cmpUs { background: var(--gold-soft); color: var(--navy); font-weight: 700; }
+.cmpTable thead .cmpUs { color: var(--gold-ink); }
+.fit { display: grid; gap: 10px; margin-top: 20px; }
+@media (min-width: 760px) { .fit { grid-template-columns: 1fr 1fr; } }
+.fit p { margin: 0; font-size: 15.5px; }
+.fit b { display: block; color: var(--navy); }
+
+/* 출간 도서 — 옆으로 넘기는 띠 */
+.books { position: relative; margin-top: 28px; }
+.bookRail { display: flex; gap: 16px; overflow-x: auto; padding: 6px 2px 14px; scroll-snap-type: x proximity; scrollbar-width: thin; }
+.bookRail:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.book { flex: 0 0 150px; margin: 0; scroll-snap-align: start; }
+.book img { display: block; width: 150px; height: 222px; object-fit: cover; object-position: left center; border-radius: 4px; background: #fff; box-shadow: 0 8px 18px rgba(10, 18, 40, 0.16); }
+.book figcaption { margin-top: 10px; font-size: 13.5px; line-height: 1.4; color: var(--muted); text-align: center; }
+.bookBtn {
+  position: absolute; top: 92px; z-index: 2; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
+  background: #fff; color: var(--navy); font-size: 26px; line-height: 1; cursor: pointer; box-shadow: 0 6px 16px rgba(10, 18, 40, 0.14);
+}
+.bookBtn:hover { background: var(--tint); }
+.bookBtn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.bookPrev { left: -10px; }
+.bookNext { right: -10px; }
+@media (max-width: 760px) {
+  .bookBtn { display: none; }
+  .book { flex-basis: 120px; }
+  .book img { width: 120px; height: 178px; }
+}
+.moreBooks { margin: 14px 0 0; text-align: center; font-size: 16px; font-weight: 700; }
+.moreBooks a { color: var(--navy); }
+
+/* 눌러서 들어가는 칸 — 비용 · 과정 · 견적 */
+.shortcuts { display: grid; gap: 12px; margin-bottom: 18px; }
+@media (min-width: 760px) { .shortcuts { grid-template-columns: repeat(3, 1fr); } }
+.shortcuts a { display: flex; flex-direction: column; gap: 4px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 14px; text-decoration: none; background: var(--tint); color: var(--ink); }
+.shortcuts a:hover { border-color: var(--navy); }
+.shortcuts b { color: var(--navy); font-size: 18px; }
+.shortcuts span { font-size: 15px; line-height: 1.5; }
 
 /* 오른쪽 아래 고정 — 카톡 하나만 */
 .float {

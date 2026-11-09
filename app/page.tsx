@@ -3,13 +3,15 @@ import Link from "next/link";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import ConsultForm from "./components/ConsultForm";
+import BookRail from "./components/BookRail";
 import { KAKAO_CHAT, KAKAO_PATH } from "@/lib/links";
 import s from "./home.module.css";
 
 /**
  * 첫 화면 — 상담 신청 랜딩 (2026-10-13 개편, 대표님 요청)
  *
- *   한 줄 약속 → 상담 신청서(주인공) → 왜 우리인가 → 사례 → 회사 소개(About us)로 가는 칸
+ *   한 줄 약속 → 상담 신청서(주인공) → 고민 해결 → 왜 우리인가 → 무엇이 다른가 → 출간 도서 → 사례 → 바로가기 → 회사 소개(About us)로 가는 칸
+ *   (고민 해결 · 무엇이 다른가 · 출간 도서 · 바로가기 · 전화 버튼은 2026-11-09 대표님 메모로 보충)
  *
  * 예전 첫 화면(회사 소개 전체)은 /about 으로 옮겼다 (app/about/AboutClient.tsx).
  * 상담 · 문의 버튼은 전부 카카오톡 채팅으로 간다. 신청서는 저장 + 카톡으로 간다 (ConsultForm).
@@ -25,6 +27,47 @@ export const metadata: Metadata = {
   // 제목 · 설명은 layout 기본값(회사 대표 문구)을 그대로 쓴다. 표준 주소만 이 페이지 것으로
   alternates: { canonical: SITE_URL },
 };
+
+// 대표님 메모의 네 가지 고민 — 답은 company-guide.md 의 공개 사실만 쓴다
+const WORRIES = [
+  { q: "내 원고도 책이 될 수 있나요?", a: "원고가 있으면 그 원고로, 없으면 인터뷰로 시작합니다. 어느 쪽이든 기획 · 교정 · 디자인은 저희가 함께합니다." },
+  { q: "바빠서 시작할 엄두가 안 납니다", a: "저자님이 내는 시간은 인터뷰 두 번과 원고 확인입니다. 인터뷰 후 약 4주면 1차 원고가 나오고, 일정은 저희가 끌고 갑니다." },
+  { q: "출간하면 서점에는 어떻게 들어가나요?", a: "서점 입고와 유통은 출판사가 맡습니다. 전국 온 · 오프라인 서점과 밀리의서재 · 교보 · 예스24 · 리디 전자책까지 기본 2년간 유통합니다." },
+  { q: "책을 내도 아무도 모르면 어떡하죠?", a: "검색 노출 · SNS · 언론 기사 · 강연까지 마케팅을 이어서 맡을 수 있습니다. 독자를 직접 만나는 자리는 저자님과 함께 움직입니다." },
+];
+
+// company-guide.md '함께 작업해 온 대상' 15가지 그대로 — "내가 해당될까?" 를 바로 찾게 한다
+const AUTHORS = [
+  "CEO", "기업인", "의사", "변호사", "교수", "공직자", "강사", "컨설턴트",
+  "개인 자서전", "부모님 선물용 자서전", "은퇴 후 제2직업", "퍼스널 브랜딩 도서", "재테크 도서", "논문형 전문도서", "기관 브랜딩 도서",
+];
+
+// 다른 곳의 이름 · 금액은 쓰지 않는다. 일반적인 경우라고 아래에 밝힌다
+const COMPARE: [string, string, string][] = [
+  ["원고", "저자가 완성해서 보냅니다", "인터뷰 두 번으로 작가가 함께 씁니다"],
+  ["기획", "받은 원고를 책 모양으로 만듭니다", "기획자가 목차부터 책의 방향을 잡습니다"],
+  ["출간 전 검수", "저자가 직접 확인합니다", "표절 · 저작권 · 초상권을 전담팀이 먼저 검수합니다"],
+  ["출간 후", "인쇄와 납품에서 끝나는 경우가 많습니다", "마케팅 · 강연 · 사업 확장까지 이어갑니다"],
+];
+
+// 회사 소개(/about) 포트폴리오에 이미 공개된 표지 — 실명 · 책 제목은 첫 화면 글자로 쓰지 않는다
+const BOOKS = [
+  { file: "leader-talk", cat: "코칭 · 커뮤니케이션" },
+  { file: "k-beauty", cat: "전문지식 · 뷰티" },
+  { file: "livecommerce", cat: "비즈니스 · 실용서" },
+  { file: "esg-kim", cat: "전문지식 · ESG" },
+  { file: "dream-everyday", cat: "자서전 · 인생기록" },
+  { file: "culturen-4th", cat: "문화산업 · 전문서" },
+  { file: "k-man-report", cat: "사회 · 문화 비평" },
+  { file: "startup-exit", cat: "비즈니스 · 스타트업" },
+];
+
+// 첫 화면에는 자세히 쓰지 않고 눌러서 들어가게 한다 (대표님 메모: 메인 말고 클릭 가능한 칸)
+const SHORTCUTS = [
+  { href: "/blog/publishing-cost-quote-check-3", title: "출판 비용", body: "비용이 왜 달라지는지, 견적서에서 무엇을 볼지", label: "cost" },
+  { href: "/guide/book-publishing", title: "책 내는 과정", body: "출판 방법별 진행 순서와 나에게 맞는 방법", label: "process" },
+  { href: "#apply", title: "견적 문의", body: "책 주제와 상황을 남기시면 맞춰서 안내합니다", label: "quote" },
+];
 
 const WHY = [
   { ico: "✓", title: "대표가 먼저 걸어본 길", body: "이야기 하나를 웹툰 · 뮤지컬 · 독립영화 · 강연 · 사업으로 직접 넓혀 봤습니다. 출간 다음에 무엇이 오는지까지 함께 설계합니다." },
@@ -83,6 +126,10 @@ export default function HomePage() {
                  data-track="cta_click" data-category="consult" data-label="home_hero_kakao">
                 <KakaoIcon className={s.kk} />카카오톡으로 바로 상담
               </a>
+              <a className={s.btnTel} href="tel:010-2068-0817"
+                 data-track="cta_click" data-category="consult" data-label="home_hero_tel">
+                전화 상담 010-2068-0817
+              </a>
               <a className={s.toForm} href="#apply">또는 아래 신청서 작성하기 ↓</a>
             </div>
             <dl className={s.stats}>
@@ -90,6 +137,14 @@ export default function HomePage() {
               <div><dt>10년+</dt><dd>출판 운영</dd></div>
               <div><dt>45%</dt><dd>종이책 인세</dd></div>
             </dl>
+            <Link className={s.proBanner} href="/professional"
+                  data-track="cta_click" data-category="navigation" data-label="home_professional_banner">
+              <span className={s.proText}>
+                <span className={s.proWho}>의사 · 변호사 · 세무사 · 회계사 · 컨설턴트 · CEO라면</span>
+                <b>전문직 전문 패키지 <em>1,500만원</em></b>
+              </span>
+              <span className={s.proGo}>자세히 보기 →</span>
+            </Link>
           </div>
         </section>
 
@@ -97,6 +152,26 @@ export default function HomePage() {
         <section className={s.apply} id="apply">
           <div className={s.narrow}>
             <ConsultForm />
+          </div>
+        </section>
+
+        {/* ── 고민 해결 ───────────────────────────────── */}
+        <section className={s.section} id="worries">
+          <div className={s.wrap}>
+            <p className={s.eyebrow}>고민 해결</p>
+            <h2 className={s.h2}>책을 내기 전, 가장 많이 망설이는 네 가지</h2>
+            <div className={s.worries}>
+              {WORRIES.map((w) => (
+                <article key={w.q}>
+                  <h3>{w.q}</h3>
+                  <p>{w.a}</p>
+                </article>
+              ))}
+            </div>
+            <h3 className={s.authorsHead}>이런 분들과 책을 만들어 왔습니다</h3>
+            <ul className={s.authors}>
+              {AUTHORS.map((a) => <li key={a}>{a}</li>)}
+            </ul>
           </div>
         </section>
 
@@ -115,6 +190,43 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── 무엇이 다른가 ─────────────────────────────── */}
+        <section className={`${s.section} ${s.tint}`} id="compare">
+          <div className={s.wrap}>
+            <p className={s.eyebrow}>COMPARE</p>
+            <h2 className={s.h2}>같은 ‘출판’이어도 맡기는 일이 다릅니다</h2>
+            <p className={s.sub}>인쇄비만 비교하면 놓치는 것들입니다.</p>
+            <div className={s.cmpWrap}>
+              <table className={s.cmpTable}>
+                <thead>
+                  <tr><th scope="col">구분</th><th scope="col">인쇄 중심 출판</th><th scope="col" className={s.cmpUs}>드림위드에스 인터뷰 출판</th></tr>
+                </thead>
+                <tbody>
+                  {COMPARE.map(([k, a, b]) => (
+                    <tr key={k}><th scope="row">{k}</th><td data-l="인쇄 중심 출판">{a}</td><td data-l="드림위드에스" className={s.cmpUs}>{b}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className={s.note}>※ 일반적인 경우를 비교한 것으로, 업체와 계약 조건에 따라 다를 수 있습니다.</p>
+            <div className={s.fit}>
+              <p><b>이런 분께 맞습니다</b>책을 전문성 · 사업 · 인생 기록에 제대로 쓰고 싶은 분, 글 쓸 시간이 없는 분</p>
+              <p><b>이런 분께는 맞지 않습니다</b>가장 낮은 인쇄비만 찾는 분</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 출간 도서 ───────────────────────────────── */}
+        <section className={s.section} id="books">
+          <div className={s.wrap}>
+            <p className={s.eyebrow}>BOOKS</p>
+            <h2 className={s.h2}>드림위드에스가 만든 책</h2>
+            <p className={s.sub}>옆으로 넘겨 보세요. 누적 890권 이상을 출간했습니다.</p>
+            <BookRail books={BOOKS} />
+            <p className={s.moreBooks}><Link href="/about#portfolio">출간 도서 더 보기 →</Link></p>
           </div>
         </section>
 
@@ -159,6 +271,14 @@ export default function HomePage() {
         {/* ── 회사 소개 전체(예전 첫 화면)로 ─────────────── */}
         <section className={s.section}>
           <div className={s.wrap}>
+            <nav className={s.shortcuts} aria-label="더 알아보기">
+              {SHORTCUTS.map((x) => (
+                <Link key={x.title} href={x.href} data-track="cta_click" data-category="navigation" data-label={`home_shortcut_${x.label}`}>
+                  <b>{x.title} →</b>
+                  <span>{x.body}</span>
+                </Link>
+              ))}
+            </nav>
             <Link className={s.aboutLink} href="/about" data-track="cta_click" data-category="navigation" data-label="home_about_link">
               <span>
                 <p className={s.eyebrow}>ABOUT US</p>

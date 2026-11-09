@@ -37,6 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/professional`,
+      lastModified: new Date("2026-11-09"),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
     // 출판 가이드 — 글을 고친 날로 적는다 (매번 now 로 두면 lastmod 를 믿지 않게 된다)
     {
       url: `${SITE_URL}/guide`,

@@ -186,6 +186,8 @@ nav.main-nav a:hover::after { transform: scaleX(1); }
 nav.main-nav a, .header-right .cta-btn { white-space: nowrap; }
 @media (min-width: 901px) and (max-width: 1240px) { nav.main-nav { gap: 16px; } nav.main-nav a { font-size: 13.5px; } }
 @media (min-width: 901px) and (max-width: 1060px) { nav.main-nav { gap: 11px; } nav.main-nav a { font-size: 13px; } }
+/* 메뉴에 '출판 가이드'가 늘어 이 폭에서 오른쪽이 화면 밖으로 밀렸다 (11/9) — 메뉴에 '상담'이 있으니 오른쪽 버튼만 숨긴다 */
+@media (min-width: 901px) and (max-width: 1140px) { .header-right .cta-btn { display: none; } }
 @media (min-width: 901px) and (max-width: 990px) {
   nav.main-nav { gap: 8px; }
   nav.main-nav a { font-size: 12.5px; }
