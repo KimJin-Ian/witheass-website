@@ -167,7 +167,7 @@ const METHODS: Method[] = [
     title: "인터뷰 출판 — 원고 없이 말로 시작하는 방법",
     summary: "저자는 이야기하고, 전문 작가가 인터뷰를 바탕으로 원고를 쓰는 방식입니다. 드림위드에스가 주로 하는 방식입니다.",
     how: [
-      "인터뷰 2회로 책의 뼈대(주제 · 목차 · 핵심 이야기)를 잡습니다.",
+      "인터뷰로 책의 뼈대(주제 · 목차 · 핵심 이야기)를 잡습니다.",
       "인터뷰가 끝나고 약 4주 뒤 1차 원고를 받고, 두 번에 걸쳐 고칩니다.",
       "교정과 표지 디자인(시안 2개 · 수정 2회)을 동시에 진행해 기간을 줄이고, 인쇄 · 유통으로 이어갑니다.",
     ],
@@ -338,10 +338,10 @@ export default function BookPublishingGuidePage() {
 
             <aside className={s.brand} aria-label="드림위드에스 출판사 안내">
               <div className={s.eyebrow}>드림위드에스 출판사</div>
-              <p className={s.brandTitle}>원고가 없어도, 인터뷰 두 번이면 시작할 수 있습니다</p>
+              <p className={s.brandTitle}>원고가 없어도, 인터뷰로 시작할 수 있습니다</p>
               <p className={s.brandSub}>10년 넘게, 누적 890권 이상의 책을 만들었습니다.</p>
               <ul className={s.facts}>
-                <li>인터뷰 2회로 책의 뼈대 완성</li>
+                <li>인터뷰로 책의 뼈대 완성</li>
                 <li>작가 · 기획 · 디자인 · 교정 동시 진행</li>
                 <li>표절 · 저작권 · 명예훼손 사전 검수</li>
                 <li>전국 온 · 오프라인 서점 + 전자책 유통</li>

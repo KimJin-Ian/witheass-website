@@ -60,20 +60,6 @@
   .stats { margin-top: 28px; }
 }
 
-/* ── 전문직 패키지로 가는 띠 (11/9) ── */
-.proBanner {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px;
-  margin-top: 32px; padding: 20px 24px; border-radius: 14px; text-decoration: none;
-  background: var(--navy-deep); color: #fff;
-}
-.proBanner:hover { background: var(--navy); }
-.proBanner:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-.proText { display: grid; gap: 2px; }
-.proWho { font-size: 14.5px; color: #c9d0df; }
-.proText b { font-size: clamp(20px, 3vw, 24px); font-weight: 800; letter-spacing: -0.02em; }
-.proText em { font-style: normal; color: var(--gold); font-variant-numeric: tabular-nums; }
-.proGo { font-size: 16px; font-weight: 700; color: var(--gold); }
-
 /* ── 상담 신청서 ── */
 .apply { background: var(--tint); padding: 56px 0 64px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .sheet { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 36px 32px; box-shadow: 0 18px 50px rgba(10, 18, 40, 0.07); }
@@ -259,7 +245,6 @@ textarea.input { resize: vertical; min-height: 110px; }
 
 /* 눌러서 들어가는 칸 — 비용 · 과정 · 견적 */
 .shortcuts { display: grid; gap: 12px; margin-bottom: 18px; }
-@media (min-width: 760px) { .shortcuts { grid-template-columns: repeat(3, 1fr); } }
 .shortcuts a { display: flex; flex-direction: column; gap: 4px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 14px; text-decoration: none; background: var(--tint); color: var(--ink); }
 .shortcuts a:hover { border-color: var(--navy); }
 .shortcuts b { color: var(--navy); font-size: 18px; }

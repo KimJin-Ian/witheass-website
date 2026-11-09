@@ -1,0 +1,49 @@
+/* Q&A 모음집 (2026-11-10) — 색 · 글씨는 첫 화면(home.module.css)의 .page 것을 쓴다 */
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+.head { background: var(--tint); border-bottom: 1px solid var(--line); padding: 56px 0 40px; }
+.eyebrow { margin: 0 0 6px; font-size: 13px; font-weight: 800; color: var(--gold-ink); letter-spacing: 0.12em; }
+.root .head h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -0.025em; }
+.lead { margin: 10px 0 0; color: var(--muted); font-size: 17px; }
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.jump a {
+  padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff;
+  color: var(--navy); font-size: 15px; font-weight: 700; text-decoration: none;
+}
+.jump a:hover { border-color: var(--navy); }
+.jump a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* 사이트 공통 section 여백(globals.css)을 덮는다 */
+.root .group { padding: 48px 0 0; scroll-margin-top: 90px; }
+.root .group h2 { font-size: clamp(22px, 3.4vw, 26px); font-weight: 800; padding-bottom: 12px; border-bottom: 2px solid var(--navy); }
+
+.item { border-bottom: 1px solid var(--line); }
+.item summary {
+  display: flex; gap: 12px; align-items: baseline; cursor: pointer; list-style: none;
+  padding: 18px 0; font-size: 17.5px; font-weight: 700; color: var(--navy); line-height: 1.5;
+}
+.item summary::-webkit-details-marker { display: none; }
+.item summary::after { content: "+"; margin-left: auto; color: var(--gold-ink); font-size: 22px; font-weight: 400; line-height: 1; }
+.item[open] summary::after { content: "−"; }
+.item summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.mark { flex: none; font-weight: 800; color: var(--gold-ink); }
+.answer { padding: 0 0 20px 26px; }
+.answer p { margin: 0; font-size: 16.5px; }
+.answer a { display: inline-block; margin-top: 8px; color: var(--navy); font-weight: 700; font-size: 15.5px; }
+
+.root .ask { margin: 56px 0 72px; padding: 30px 28px; border-radius: 16px; background: var(--navy-deep); color: #d7dce8; }
+.root .ask h2 { color: #fff; font-size: clamp(21px, 3.2vw, 26px); font-weight: 800; }
+.ask p { margin: 8px 0 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.primary {
+  display: inline-flex; align-items: center; text-decoration: none;
+  background: var(--gold); color: var(--navy-deep); font-weight: 800; font-size: 17px; padding: 15px 24px; border-radius: 12px;
+}
+.primary:hover { filter: brightness(1.06); }
+.primary:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+@media (max-width: 560px) {
+  .head { padding: 36px 0 30px; }
+  .answer { padding-left: 0; }
+  .actions a { width: 100%; justify-content: center; }
+}

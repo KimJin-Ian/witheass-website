@@ -15,6 +15,9 @@ interface DbNavItem {
   sort_order: number;
 }
 
+// 전문직 전문 패키지 랜딩 — 메뉴에서 조금 굵게 보인다 (11/10 대표님: 메인 배너 대신 상단 메뉴)
+const PRO_URL = "/professional";
+
 export default function SiteHeader() {
   const { t, lang } = useLang();
   const [scrolled, setScrolled] = useState(false);
@@ -106,15 +109,16 @@ export default function SiteHeader() {
                     onClick={closeMenu}
                     target={ext ? "_blank" : undefined}
                     rel={ext ? "noopener noreferrer" : undefined}
+                    className={item.is_cta ? "nav-cta" : item.url === PRO_URL ? "nav-pro" : undefined}
                     style={item.is_cta ? { color: "var(--gold-600)" } : undefined}
                   >
                     {item.label}
                   </a>
                 );
               });
-              // DB에 /team 메뉴가 없으면 CTA 앞(없으면 맨 끝)에 끼워 넣는다
+              // DB에 /team 메뉴가 없으면 전문직 패키지 · CTA 앞(없으면 맨 끝)에 끼워 넣는다 — 전문직 패키지가 오른쪽 끝에 오게
               if (!dbNav!.some((it) => it.url === "/team")) {
-                const ctaIdx = dbNav!.findIndex((it) => it.is_cta);
+                const ctaIdx = dbNav!.findIndex((it) => it.is_cta || it.url === PRO_URL);
                 const at = ctaIdx === -1 ? items.length : ctaIdx;
                 items.splice(
                   at,
@@ -137,7 +141,8 @@ export default function SiteHeader() {
               <a href="/guide" onClick={closeMenu}>출판 가이드</a>
               <a href="/blog" onClick={closeMenu}>블로그</a>
               <a href="/about#faq" onClick={closeMenu}>{t("nav.faq")}</a>
-              <a href={KAKAO_CHAT} target="_blank" rel="noopener noreferrer" onClick={closeMenu} style={{ color: "var(--gold-600)" }}>
+              <a href={PRO_URL} onClick={closeMenu} className="nav-pro">전문직 패키지</a>
+              <a href={KAKAO_CHAT} target="_blank" rel="noopener noreferrer" onClick={closeMenu} className="nav-cta" style={{ color: "var(--gold-600)" }}>
                 {t("nav.consult")} →
               </a>
             </>
