@@ -5,6 +5,7 @@ import SiteFooter from "./components/SiteFooter";
 import ConsultForm from "./components/ConsultForm";
 import BookRail from "./components/BookRail";
 import { BESTSELLERS } from "@/lib/bestsellers";
+import { COACHING } from "@/lib/coaching";
 import { KAKAO_CHAT, KAKAO_PATH } from "@/lib/links";
 import s from "./home.module.css";
 
@@ -170,6 +171,25 @@ export default function HomePage() {
             <ul className={s.authors}>
               {AUTHORS.map((a) => <li key={a}>{a}</li>)}
             </ul>
+          </div>
+        </section>
+
+        {/* ── 1:1 코칭 — 웨비나 랜딩의 어두운 띠 느낌 (11/10 대표님) ─── */}
+        <section className={s.coachBand} id="coaching">
+          <div className={s.wrap}>
+            <p className={s.coachKicker}>책 쓰기, 무엇부터 해야 할지 막막하다면</p>
+            <h2 className={s.coachTitle}><em>1:1 코칭</em>으로 주제와 목차부터 잡으세요</h2>
+            <div className={s.coachCards}>
+              {COACHING.map((x) => (
+                <Link key={x.key} href={`/coaching#${x.key}`} className={s.coachCard}
+                      data-track="cta_click" data-category="navigation" data-label={`home_coaching_${x.key}`}>
+                  <span className={s.coachName}>{x.name}</span>
+                  <b className={s.coachPrice}>{x.price}</b>
+                  <span className={s.coachFor}>{x.for}</span>
+                </Link>
+              ))}
+            </div>
+            <Link className={s.coachMore} href="/coaching" data-track="cta_click" data-category="navigation" data-label="home_coaching_more">코칭 프로그램 자세히 보기 →</Link>
           </div>
         </section>
 
