@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getPublishedPosts } from "@/lib/content";
 import SiteHeader from "../../components/SiteHeader";
@@ -125,18 +124,18 @@ export default async function BlogPostPage({ params }: Props) {
       {/* 조회수 +1 (클라이언트, 세션당 1회) */}
       <BlogViewTracker slug={post.slug} />
 
-      <Script
+      <script
         id="breadcrumb-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <Script
+      <script
         id="article-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       {faqLd && (
-        <Script
+        <script
           id="faq-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}

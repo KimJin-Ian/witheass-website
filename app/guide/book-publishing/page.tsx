@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import SiteHeader from "../../components/SiteHeader";
 import { KAKAO_CHAT } from "@/lib/links";
 import s from "../guide.module.css";
@@ -221,7 +220,7 @@ const ARTICLE_LD = {
 export default function BookPublishingGuidePage() {
   return (
     <>
-      <Script
+      <script
         id="guide-article-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ARTICLE_LD) }}

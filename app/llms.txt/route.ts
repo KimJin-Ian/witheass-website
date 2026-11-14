@@ -93,6 +93,14 @@ export async function GET() {
 - [About us](${SITE_URL}/about): 회사 소개·서비스·패키지 가격·진행 과정·출간 사례·자주 묻는 질문
 - [출판 가이드](${SITE_URL}/guide): 처음 책을 내는 분을 위한 주제별 정리 글
 - [책출판 방법 총정리](${SITE_URL}/guide/book-publishing): 기획출판·자비출판·반기획출판·독립출판·전자책·인터뷰 출판 비교와 고르는 법
+- [책출판 출판사 고르는 7가지 기준](${SITE_URL}/guide/how-to-choose-publisher): 출판사 추천을 받기 전에 확인할 것
+- [원고 없이 책 출판](${SITE_URL}/guide/publish-without-manuscript): 인터뷰 출판의 순서·기간·비용
+- [집필부터 서점 유통까지 올인원 출판](${SITE_URL}/guide/writing-to-bookstore-all-in-one): 대필·책쓰기 대행·인터뷰 출판 차이
+- [퍼스널 브랜딩 출판사 고르는 법](${SITE_URL}/guide/personal-branding-publishing): 출판과 마케팅을 이어서 설계하기
+- [전문직 전문 패키지](${SITE_URL}/professional): 의사·변호사·세무사·회계사·컨설턴트·CEO 출판
+- [1:1 책출판 코칭](${SITE_URL}/coaching): 목차 기획 50만원 · 책쓰기 정규과정 100만원
+- [베스트셀러 · 대표 도서](${SITE_URL}/bestsellers): 분야별 출간 도서
+- [출판 Q&A 모음집](${SITE_URL}/qna): 비용·과정·견적·저작권 질문
 - [블로그](${SITE_URL}/blog): 출판 절차·계약·비용에 대한 안내 글
 - [팀](${SITE_URL}/team): 운영 주체와 구성원
 - [네이버 책 — 출간 도서 전체](https://search.shopping.naver.com/book/search?query=드림위드에스)

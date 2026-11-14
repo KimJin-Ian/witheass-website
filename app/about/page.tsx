@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AboutClient from "./AboutClient";
 import SentBanner from "./SentBanner";
+import { faqJsonLd } from "@/lib/site-faq-ld";
 
 /**
  * About us — 회사 소개 전체 (2026-10-13 까지의 첫 화면)
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <AboutClient />
       <SentBanner />
     </>

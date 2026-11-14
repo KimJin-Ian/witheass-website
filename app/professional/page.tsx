@@ -105,7 +105,10 @@ const JSON_LD = {
       provider: { "@type": "Organization", name: "드림위드에스 출판사", url: SITE_URL },
       offers: { "@type": "Offer", price: "15000000", priceCurrency: "KRW", url: PAGE_URL },
     },
-    // FAQPage 는 layout 에 이미 있다 — 한 페이지에 두 개면 서치 콘솔이 중복 오류를 낸다
+    {
+      "@type": "FAQPage",
+      mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    },
     {
       "@type": "BreadcrumbList",
       itemListElement: [

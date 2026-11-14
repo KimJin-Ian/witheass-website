@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
+import { QUESTION_GUIDES } from "@/lib/question-guides";
 import s from "./guide.module.css";
 
 /**
@@ -75,6 +76,20 @@ export default function GuideIndexPage() {
               <div>인터뷰 출판 <span>원고 없어도</span></div>
             </div>
           </Link>
+
+          <h2 className={s.sectionTitle}>많이 묻는 질문별 정리</h2>
+          <p className={s.sectionSub}>AI · 검색에서 가장 많이 묻는 질문에 한 페이지씩 답했습니다.</p>
+          <ul className={s.list}>
+            {QUESTION_GUIDES.map((g) => (
+              <li key={g.slug}>
+                <Link href={`/guide/${g.slug}`}>
+                  <span className={s.listNo}>{g.no}</span>
+                  <span className={s.listTitle}>{g.question} {g.em}<span className={s.listText}>{g.takeaways[0]}</span></span>
+                  <span className={s.listMeta}>읽기 →</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
 
           <h2 className={s.sectionTitle}>주제별 정리 글</h2>
           <p className={s.sectionSub}>궁금한 출판 방식이 정해졌다면 — 그 방식 하나를 처음부터 끝까지 정리한 글입니다.</p>

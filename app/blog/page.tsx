@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { getPublishedPosts } from "@/lib/content";
 import SiteHeader from "../components/SiteHeader";
 
@@ -61,7 +60,7 @@ export default async function BlogIndexPage() {
 
   return (
     <>
-      <Script
+      <script
         id="blog-list-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

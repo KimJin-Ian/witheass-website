@@ -133,11 +133,19 @@ const JSON_LD = {
   ],
 };
 
+// 화면에 보이는 질문 · 답 그대로 (11/14)
+const FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: GROUPS.flatMap((g) => g.items).map((it) => ({ "@type": "Question", name: it.q, acceptedAnswer: { "@type": "Answer", text: it.a } })),
+};
+
 export default function QnaPage() {
   return (
     <>
       <SiteHeader />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
       <main className={`${h.page} ${q.root}`} id="main-content">
         <header className={q.head}>
           <div className={q.wrap}>

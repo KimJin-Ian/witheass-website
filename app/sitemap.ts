@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/content";
+import { QUESTION_GUIDES } from "@/lib/question-guides";
 
 const SITE_URL = "https://www.bookpublishingwithess.com";
 
@@ -61,6 +62,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    // 질문별 상세 페이지 (11/14)
+    ...QUESTION_GUIDES.map((g) => ({
+      url: `${SITE_URL}/guide/${g.slug}`,
+      lastModified: new Date("2026-11-14"),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
     // 출판 가이드 — 글을 고친 날로 적는다 (매번 now 로 두면 lastmod 를 믿지 않게 된다)
     {
       url: `${SITE_URL}/guide`,
