@@ -49,12 +49,12 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://wcs.naver.net https://va.vercel-scripts.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://wcs.naver.net https://wcs.pstatic.net https://ssl.pstatic.net https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
               "font-src 'self' data: https://cdn.jsdelivr.net",
               "img-src 'self' data: blob: https:",
-              // 구글 애널리틱스 4 는 www 말고 region1.google-analytics.com · analytics.google.com 으로도 보낸다. 네이버 애널리틱스는 wcs.naver.com
-              "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://wcs.naver.com https://wcs.naver.net https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+              // 구글 애널리틱스 4 는 www 말고 region1.google-analytics.com · analytics.google.com 으로도 보낸다. 네이버 애널리틱스는 wcs.naver.com (+ 스크립트가 함께 부르는 ssl.pstatic.net · nam.veta.naver.com)
+              "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://wcs.naver.com https://wcs.naver.net https://wcs.pstatic.net https://nam.veta.naver.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
               "frame-ancestors 'self' https://witheass-admin-real.vercel.app https://*.vercel.app",
               "base-uri 'self'",
               "form-action 'self'",
