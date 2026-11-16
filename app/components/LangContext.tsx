@@ -10,7 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname } from "next/navigation";
-import { tFor, type Lang, LANGS } from "@/lib/i18n";
+import { tFor, DICTIONARIES, type Lang, LANGS } from "@/lib/i18n";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 
 type LangContextValue = {
@@ -49,6 +49,8 @@ function langFromPath(pathname: string | null): Lang {
   const first = (pathname || "").split("/")[1];
   return first === "en" || first === "zh" || first === "ja" ? first : "ko";
 }
+
+const HANGUL = /[가-힣]/;
 
 /** <html lang> 에 넣는 값 (중국어는 간체) */
 const HTML_LANG: Record<Lang, string> = { ko: "ko", en: "en", zh: "zh-Hans", ja: "ja" };
@@ -108,10 +110,17 @@ export function LangProvider({ children }: { children: ReactNode }) {
   );
 
   // t(): DB 값 우선, 없으면 i18n.ts 폴백
+  // 단, 번역 페이지(en · zh · ja)에서 DB 값이 한국어이면 사전의 번역을 쓴다.
+  // DB 의 외국어 칸에는 번역 전 한국어를 그대로 복사해 둔 자리가 많아서(가격표 항목 · 출간 사례 등),
+  // 그대로 두면 번역 페이지에 한국어가 다시 덮인다. admin 에서 그 칸에 번역문을 넣으면 그 값이 쓰인다.
   const t = useCallback(
     (key: string) => {
       const dbVal = dbContent[lang]?.[key];
       if (dbVal !== undefined && dbVal !== null && dbVal !== "") {
+        if (lang !== "ko" && HANGUL.test(dbVal)) {
+          const own = DICTIONARIES[lang]?.[key];
+          if (own) return own;
+        }
         return dbVal;
       }
       return tFor(lang, key);
