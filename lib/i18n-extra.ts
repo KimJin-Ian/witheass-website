@@ -743,3 +743,109 @@ export function langAlternates(siteUrl: string): Record<string, string> {
     "x-default": `${siteUrl}/about`,
   };
 }
+
+// ─────────────────────────────────────────────────────────────
+// 4) 「한눈에 보기」 그림 구획 (app/components/VisualGlance.tsx)
+//    글 대신 그림으로 보여 주는 요약 — 진행 흐름 · 인세 · 기간 · 패키지 단계.
+//    숫자는 이미 사이트에 공개된 것만 쓴다 (인세 45% / 20%, 가격은 가격표 키를 그대로 읽는다).
+// ─────────────────────────────────────────────────────────────
+export type Glance = {
+  eyebrow: string;
+  title: string;
+  /** 진행 흐름 7단계 — 인터뷰 · 집필 · 디자인 · 인쇄 · 서점 · 전자책 · 마케팅 */
+  steps: [string, string, string, string, string, string, string];
+  royaltyPrint: string;
+  royaltyEbook: string;
+  ladderTitle: string;
+  /** 패키지 단계 그림에 쓰는 아이콘 이름표 */
+  icon: {
+    manuscript: string;
+    edit: string;
+    interview: string;
+    book: string;
+    store: string;
+    ebook: string;
+    marketing: string;
+    speaking: string;
+    pro: string;
+  };
+};
+
+export const GLANCE: Record<L, Glance> = {
+  ko: {
+    eyebrow: "한눈에 보기",
+    title: "이야기가 서점에 놓이기까지",
+    steps: ["인터뷰", "집필", "디자인", "인쇄", "서점", "전자책", "마케팅"],
+    royaltyPrint: "종이책 인세",
+    royaltyEbook: "전자책 인세",
+    ladderTitle: "어디까지 함께할지 고르기",
+    icon: {
+      manuscript: "내 원고",
+      edit: "교정·교열",
+      interview: "인터뷰",
+      book: "500권 인쇄",
+      store: "서점 유통",
+      ebook: "전자책",
+      marketing: "마케팅",
+      speaking: "강연회",
+      pro: "전문직 브랜딩",
+    },
+  },
+  en: {
+    eyebrow: "AT A GLANCE",
+    title: "From your story to the bookstore shelf",
+    steps: ["Interview", "Writing", "Design", "Printing", "Bookstores", "E-book", "Marketing"],
+    royaltyPrint: "Print royalty",
+    royaltyEbook: "E-book royalty",
+    ladderTitle: "Choose how far we go together",
+    icon: {
+      manuscript: "Your manuscript",
+      edit: "Editing",
+      interview: "Interview",
+      book: "500 copies",
+      store: "Bookstores",
+      ebook: "E-book",
+      marketing: "Marketing",
+      speaking: "Speaking event",
+      pro: "Professional branding",
+    },
+  },
+  zh: {
+    eyebrow: "一图看懂",
+    title: "从您的故事，到书店的书架",
+    steps: ["访谈", "写作", "设计", "印刷", "书店", "电子书", "营销"],
+    royaltyPrint: "纸质书版税",
+    royaltyEbook: "电子书版税",
+    ladderTitle: "选择我们同行到哪一步",
+    icon: {
+      manuscript: "您的原稿",
+      edit: "校对",
+      interview: "访谈",
+      book: "印刷500本",
+      store: "书店流通",
+      ebook: "电子书",
+      marketing: "营销",
+      speaking: "演讲会",
+      pro: "专业人士品牌",
+    },
+  },
+  ja: {
+    eyebrow: "ひと目でわかる",
+    title: "あなたの物語が、書店の棚に並ぶまで",
+    steps: ["インタビュー", "執筆", "デザイン", "印刷", "書店", "電子書籍", "マーケティング"],
+    royaltyPrint: "紙書籍の印税",
+    royaltyEbook: "電子書籍の印税",
+    ladderTitle: "どこまでご一緒するかを選ぶ",
+    icon: {
+      manuscript: "お手持ちの原稿",
+      edit: "校正",
+      interview: "インタビュー",
+      book: "500部印刷",
+      store: "書店流通",
+      ebook: "電子書籍",
+      marketing: "マーケティング",
+      speaking: "講演会",
+      pro: "専門職ブランディング",
+    },
+  },
+};
