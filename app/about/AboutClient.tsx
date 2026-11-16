@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import SiteHeader from "../components/SiteHeader";
 import Faq from "../components/Faq";
 import DynamicSections from "../components/DynamicSections";
@@ -8,6 +9,7 @@ import EditMode from "../components/EditMode";
 import IntroVideoPopup from "../components/IntroVideoPopup";
 import { useLang } from "../components/LangContext";
 import { KAKAO_CHAT } from "@/lib/links";
+import { FULLPKG } from "@/lib/i18n-extra";
 
 /**
  * About us — 2026-10-13 까지 첫 화면(/)이던 회사 소개 전체
@@ -17,7 +19,8 @@ import { KAKAO_CHAT } from "@/lib/links";
  * 상담 · 문의 버튼은 전부 카카오톡 채팅으로 보낸다 (대표님 요청).
  */
 export default function AboutClient() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const fp = FULLPKG[lang];
   return (
     <>
       {/* 비주얼 에디터 모드 (?edit=1 시에만 활성화, 일반 방문자에겐 영향 없음) */}
@@ -26,7 +29,7 @@ export default function AboutClient() {
       {/* 인트로 영상 팝업 (방문 시 풀스크린 → 작게 → 드래그 가능) */}
       <IntroVideoPopup />
 
-      <a href="#main-content" className="skip-link">본문 바로가기</a>
+      <a href="#main-content" className="skip-link">{t("a11y.skip")}</a>
       <SiteHeader />
 
       <main id="main-content">
@@ -237,59 +240,34 @@ export default function AboutClient() {
       {/* FULL 패키지 상세 — 전문직·CEO·정치인 전용 */}
       <section id="fullpkg" className="fullpkg" data-edit-key="fullpkg">
         <div className="container" style={{ textAlign: "center" }}>
-          <span className="fullpkg-tag">전문직 · CEO · 정치인 전용</span>
-          <h2 className="section-title">책출판 &amp; 퍼스널브랜딩 통합 마케팅</h2>
-          <p className="fullpkg-lead">책을 내는 목적이 <strong>검색 시 나오는 공신력과 브랜드</strong>라면, 책만 내는 것으로는 의미가 없습니다. 출간 소식이 알려지면 지인·고객·거래처·동료가 한 번쯤 저자 이름을 검색합니다 — 바로 그 시점에 정보와 콘텐츠가 준비돼 있어야 전문성과 공신력이 형성됩니다.</p>
+          <span className="fullpkg-tag">{fp.tag}</span>
+          <h2 className="section-title">{fp.title}</h2>
+          <p className="fullpkg-lead">{fp.lead[0]}<strong>{fp.lead[1]}</strong>{fp.lead[2]}</p>
           <ul className="fullpkg-points">
-            <li><b>검색의 순간이 핵심</b> — 출간 직후가 가장 관심이 집중되는 시기. “나중에 천천히”는 그 골든타임을 놓칩니다.</li>
-            <li><b>단순 업로드가 아닌, 납득되는 리뷰</b> — 모든 플랫폼에 자연스러운 후기·콘텐츠가 검색되어야 합니다.</li>
-            <li><b>통합으로 맡겨야 하는 이유</b> — 책은 저자 개인의 이미지·전문성과 직결됩니다. 처음부터 함께 기획해 이해도 높은 드림위드에스에 통합으로.</li>
-            <li><b>평생 남는 이미지</b> — 금액보다 처음부터 제대로가 중요합니다.</li>
+            {fp.points.map(([head, body], i) => (
+              <li key={i}><b>{head}</b> — {body}</li>
+            ))}
           </ul>
-          <p className="fullpkg-quote">“단순 마케팅 대행이 아니라, 개인을 전문 브랜딩하고<br />책을 처음부터 함께 기획하는 통합 파트너.”</p>
+          <p className="fullpkg-quote">{fp.quote[0]}<br />{fp.quote[1]}</p>
 
           <details className="mk-acc">
-            <summary>📦 통합 퍼스널 브랜딩 마케팅 패키지 — 전체 항목 보기</summary>
+            <summary>{fp.summary}</summary>
             <div className="mk-body">
-              <div className="mk-sec">
-                <h4>1. 저자 인터뷰 영상 콘텐츠 제작 및 배포</h4>
-                <div className="mk-sub">인터뷰 제작</div>
-                <ul><li>전문 사회자 진행 인터뷰 촬영</li><li>10분 이내 편집 영상 1편 + 쇼츠 2편 + 풀버전</li></ul>
-                <div className="mk-sub">대형 채널 · 멀티 배포</div>
-                <ul><li>월 1,000만 뷰+ 협업 유튜브 채널 업로드</li><li>유튜브·틱톡·인스타·페북·네이버TV·스레드 동시 배포</li><li>영상 내/설명란 도서 구매 링크 삽입 · 하루 2~3개 지속 업로드</li></ul>
-              </div>
-              <div className="mk-sec">
-                <h4>2. 블로그 마케팅 및 검색 노출</h4>
-                <ul><li>블로그 포스팅 10건 제작·배포</li><li>저자명·전문분야·도서 키워드 SEO 검색 노출</li><li>전문성·경험·사례 중심 후기형 콘텐츠 운영</li></ul>
-              </div>
-              <div className="mk-sec">
-                <h4>3. SNS 콘텐츠 제작</h4>
-                <ul><li>인스타 카드뉴스 10장 1세트</li><li>인플루언서 리뷰형 콘텐츠</li><li>유튜브 롱폼 1편 + 쇼츠 2편 (별도 촬영) · MC 단독 인터뷰</li></ul>
-              </div>
-              <div className="mk-sec">
-                <h4>4. 언론홍보(PR)</h4>
-                <ul><li>언론 기사 2건+ 배포 · 포털 검색 브랜딩</li><li>저자 소개/전문분야 인터뷰/출간 기사로 신뢰도 확보</li></ul>
-              </div>
-              <div className="mk-sec">
-                <h4>5. 리뷰 및 바이럴 마케팅</h4>
-                <ul><li>리뷰단 모집·운영</li><li>블로그·카페·SNS 후기 기반 바이럴</li><li>독자·경험·전문성 리뷰 등 다양한 콘텐츠 생성</li></ul>
-              </div>
-              <div className="mk-sec">
-                <h4>6. 웹툰형 콘텐츠 제작</h4>
-                <ul><li>10컷+ 웹툰형 콘텐츠 — 책 내용을 스토리텔링으로 전달</li></ul>
-              </div>
-              <div className="mk-sec">
-                <h4>7. 강연·클래스·컨설팅 연계 전략</h4>
-                <ul><li>강연·클래스 상품화 / 컨설팅 상품 연결 전략 설계</li><li>책 판매 이후 추가 수익 모델 구축</li></ul>
-              </div>
-              <div className="mk-sec">
-                <h4>8. 퍼스널 브랜딩 로드맵 제공</h4>
-                <ul><li>저자 포지셔닝·전문가 브랜드·검색/SNS 브랜딩 방향 설정</li><li>강연·클래스·컨설팅·전문가 활동으로 연결되는 장기 성장 로드맵</li></ul>
-              </div>
-              <div className="mk-extra"><b>추가 진행 가능(별도 비용)</b> — 대형 서점 광고 · 지하철 광고 · 오프라인 홍보물 제작/운영</div>
-              <div className="mk-sub" style={{ textAlign: "center", marginTop: 22 }}>기대 효과</div>
+              {fp.secs.map((sec, i) => (
+                <div key={i} className="mk-sec">
+                  <h4>{sec.h}</h4>
+                  {sec.groups.map((g, j) => (
+                    <Fragment key={j}>
+                      {g.sub && <div className="mk-sub">{g.sub}</div>}
+                      <ul>{g.items.map((it, k) => <li key={k}>{it}</li>)}</ul>
+                    </Fragment>
+                  ))}
+                </div>
+              ))}
+              <div className="mk-extra"><b>{fp.extra[0]}</b> — {fp.extra[1]}</div>
+              <div className="mk-sub" style={{ textAlign: "center", marginTop: 22 }}>{fp.effectTitle}</div>
               <div className="mk-effect">
-                <span>도서 인지도 ↑</span><span>저자 브랜드 구축</span><span>검색 노출 확대</span><span>SNS 영향력 ↑</span><span>언론 노출 확보</span><span>후기·바이럴 확산</span><span>강연·클래스 기회</span><span>컨설팅·사업 확장</span>
+                {fp.effects.map((e, i) => <span key={i}>{e}</span>)}
               </div>
             </div>
           </details>
@@ -554,7 +532,7 @@ export default function AboutClient() {
             </a>
           </div>
 
-          <p className="belt-hint">누적 890명 · 끊임없이 출간 중</p>
+          <p className="belt-hint">{t("portfolio.beltHint")}</p>
           <div className="portfolio-belt">
             <div className="belt-track">
               {(() => {
@@ -573,7 +551,7 @@ export default function AboutClient() {
                       <div className="cover">
                         <img
                           src={`/covers/${img}`}
-                          alt={`드림위드에스 출판 사례 — ${title} (${cat})`}
+                          alt={`${t("portfolio.altPrefix")} — ${title} (${cat})`}
                           title={title}
                           loading="lazy"
                           width={720}
@@ -603,11 +581,11 @@ export default function AboutClient() {
           <p className="section-lead">{t("team.lead")}</p>
 
           <div className="team-compact">
-            <p style={{ fontSize: 15.5, color: "var(--text-700)" }}>저자가 혼자 책을 내는 것이 아닙니다. <strong>박사급 컨설턴트와 30+ 분야 전문 작가</strong>가 한 권 한 권에 직접 참여합니다.</p>
+            <p style={{ fontSize: 15.5, color: "var(--text-700)" }}>{t("team.compact.a")}<strong>{t("team.compact.b")}</strong>{t("team.compact.c")}</p>
             <div className="roles">
-              <span>출판부 팀장</span><span>출판 기획·컨설팅</span><span>논문 컨설팅</span><span>출판 실무·교육</span><span>기획 작가</span><span>출판 작가</span>
+              {[1, 2, 3, 4, 5, 6].map((n) => <span key={n}>{t(`team.role${n}`)}</span>)}
             </div>
-            <a href="/team" className="cta-btn">작가진 이력 자세히 보기 →</a>
+            <a href="/team" className="cta-btn">{t("team.more")}</a>
           </div>
 
           <div className="team-privacy-note">{t("team.privacy")}</div>
@@ -683,7 +661,7 @@ export default function AboutClient() {
       </section>
 
       {/* 동적 섹션 (admin /site/sections에서 추가) */}
-      <DynamicSections />
+      <DynamicSections lang={lang} />
       </main>
 
       {/* FOOTER (DB 우선 + 폴백) */}
@@ -696,7 +674,7 @@ export default function AboutClient() {
           target="_blank"
           rel="noopener noreferrer"
           className="float-cta-btn kakao"
-          aria-label="카카오톡 상담"
+          aria-label={t("float.kakao")}
           data-track="cta_click"
           data-category="contact"
           data-label="float_kakao"
@@ -704,12 +682,12 @@ export default function AboutClient() {
           <svg className="float-cta-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 3C6.477 3 2 6.55 2 10.93c0 2.79 1.86 5.24 4.65 6.59-.18.65-.72 2.65-.83 3.06-.13.51.19.51.4.37.16-.11 2.61-1.77 3.66-2.49.7.1 1.41.16 2.12.16 5.523 0 10-3.55 10-7.93C22 6.55 17.523 3 12 3z" />
           </svg>
-          <span className="float-cta-text">카카오톡 상담</span>
+          <span className="float-cta-text">{t("float.kakao")}</span>
         </a>
         <a
           href="tel:01020680817"
           className="float-cta-btn phone"
-          aria-label="전화 상담"
+          aria-label={t("float.phone")}
           data-track="cta_click"
           data-category="contact"
           data-label="float_phone"
@@ -717,7 +695,7 @@ export default function AboutClient() {
           <svg className="float-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
           </svg>
-          <span className="float-cta-text">전화 상담</span>
+          <span className="float-cta-text">{t("float.phone")}</span>
         </a>
         <a
           href="https://whatsapp.com/channel/0029VbD3dlqGU3BBeU7sKN15"

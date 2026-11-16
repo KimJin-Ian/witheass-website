@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AboutClient from "./AboutClient";
 import SentBanner from "./SentBanner";
 import { faqJsonLd } from "@/lib/site-faq-ld";
+import { langAlternates } from "@/lib/i18n-extra";
 
 /**
  * About us — 회사 소개 전체 (2026-10-13 까지의 첫 화면)
@@ -17,7 +18,8 @@ export const metadata: Metadata = {
   title: "About us — 책 한 권으로 시작되는 인생의 다음 챕터",
   description:
     "드림위드에스 출판사 소개 — 자비출판 · 자서전출판 · 책출판 · 퍼스널브랜딩 · 논문 컨설팅. 누적 890권+ 출간, 인터뷰 기반 집필, 표절 검수 전담팀, 출판 → 마케팅 → 강연 · 사업 확장까지. 패키지 · 진행 과정 · 출간 사례 · 작가진 · 자주 묻는 질문.",
-  alternates: { canonical: `${SITE_URL}/about` },
+  // 영어 · 중국어 · 일본어 번역본(/en · /zh · /ja)과 서로를 가리킨다 (hreflang)
+  alternates: { canonical: `${SITE_URL}/about`, languages: langAlternates(SITE_URL) },
   openGraph: {
     title: "About us | 드림위드에스 출판사",
     description: "누적 890권+ 출간 · 인터뷰 기반 집필 · 출판부터 마케팅 · 강연까지. 드림위드에스 출판사를 소개합니다.",
