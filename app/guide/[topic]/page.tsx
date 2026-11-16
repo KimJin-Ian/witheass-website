@@ -29,7 +29,7 @@ export function generateMetadata({ params }: { params: { topic: string } }): Met
     title: g.title,
     description: g.description,
     alternates: { canonical: url },
-    openGraph: { title: g.title, description: g.description, url, type: "article", siteName: "드림위드에스 출판사" },
+    openGraph: { title: g.title, description: g.description, url, type: "article", siteName: "드림위드에스 출판사", images: [{ url: `${SITE_URL}/og-image.png?v=2`, width: 1200, height: 630 }] },
   };
 }
 

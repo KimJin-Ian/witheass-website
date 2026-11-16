@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "드림위드에스 출판사",
+    images: [{ url: `${SITE_URL}/og-image.png?v=2`, width: 1200, height: 630 }],
   },
 };
 

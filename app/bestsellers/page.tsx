@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
   alternates: { canonical: PAGE_URL },
-  openGraph: { title: TITLE, description: DESC, url: PAGE_URL, type: "website", siteName: "드림위드에스 출판사" },
+  openGraph: { title: TITLE, description: DESC, url: PAGE_URL, type: "website", siteName: "드림위드에스 출판사", images: [{ url: `${SITE_URL}/og-image.png?v=2`, width: 1200, height: 630 }] },
 };
 
 const GROUPS = [...new Set(BESTSELLERS.map((x) => x.group))];

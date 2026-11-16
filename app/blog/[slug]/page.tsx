@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: post.author_name ? [post.author_name] : ["드림위드에스 출판사"],
       images: post.cover_image_url
         ? [{ url: post.cover_image_url, alt: post.title }]
-        : undefined,
+        : [{ url: `${SITE_URL}/og-image.png?v=2`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
