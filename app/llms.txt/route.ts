@@ -97,6 +97,10 @@ export async function GET() {
 - [원고 없이 책 출판](${SITE_URL}/guide/publish-without-manuscript): 인터뷰 출판의 순서·기간·비용
 - [집필부터 서점 유통까지 올인원 출판](${SITE_URL}/guide/writing-to-bookstore-all-in-one): 대필·책쓰기 대행·인터뷰 출판 차이
 - [퍼스널 브랜딩 출판사 고르는 법](${SITE_URL}/guide/personal-branding-publishing): 출판과 마케팅을 이어서 설계하기
+- [자비출판 비용 정리](${SITE_URL}/guide/self-publishing-cost): 패키지별 금액·포함 범위·기간·인세
+- [의사 책 출판 방법](${SITE_URL}/guide/doctor-book-publishing): 진료와 병행하는 순서·기간·비용·출간 전 확인할 점
+- [CEO 책 출판 방법](${SITE_URL}/guide/ceo-book-publishing): 경영서·자서전·브랜드북 고르는 법과 비용
+- [자서전 출판 방법](${SITE_URL}/guide/autobiography-publishing): 인터뷰로 만드는 순서·기간·비용·준비할 것
 - [전문직 전문 패키지](${SITE_URL}/professional): 의사·변호사·세무사·회계사·컨설턴트·CEO 출판
 - [1:1 책출판 코칭](${SITE_URL}/coaching): 목차 기획 50만원 · 책쓰기 정규과정 100만원
 - [베스트셀러 · 대표 도서](${SITE_URL}/bestsellers): 분야별 출간 도서
