@@ -8,6 +8,7 @@
  * 2. 아래 키 추가:
  *    NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX        (Google Analytics 4)
  *    NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX        (Google Tag Manager, 선택)
+ *    NEXT_PUBLIC_NAVER_WA=xxxxxxxxxxxx      (네이버 애널리틱스, 선택)
  *
  * Vercel Analytics는 Vercel에 배포하면 대시보드에서 활성화만 하면 자동 작동.
  * (npm 패키지 설치 필요: npm i @vercel/analytics @vercel/speed-insights)
@@ -19,6 +20,8 @@ import { track as vercelTrack } from "@vercel/analytics";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// 네이버 애널리틱스(선택) — Vercel 환경변수 NEXT_PUBLIC_NAVER_WA 에 네이버 애널리틱스 사이트 ID 를 넣으면 켜진다.
+const NAVER_WA = process.env.NEXT_PUBLIC_NAVER_WA;
 
 // 전역 클릭 이벤트 자동 트래킹
 // data-track="event_name" 속성이 붙은 모든 요소의 클릭을
@@ -151,6 +154,17 @@ export default function Analytics() {
               style={{ display: "none", visibility: "hidden" }}
             />
           </noscript>
+        </>
+      )}
+
+      {NAVER_WA && (
+        <>
+          <Script src="https://wcs.naver.net/wcslog.js" strategy="afterInteractive" />
+          <Script id="naver-wa" strategy="afterInteractive">
+            {`if(!window.wcs_add) window.wcs_add = {};
+            window.wcs_add["wa"] = "${NAVER_WA}";
+            if(window.wcs) { window.wcs.inflow && window.wcs.inflow(); window.wcs_do && window.wcs_do(); }`}
+          </Script>
         </>
       )}
 
