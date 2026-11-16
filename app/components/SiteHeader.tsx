@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useLang } from "./LangContext";
 import LangSwitcher from "./LangSwitcher";
 import { supabase, SITE_KEY, isSupabaseConfigured } from "@/lib/supabase";
-import { KAKAO_CHAT, siteHref } from "@/lib/links";
+import { KAKAO_CHAT, siteHref, localHref } from "@/lib/links";
 
 interface DbNavItem {
   id: string;
@@ -77,15 +77,19 @@ export default function SiteHeader() {
   }, [lang]);
 
   const closeMenu = () => setOpen(false);
+  // 영어 · 중국어 · 일본어 페이지에서는 메뉴가 그 언어 페이지 안에서 움직인다 (/en#pricing).
+  // 한국어로만 있는 페이지(작가진 · 가이드 · 블로그 · 전문직 패키지)는 그 언어 메뉴에서 뺀다.
+  const isKo = lang === "ko";
+  const L = (href: string) => localHref(href, lang);
   const useDbNav = dbNav !== null && dbNav.length > 0;
 
   return (
     <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
       <div className="container header-inner">
-        <a href="/" className="logo" onClick={closeMenu} aria-label="드림위드에스 출판사 홈으로">
+        <a href={isKo ? "/" : `/${lang}`} className="logo" onClick={closeMenu} aria-label={t("a11y.home")}>
           <img
             src="/logo.png"
-            alt="드림위드에스 출판사 — 위드에스마케팅"
+            alt={t("a11y.logo")}
             width={200}
             height={50}
             style={{ height: "44px", width: "auto", display: "block" }}
@@ -105,7 +109,7 @@ export default function SiteHeader() {
                 return (
                   <a
                     key={item.id}
-                    href={h.href}
+                    href={L(h.href)}
                     onClick={closeMenu}
                     target={ext ? "_blank" : undefined}
                     rel={ext ? "noopener noreferrer" : undefined}
@@ -117,7 +121,7 @@ export default function SiteHeader() {
                 );
               });
               // DB에 /team 메뉴가 없으면 전문직 패키지 · CTA 앞(없으면 맨 끝)에 끼워 넣는다 — 전문직 패키지가 오른쪽 끝에 오게
-              if (!dbNav!.some((it) => it.url === "/team")) {
+              if (isKo && !dbNav!.some((it) => it.url === "/team")) {
                 const ctaIdx = dbNav!.findIndex((it) => it.is_cta || it.url === PRO_URL);
                 const at = ctaIdx === -1 ? items.length : ctaIdx;
                 items.splice(
@@ -131,17 +135,17 @@ export default function SiteHeader() {
           ) : (
             // 폴백: 기존 하드코딩 메뉴
             <>
-              <a href="/about" onClick={closeMenu}>About us</a>
-              <a href="/about#about" onClick={closeMenu}>{t("nav.about")}</a>
-              <a href="/about#thesis" onClick={closeMenu}>{t("nav.thesis")}</a>
-              <a href="/about#pricing" onClick={closeMenu}>{t("nav.pricing")}</a>
-              <a href="/about#service" onClick={closeMenu}>{t("nav.brand")}</a>
-              <a href="/about#portfolio" onClick={closeMenu}>{t("nav.portfolio")}</a>
-              <a href="/team" onClick={closeMenu}>전문 작가진</a>
-              <a href="/guide" onClick={closeMenu}>출판 가이드</a>
-              <a href="/blog" onClick={closeMenu}>블로그</a>
-              <a href="/about#faq" onClick={closeMenu}>{t("nav.faq")}</a>
-              <a href={PRO_URL} onClick={closeMenu} className="nav-pro">전문직 패키지</a>
+              <a href={L("/about")} onClick={closeMenu}>About us</a>
+              <a href={L("/about#about")} onClick={closeMenu}>{t("nav.about")}</a>
+              <a href={L("/about#thesis")} onClick={closeMenu}>{t("nav.thesis")}</a>
+              <a href={L("/about#pricing")} onClick={closeMenu}>{t("nav.pricing")}</a>
+              <a href={L("/about#service")} onClick={closeMenu}>{t("nav.brand")}</a>
+              <a href={L("/about#portfolio")} onClick={closeMenu}>{t("nav.portfolio")}</a>
+              {isKo && <a href="/team" onClick={closeMenu}>전문 작가진</a>}
+              {isKo && <a href="/guide" onClick={closeMenu}>출판 가이드</a>}
+              {isKo && <a href="/blog" onClick={closeMenu}>블로그</a>}
+              <a href={L("/about#faq")} onClick={closeMenu}>{t("nav.faq")}</a>
+              {isKo && <a href={PRO_URL} onClick={closeMenu} className="nav-pro">전문직 패키지</a>}
               <a href={KAKAO_CHAT} target="_blank" rel="noopener noreferrer" onClick={closeMenu} className="nav-cta" style={{ color: "var(--gold-600)" }}>
                 {t("nav.consult")} →
               </a>
@@ -157,7 +161,7 @@ export default function SiteHeader() {
         </div>
         <button
           className={`hamburger ${open ? "open" : ""}`}
-          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
+          aria-label={open ? t("a11y.menuClose") : t("a11y.menuOpen")}
           aria-expanded={open}
           aria-controls="main-nav"
           onClick={() => setOpen((v) => !v)}

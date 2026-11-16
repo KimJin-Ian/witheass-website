@@ -22,6 +22,7 @@ import {
   MouseEvent as ReactMouseEvent,
   TouchEvent as ReactTouchEvent,
 } from "react";
+import { useLang } from "./LangContext";
 
 type Mode = "fullscreen" | "floating" | "hidden";
 const STORAGE_KEY = "withess_intro_closed";
@@ -29,6 +30,7 @@ const MOBILE_BREAKPOINT = 768;
 const TAP_THRESHOLD_PX = 8;
 
 export default function IntroVideoPopup() {
+  const { t } = useLang();
   const [mode, setMode] = useState<Mode>("hidden");
   const [isMobile, setIsMobile] = useState(false);
   const [userInteracted, setUserInteracted] = useState(false); // 풀스크린 소리 켜기 가능 여부
@@ -237,7 +239,7 @@ export default function IntroVideoPopup() {
         <button
           type="button"
           onClick={minimizeToFloating}
-          aria-label="작게 보기"
+          aria-label={t("popup.small")}
           style={{
             position: "absolute",
             top: isMobile ? 12 : 20,
@@ -278,7 +280,7 @@ export default function IntroVideoPopup() {
             pointerEvents: "none",
           }}
         >
-          작게 보기 →
+          {t("popup.small")} →
         </div>
       )}
 
@@ -307,13 +309,13 @@ export default function IntroVideoPopup() {
               fontFamily: '-apple-system, "Pretendard", sans-serif',
             }}
           >
-            👆 탭 = 크게 {!isMobile && "· 🤚 드래그"}
+            👆 {t("popup.tap")} {!isMobile && `· 🤚 ${t("popup.drag")}`}
           </div>
           <div style={{ display: "flex", gap: 4 }}>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); expandToFullscreen(); }}
-              aria-label="크게 보기"
+              aria-label={t("popup.big")}
               style={{
                 width: 26, height: 26, borderRadius: 5,
                 background: "rgba(255,255,255,0.9)",
@@ -327,7 +329,7 @@ export default function IntroVideoPopup() {
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); closeCompletely(); }}
-              aria-label="닫기"
+              aria-label={t("popup.close")}
               style={{
                 width: 26, height: 26, borderRadius: 5,
                 background: "rgba(255,255,255,0.9)",
