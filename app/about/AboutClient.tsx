@@ -67,8 +67,8 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* 한눈에 보기 — 글 대신 그림으로 (영어 · 중국어 · 일본어 페이지에만. 한국어에도 넣으려면 조건만 빼면 된다) */}
-      {lang !== "ko" && <VisualGlance />}
+      {/* 한눈에 보기 — 글 대신 그림으로 (한국어 · 영어 · 중국어 · 일본어 모두) */}
+      <VisualGlance />
 
       {/* ABOUT */}
       <section id="about" data-edit-key="about">
