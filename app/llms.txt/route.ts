@@ -91,6 +91,7 @@ export async function GET() {
 ## 핵심 페이지
 - [홈](${SITE_URL}): 출판 상담 신청서 · 왜 드림위드에스인가 · 사례
 - [About us](${SITE_URL}/about): 회사 소개·서비스·패키지 가격·진행 과정·출간 사례·자주 묻는 질문
+- [English](${SITE_URL}/en) · [中文](${SITE_URL}/zh) · [日本語](${SITE_URL}/ja): About us 의 영어·중국어·일본어 번역본 (해외 저자 · 외국어 문의용)
 - [출판 가이드](${SITE_URL}/guide): 처음 책을 내는 분을 위한 주제별 정리 글
 - [책출판 방법 총정리](${SITE_URL}/guide/book-publishing): 기획출판·자비출판·반기획출판·독립출판·전자책·인터뷰 출판 비교와 고르는 법
 - [책출판 출판사 고르는 7가지 기준](${SITE_URL}/guide/how-to-choose-publisher): 출판사 추천을 받기 전에 확인할 것
