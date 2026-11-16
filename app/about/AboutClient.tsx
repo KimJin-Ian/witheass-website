@@ -7,6 +7,7 @@ import DynamicSections from "../components/DynamicSections";
 import SiteFooter from "../components/SiteFooter";
 import EditMode from "../components/EditMode";
 import IntroVideoPopup from "../components/IntroVideoPopup";
+import VisualGlance from "../components/VisualGlance";
 import { useLang } from "../components/LangContext";
 import { KAKAO_CHAT } from "@/lib/links";
 import { FULLPKG } from "@/lib/i18n-extra";
@@ -65,6 +66,9 @@ export default function AboutClient() {
           <div className="hero-extra">✓ {t("hero.extra")}</div>
         </div>
       </section>
+
+      {/* 한눈에 보기 — 글 대신 그림으로 (영어 · 중국어 · 일본어 페이지에만. 한국어에도 넣으려면 조건만 빼면 된다) */}
+      {lang !== "ko" && <VisualGlance />}
 
       {/* ABOUT */}
       <section id="about" data-edit-key="about">
