@@ -5,6 +5,8 @@
 //   const { t } = useLang();
 //   <h1>{t("hero.title")}</h1>
 
+import { EXTRA } from "./i18n-extra";
+
 export type Lang = "ko" | "en" | "zh" | "ja";
 
 export const LANGS: { code: Lang; label: string; short: string }[] = [
@@ -1432,7 +1434,13 @@ const ja: Dict = {
   "footer.copyright": "© 2026 With-Ess Marketing (Dream With Ess / The Culturen). All rights reserved.",
 };
 
-export const DICTIONARIES: Record<Lang, Dict> = { ko, en, zh, ja };
+// 번역 보충분(lib/i18n-extra.ts)을 합친다 — 같은 키가 있으면 이 파일의 값이 이긴다.
+export const DICTIONARIES: Record<Lang, Dict> = {
+  ko: { ...EXTRA.ko, ...ko },
+  en: { ...EXTRA.en, ...en },
+  zh: { ...EXTRA.zh, ...zh },
+  ja: { ...EXTRA.ja, ...ja },
+};
 
 export function tFor(lang: Lang, key: string): string {
   return DICTIONARIES[lang]?.[key] ?? DICTIONARIES.ko[key] ?? key;

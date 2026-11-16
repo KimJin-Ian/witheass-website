@@ -9,6 +9,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { usePathname } from "next/navigation";
 import { tFor, type Lang, LANGS } from "@/lib/i18n";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 
@@ -21,7 +22,6 @@ type LangContextValue = {
 
 const LangContext = createContext<LangContextValue | undefined>(undefined);
 
-const STORAGE_KEY = "withess_lang";
 const SITE_KEY = "witheass" as const;
 
 /**
@@ -37,33 +37,37 @@ function toI18nMap(rows: Array<{ section: string; content_key: string; value: st
   return map;
 }
 
+/** 주소가 정하는 언어 — /en · /zh · /ja 는 그 언어, 나머지는 전부 한국어 */
+export const LANG_HOME: Record<Lang, string> = {
+  ko: "/about",
+  en: "/en",
+  zh: "/zh",
+  ja: "/ja",
+};
+
+function langFromPath(pathname: string | null): Lang {
+  const first = (pathname || "").split("/")[1];
+  return first === "en" || first === "zh" || first === "ja" ? first : "ko";
+}
+
+/** <html lang> 에 넣는 값 (중국어는 간체) */
+const HTML_LANG: Record<Lang, string> = { ko: "ko", en: "en", zh: "zh-Hans", ja: "ja" };
+
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("ko");
+  // 언어는 주소로 정한다 (2026-11-16).
+  //   /en · /zh · /ja  → 영어 · 중국어 · 일본어 (서버에서부터 그 언어로 그려서 검색엔진이 읽을 수 있다)
+  //   그 밖의 주소      → 한국어
+  // 예전에는 같은 주소(/about)에서 브라우저 저장값으로 언어를 바꿨는데, 그러면 번역본에 주소가 없어
+  // 검색에 잡히지 않고 링크로 보내 줄 수도 없었다.
+  const pathname = usePathname();
+  const lang = langFromPath(pathname);
   // DB에서 가져온 콘텐츠 (i18n 키 형식, 언어별)
   const [dbContent, setDbContent] = useState<Record<string, Record<string, string>>>({});
 
-  // 첫 마운트 시 저장된 언어가 있으면 그 언어로 (없으면 한국어)
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY) as Lang | null;
-      if (saved && ["ko", "en", "zh", "ja"].includes(saved)) {
-        setLangState(saved);
-        document.documentElement.lang = saved;
-        return;
-      }
-      // 브라우저 언어로 자동 전환하지 않는다 (2026-11-16).
-      // 구글 검색 로봇은 영어 브라우저로 화면을 읽어서, 자동 전환이 켜져 있으면 /about 이 영어로 색인되고
-      // 모든 페이지의 <html lang> 이 en 으로 바뀐다. 기본은 한국어, 방문자가 언어 버튼으로 고르면 그 선택을 기억한다.
-      setLangState("ko");
-    } catch {
-      /* SSR / no localStorage */
-    }
-  }, []);
-
-  // lang 변경 시 html lang 속성 동기화
+  // html lang 속성 동기화
   useEffect(() => {
     if (typeof document !== "undefined") {
-      document.documentElement.lang = lang;
+      document.documentElement.lang = HTML_LANG[lang];
     }
   }, [lang]);
 
@@ -92,14 +96,16 @@ export function LangProvider({ children }: { children: ReactNode }) {
     return () => { alive = false; };
   }, [lang, dbContent]);
 
-  const setLang = useCallback((next: Lang) => {
-    setLangState(next);
-    try {
-      localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      /* ignore */
-    }
-  }, []);
+  // 언어 버튼 — 그 언어의 주소로 이동한다. 같은 구획(#pricing 등)을 보고 있었다면 그 자리로 간다.
+  const setLang = useCallback(
+    (next: Lang) => {
+      if (next === lang) return;
+      if (typeof window === "undefined") return;
+      const onIntro = window.location.pathname === LANG_HOME[lang];
+      window.location.href = LANG_HOME[next] + (onIntro ? window.location.hash : "");
+    },
+    [lang]
+  );
 
   // t(): DB 값 우선, 없으면 i18n.ts 폴백
   const t = useCallback(

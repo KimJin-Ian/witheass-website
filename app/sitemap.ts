@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/content";
 import { QUESTION_GUIDES } from "@/lib/question-guides";
+import { langAlternates } from "@/lib/i18n-extra";
 
 const SITE_URL = "https://www.bookpublishingwithess.com";
 
@@ -14,7 +15,8 @@ export const revalidate = 3600;
 
 /**
  * Dynamic sitemap — 메인 + /blog 목록 + 블로그 글 모두 포함
- * (witheass-website는 단일 언어 사이트이므로 hreflang alternates 미사용)
+ * 회사 소개는 한국어(/about) + 영어 · 중국어 · 일본어(/en · /zh · /ja) 네 주소가 있고,
+ * 네 주소가 서로를 hreflang 으로 가리킨다. 나머지 페이지는 한국어만 있다.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
@@ -37,7 +39,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
+      alternates: { languages: langAlternates(SITE_URL) },
     },
+    // 번역본 — 영어 · 중국어 · 일본어
+    ...["en", "zh", "ja"].map((l) => ({
+      url: `${SITE_URL}/${l}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+      alternates: { languages: langAlternates(SITE_URL) },
+    })),
     {
       url: `${SITE_URL}/professional`,
       lastModified: new Date("2026-11-09"),

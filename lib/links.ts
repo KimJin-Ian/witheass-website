@@ -34,3 +34,15 @@ export function siteHref(url: string, opts: { cta?: boolean } = {}): { href: str
   if (hash && OLD_MAIN_SECTIONS.has(hash)) return { href: `/about#${hash}`, external: false };
   return { href: u, external: /^https?:\/\//.test(u) };
 }
+
+/**
+ * 언어별 소개 페이지(/en · /zh · /ja) 안에서 쓰는 주소.
+ * 메뉴 · 푸터의 "/about#pricing" 을 그 언어 페이지의 같은 구획("/en#pricing")으로 바꾼다.
+ * 한국어(ko)는 그대로 둔다.
+ */
+export function localHref(href: string, lang: string): string {
+  if (lang === "ko") return href;
+  if (href === "/about") return `/${lang}`;
+  if (href.startsWith("/about#")) return `/${lang}${href.slice("/about".length)}`;
+  return href;
+}

@@ -8,9 +8,9 @@
  */
 
 import { useEffect, useState } from "react";
-import { useLang } from "./LangContext";
+import { useLang, LANG_HOME } from "./LangContext";
 import { supabase, SITE_KEY, isSupabaseConfigured } from "@/lib/supabase";
-import { siteHref } from "@/lib/links";
+import { siteHref, localHref } from "@/lib/links";
 
 interface DbLink {
   id: string;
@@ -23,7 +23,8 @@ interface DbLink {
 }
 
 export default function SiteFooter() {
-  const { t, lang } = useLang();
+  const { t, lang, langs } = useLang();
+  const L = (href: string) => localHref(href, lang);
   const [dbLinks, setDbLinks] = useState<DbLink[] | null>(null);
 
   useEffect(() => {
@@ -89,7 +90,7 @@ export default function SiteFooter() {
                     return (
                       <li key={link.id}>
                         <a
-                          href={h.href}
+                          href={L(h.href)}
                           target={ext ? "_blank" : undefined}
                           rel={ext ? "noopener noreferrer" : undefined}
                         >
@@ -107,13 +108,13 @@ export default function SiteFooter() {
               <div>
                 <h5>{t("footer.sitemap")}</h5>
                 <ul>
-                  <li><a href="/about#about">{t("nav.about")}</a></li>
-                  <li><a href="/about#thesis">{t("nav.thesis")}</a></li>
-                  <li><a href="/about#pricing">{t("nav.pricing")}</a></li>
-                  <li><a href="/about#process">{t("nav.process")}</a></li>
-                  <li><a href="/about#portfolio">{t("nav.portfolio")}</a></li>
-                  <li><a href="/blog">블로그</a></li>
-                  <li><a href="/about#faq">{t("nav.faq")}</a></li>
+                  <li><a href={L("/about#about")}>{t("nav.about")}</a></li>
+                  <li><a href={L("/about#thesis")}>{t("nav.thesis")}</a></li>
+                  <li><a href={L("/about#pricing")}>{t("nav.pricing")}</a></li>
+                  <li><a href={L("/about#process")}>{t("nav.process")}</a></li>
+                  <li><a href={L("/about#portfolio")}>{t("nav.portfolio")}</a></li>
+                  {lang === "ko" && <li><a href="/blog">블로그</a></li>}
+                  <li><a href={L("/about#faq")}>{t("nav.faq")}</a></li>
                 </ul>
               </div>
               <div>
@@ -127,7 +128,29 @@ export default function SiteFooter() {
             </>
           )}
         </div>
-        <div className="copyright">{t("footer.copyright")}</div>
+        {/* 언어별 페이지 — 모든 페이지 아래에 링크로 둔다 (방문자 · 검색엔진 모두 번역본을 찾을 수 있게) */}
+        <nav
+          aria-label="Language"
+          style={{ display: "flex", flexWrap: "wrap", gap: "6px 18px", marginTop: 28, fontSize: 13 }}
+        >
+          {langs.map((l) => (
+            <a
+              key={l.code}
+              href={LANG_HOME[l.code]}
+              hrefLang={l.code === "zh" ? "zh-Hans" : l.code}
+              lang={l.code === "zh" ? "zh-Hans" : l.code}
+              aria-current={l.code === lang ? "true" : undefined}
+              style={{
+                color: l.code === lang ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.55)",
+                fontWeight: l.code === lang ? 700 : 400,
+                padding: "6px 0",
+              }}
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <div className="copyright" style={{ marginTop: 14 }}>{t("footer.copyright")}</div>
       </div>
     </footer>
   );
