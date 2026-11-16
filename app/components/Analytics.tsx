@@ -18,7 +18,10 @@ import Script from "next/script";
 import { useEffect } from "react";
 import { track as vercelTrack } from "@vercel/analytics";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+// 구글 애널리틱스 4 측정 ID (2026-11-16 등록 — 속성 "드림위드에스 홈페이지").
+// 측정 ID 는 페이지 소스에 그대로 보이는 공개 값이라 코드에 둬도 된다.
+// Vercel 환경변수 NEXT_PUBLIC_GA_ID 를 넣으면 그 값이 우선한다 (다른 계정으로 옮길 때).
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-GL8TVY8XWR";
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 // 네이버 애널리틱스(선택) — Vercel 환경변수 NEXT_PUBLIC_NAVER_WA 에 네이버 애널리틱스 사이트 ID 를 넣으면 켜진다.
 const NAVER_WA = process.env.NEXT_PUBLIC_NAVER_WA;
