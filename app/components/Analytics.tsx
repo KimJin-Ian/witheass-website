@@ -23,8 +23,10 @@ import { track as vercelTrack } from "@vercel/analytics";
 // Vercel 환경변수 NEXT_PUBLIC_GA_ID 를 넣으면 그 값이 우선한다 (다른 계정으로 옮길 때).
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-GL8TVY8XWR";
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
-// 네이버 애널리틱스(선택) — Vercel 환경변수 NEXT_PUBLIC_NAVER_WA 에 네이버 애널리틱스 사이트 ID 를 넣으면 켜진다.
-const NAVER_WA = process.env.NEXT_PUBLIC_NAVER_WA;
+// 네이버 애널리틱스 사이트 ID (2026-11-16 등록 — analytics.naver.com 의 "드림위드에스 홈페이지").
+// 구글 측정 ID 와 마찬가지로 페이지 소스에 보이는 공개 값이다.
+// Vercel 환경변수 NEXT_PUBLIC_NAVER_WA 를 넣으면 그 값이 우선한다.
+const NAVER_WA = process.env.NEXT_PUBLIC_NAVER_WA || "d50b62168fb4c";
 
 // 전역 클릭 이벤트 자동 트래킹
 // data-track="event_name" 속성이 붙은 모든 요소의 클릭을
@@ -161,14 +163,22 @@ export default function Analytics() {
       )}
 
       {NAVER_WA && (
-        <>
-          <Script src="https://wcs.naver.net/wcslog.js" strategy="afterInteractive" />
-          <Script id="naver-wa" strategy="afterInteractive">
-            {`if(!window.wcs_add) window.wcs_add = {};
-            window.wcs_add["wa"] = "${NAVER_WA}";
-            if(window.wcs) { window.wcs.inflow && window.wcs.inflow(); window.wcs_do && window.wcs_do(); }`}
-          </Script>
-        </>
+        // 네이버가 발급한 분석 스크립트와 같은 일을 한다.
+        // 스크립트(wcslog.js)가 다 내려온 뒤에 wcs_do() 를 불러야 방문이 기록되므로 onLoad 에서 부른다.
+        <Script
+          src="https://wcs.pstatic.net/wcslog.js"
+          strategy="afterInteractive"
+          onLoad={() => {
+            const w = window as unknown as {
+              wcs_add?: Record<string, string>;
+              wcs?: unknown;
+              wcs_do?: () => void;
+            };
+            if (!w.wcs_add) w.wcs_add = {};
+            w.wcs_add["wa"] = NAVER_WA;
+            if (w.wcs && w.wcs_do) w.wcs_do();
+          }}
+        />
       )}
 
       {GA_ID && (
