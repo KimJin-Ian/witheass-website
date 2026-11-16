@@ -42,7 +42,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
   // DB에서 가져온 콘텐츠 (i18n 키 형식, 언어별)
   const [dbContent, setDbContent] = useState<Record<string, Record<string, string>>>({});
 
-  // 첫 마운트 시 저장된 언어 또는 브라우저 언어 자동 감지
+  // 첫 마운트 시 저장된 언어가 있으면 그 언어로 (없으면 한국어)
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY) as Lang | null;
@@ -51,11 +51,10 @@ export function LangProvider({ children }: { children: ReactNode }) {
         document.documentElement.lang = saved;
         return;
       }
-      const nav = (navigator.language || "ko").toLowerCase();
-      if (nav.startsWith("en")) setLangState("en");
-      else if (nav.startsWith("zh")) setLangState("zh");
-      else if (nav.startsWith("ja")) setLangState("ja");
-      else setLangState("ko");
+      // 브라우저 언어로 자동 전환하지 않는다 (2026-11-16).
+      // 구글 검색 로봇은 영어 브라우저로 화면을 읽어서, 자동 전환이 켜져 있으면 /about 이 영어로 색인되고
+      // 모든 페이지의 <html lang> 이 en 으로 바뀐다. 기본은 한국어, 방문자가 언어 버튼으로 고르면 그 선택을 기억한다.
+      setLangState("ko");
     } catch {
       /* SSR / no localStorage */
     }
