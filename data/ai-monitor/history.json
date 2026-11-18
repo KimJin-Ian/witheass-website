@@ -1,0 +1,17 @@
+[
+ {
+  "date": "2026-11-18",
+  "engines": {
+   "google_ai": {
+    "answered": 28,
+    "mentioned": 5,
+    "cited": 11
+   }
+  },
+  "google": {
+   "checked": 30,
+   "top10": 16,
+   "top3": 12
+  }
+ }
+]

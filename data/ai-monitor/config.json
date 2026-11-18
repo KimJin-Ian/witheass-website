@@ -1,0 +1,355 @@
+{
+  "brand": {
+    "name": "드림위드에스",
+    "aliases": [
+      "드림위드에스",
+      "드림 위드 에스",
+      "드림위드S",
+      "드림위드 에스",
+      "Dream with ESS",
+      "DREAM WITH ESS",
+      "Dream With·ESS",
+      "위드에스마케팅",
+      "위드에스 마케팅",
+      "bookpublishingwithess"
+    ],
+    "domains": [
+      "bookpublishingwithess.com"
+    ]
+  },
+  "competitors": [
+    {
+      "name": "바른북스",
+      "aliases": [
+        "바른북스"
+      ],
+      "domains": [
+        "barunbooks.com"
+      ]
+    },
+    {
+      "name": "지식과감성",
+      "aliases": [
+        "지식과감성",
+        "지식과 감성"
+      ],
+      "domains": [
+        "knsbookup.com"
+      ]
+    },
+    {
+      "name": "모두출판",
+      "aliases": [
+        "모두출판"
+      ],
+      "domains": []
+    },
+    {
+      "name": "좋은땅",
+      "aliases": [
+        "좋은땅"
+      ],
+      "domains": [
+        "g-world.co.kr"
+      ]
+    },
+    {
+      "name": "북랩",
+      "aliases": [
+        "북랩"
+      ],
+      "domains": [
+        "book.co.kr"
+      ]
+    },
+    {
+      "name": "부크크",
+      "aliases": [
+        "부크크",
+        "BOOKK"
+      ],
+      "domains": [
+        "bookk.co.kr"
+      ]
+    },
+    {
+      "name": "페스트북",
+      "aliases": [
+        "페스트북"
+      ],
+      "domains": [
+        "festbook.co.kr"
+      ]
+    },
+    {
+      "name": "책과나무",
+      "aliases": [
+        "책과나무"
+      ],
+      "domains": [
+        "booknamu.com"
+      ]
+    },
+    {
+      "name": "미다스북스",
+      "aliases": [
+        "미다스북스"
+      ],
+      "domains": [
+        "midasbooks.com"
+      ]
+    },
+    {
+      "name": "하움출판사",
+      "aliases": [
+        "하움출판사",
+        "하움 출판사"
+      ],
+      "domains": [
+        "haum.kr"
+      ]
+    },
+    {
+      "name": "작가와",
+      "aliases": [
+        "작가와 출판",
+        "작가와("
+      ],
+      "domains": [
+        "jakkawa.com"
+      ]
+    },
+    {
+      "name": "렛츠북",
+      "aliases": [
+        "렛츠북"
+      ],
+      "domains": [
+        "letsbook21.co.kr"
+      ]
+    },
+    {
+      "name": "생각나눔",
+      "aliases": [
+        "생각나눔"
+      ],
+      "domains": []
+    },
+    {
+      "name": "유페이퍼",
+      "aliases": [
+        "유페이퍼"
+      ],
+      "domains": [
+        "upaper.kr"
+      ]
+    },
+    {
+      "name": "교보문고 퍼플",
+      "aliases": [
+        "교보 퍼플",
+        "교보문고 퍼플",
+        "POD 퍼플",
+        "퍼플 POD",
+        "바로출판"
+      ],
+      "domains": []
+    },
+    {
+      "name": "이페이지",
+      "aliases": [
+        "이페이지"
+      ],
+      "domains": []
+    },
+    {
+      "name": "라온북",
+      "aliases": [
+        "라온북"
+      ],
+      "domains": []
+    },
+    {
+      "name": "한국책쓰기강사양성협회",
+      "aliases": [
+        "한책협",
+        "한국책쓰기강사양성협회"
+      ],
+      "domains": []
+    },
+    {
+      "name": "책쓰기 브랜딩 스쿨",
+      "aliases": [
+        "책쓰기브랜딩스쿨",
+        "책쓰기 브랜딩 스쿨"
+      ],
+      "domains": []
+    },
+    {
+      "name": "리더북스",
+      "aliases": [
+        "리더북스"
+      ],
+      "domains": []
+    }
+  ],
+  "groups": {
+    "cost": "비용",
+    "recommend": "업체 추천",
+    "pro": "전문직 · 대표",
+    "howto": "방법 · 과정",
+    "royalty": "인세 · 유통 · 홍보"
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "group": "cost",
+      "text": "자비출판 비용은 보통 얼마인가요?"
+    },
+    {
+      "id": "q02",
+      "group": "cost",
+      "text": "책 한 권 출판하는 데 드는 비용을 알려주세요"
+    },
+    {
+      "id": "q03",
+      "group": "cost",
+      "text": "책 대필 작가 비용은 얼마 정도인가요?"
+    },
+    {
+      "id": "q04",
+      "group": "cost",
+      "text": "자서전 출판 비용과 기간이 궁금합니다"
+    },
+    {
+      "id": "q05",
+      "group": "cost",
+      "text": "자비출판 200만원대와 1000만원대는 무엇이 다른가요?"
+    },
+    {
+      "id": "q06",
+      "group": "recommend",
+      "text": "자비출판 출판사 추천해 주세요"
+    },
+    {
+      "id": "q07",
+      "group": "recommend",
+      "text": "책 출판 잘하는 출판사는 어디인가요?"
+    },
+    {
+      "id": "q08",
+      "group": "recommend",
+      "text": "대필부터 출판까지 한 번에 해주는 출판사 추천해 주세요"
+    },
+    {
+      "id": "q09",
+      "group": "recommend",
+      "text": "퍼스널 브랜딩 책 출판 전문 출판사를 추천해 주세요"
+    },
+    {
+      "id": "q10",
+      "group": "recommend",
+      "text": "원고 없이 인터뷰만으로 책을 만들어 주는 출판사가 있나요?"
+    },
+    {
+      "id": "q11",
+      "group": "recommend",
+      "text": "책쓰기 코칭 업체 추천해 주세요"
+    },
+    {
+      "id": "q12",
+      "group": "recommend",
+      "text": "자서전 대필 업체 추천해 주세요"
+    },
+    {
+      "id": "q13",
+      "group": "recommend",
+      "text": "출판 후 마케팅까지 해주는 출판사는 어디인가요?"
+    },
+    {
+      "id": "q14",
+      "group": "recommend",
+      "text": "서울에서 자비출판 상담받을 수 있는 출판사 알려주세요"
+    },
+    {
+      "id": "q15",
+      "group": "recommend",
+      "text": "베스트셀러를 만들어 주는 출판사가 있나요?"
+    },
+    {
+      "id": "q16",
+      "group": "pro",
+      "text": "의사가 책을 내려면 어떻게 해야 하나요?"
+    },
+    {
+      "id": "q17",
+      "group": "pro",
+      "text": "병원 원장 책 출판 대행 업체 추천해 주세요"
+    },
+    {
+      "id": "q18",
+      "group": "pro",
+      "text": "변호사나 세무사 같은 전문직 책 출판은 어디에 맡기나요?"
+    },
+    {
+      "id": "q19",
+      "group": "pro",
+      "text": "CEO 자서전이나 경영서 출판 잘하는 곳 추천해 주세요"
+    },
+    {
+      "id": "q20",
+      "group": "pro",
+      "text": "강사가 책을 내려면 어느 출판사가 좋은가요?"
+    },
+    {
+      "id": "q21",
+      "group": "pro",
+      "text": "기업 브랜드북 제작 업체 추천해 주세요"
+    },
+    {
+      "id": "q22",
+      "group": "howto",
+      "text": "책 출판 과정은 어떻게 되나요?"
+    },
+    {
+      "id": "q23",
+      "group": "howto",
+      "text": "원고가 없는데 책을 낼 수 있나요?"
+    },
+    {
+      "id": "q24",
+      "group": "howto",
+      "text": "자비출판과 기획출판의 차이는 무엇인가요?"
+    },
+    {
+      "id": "q25",
+      "group": "howto",
+      "text": "책 한 권 쓰고 출판하는 데 얼마나 걸리나요?"
+    },
+    {
+      "id": "q26",
+      "group": "howto",
+      "text": "출판사를 고를 때 무엇을 확인해야 하나요?"
+    },
+    {
+      "id": "q27",
+      "group": "royalty",
+      "text": "자비출판 인세는 몇 퍼센트인가요?"
+    },
+    {
+      "id": "q28",
+      "group": "royalty",
+      "text": "자비출판한 책도 교보문고와 예스24에 입점되나요?"
+    },
+    {
+      "id": "q29",
+      "group": "royalty",
+      "text": "책 출판 후 홍보는 어떻게 하나요?"
+    },
+    {
+      "id": "q30",
+      "group": "royalty",
+      "text": "책을 내면 퍼스널 브랜딩에 정말 도움이 되나요?"
+    }
+  ]
+}
