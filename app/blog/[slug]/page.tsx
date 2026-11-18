@@ -7,7 +7,7 @@ import BlogViewTracker from "../../components/BlogViewTracker";
 import { faqJsonLd } from "@/lib/faq-schema";
 
 const SITE_URL = "https://www.bookpublishingwithess.com";
-const KAKAO_URL = "http://pf.kakao.com/_QkZhd";
+const KAKAO_URL = "https://pf.kakao.com/_QkZhd";
 
 export const revalidate = 60;
 
