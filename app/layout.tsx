@@ -174,7 +174,7 @@ const organizationJsonLd = {
     },
   ],
   sameAs: [
-    "http://pf.kakao.com/_QkZhd",
+    "https://pf.kakao.com/_QkZhd",
     "https://search.shopping.naver.com/book/search?query=드림위드에스",
     "https://www.threads.com/@dreamwithessreview",
   ],

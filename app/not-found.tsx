@@ -89,7 +89,7 @@ export default function NotFound() {
       </nav>
 
       <a
-        href="http://pf.kakao.com/_QkZhd"
+        href="https://pf.kakao.com/_QkZhd"
         target="_blank"
         rel="noopener noreferrer"
         style={{ marginTop: 22, fontSize: 13, color: "var(--gold-600, #c4a661)", textDecoration: "none" }}
