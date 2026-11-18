@@ -8,6 +8,8 @@
  * 관련 글 링크는 구글이 아직 모르는 글(색인 안 됨)을 일부러 섞어 발견을 돕는다.
  */
 
+import { MORE_GUIDES } from "./question-guides-more";
+
 export type Block =
   | { p: string }
   | { ul: string[] }
@@ -30,6 +32,7 @@ export type QuestionGuide = {
   faq: [string, string][];
   related: [string, string, string][]; // href, 분류, 제목
   tags: string[];
+  updated?: string; // 이 가이드만 따로 고친 날 (없으면 페이지 기본값)
 };
 
 const PACKAGES_TABLE = {
@@ -42,7 +45,7 @@ const PACKAGES_TABLE = {
   ],
 };
 
-export const QUESTION_GUIDES: QuestionGuide[] = [
+const BASE_GUIDES: QuestionGuide[] = [
   // ── 1. 책출판 잘하는 출판사 추천해줘
   {
     slug: "how-to-choose-publisher",
@@ -750,3 +753,6 @@ export const QUESTION_GUIDES: QuestionGuide[] = [
     tags: ["자서전출판", "자서전대필", "부모님자서전", "회고록출판", "은퇴선물"],
   },
 ];
+
+// 11/18 추가 11개 — lib/question-guides-more.ts (질문형 페이지 20개 목표)
+export const QUESTION_GUIDES: QuestionGuide[] = [...BASE_GUIDES, ...MORE_GUIDES];

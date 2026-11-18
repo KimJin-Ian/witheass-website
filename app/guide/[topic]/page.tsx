@@ -76,7 +76,7 @@ export default function QuestionGuidePage({ params }: { params: { topic: string 
         description: g.description,
         inLanguage: "ko-KR",
         mainEntityOfPage: url,
-        dateModified: UPDATED,
+        dateModified: g.updated ?? UPDATED,
         image: `${SITE_URL}/og-image.png`,
         author: { "@type": "Organization", name: "드림위드에스 출판사" },
         publisher: { "@type": "Organization", name: "드림위드에스 출판사", url: SITE_URL },
@@ -111,7 +111,7 @@ export default function QuestionGuidePage({ params }: { params: { topic: string 
             <div className={s.meta}>
               <span><b>드림위드에스 출판사 편집부</b></span>
               <span>읽는 시간 약 {minutes}분</span>
-              <span>{UPDATED.replace(/-/g, ".")} 업데이트</span>
+              <span>{(g.updated ?? UPDATED).replace(/-/g, ".")} 업데이트</span>
             </div>
           </div>
         </section>
