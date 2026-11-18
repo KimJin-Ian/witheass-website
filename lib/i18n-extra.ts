@@ -705,9 +705,9 @@ export const LANG_PAGE_META: Record<
   { title: string; description: string; keywords: string[]; ogLocale: string; hreflang: string; siteName: string }
 > = {
   en: {
-    title: "Book Publishing in Korea — Memoir · Self-Publishing · Personal Branding | Dream With Ess",
+    title: "Book Publishing in Korea — Memoir & Self-Publishing | Dream With Ess",
     description:
-      "Dream With Ess is a Korean publisher for memoirs, self-funded books and expert branding books. Interview-based writing (no manuscript needed), nationwide bookstore distribution in Korea, e-book registration, 45% print royalty, and marketing through to speaking events. Packages from ₩6M to ₩20M (KRW).",
+      "Korean publisher for memoirs, self-funded and expert branding books. Interview-based writing, bookstore distribution in Korea, 45% print royalty. Packages ₩6M–₩20M.",
     keywords: ["book publishing in Korea", "publish a book in Korea", "Korean publisher", "memoir ghostwriting", "self-publishing Korea", "personal branding book", "Dream With Ess"],
     ogLocale: "en_US",
     hreflang: "en",
