@@ -56,7 +56,7 @@ export async function GET() {
 - 위치: 서울특별시 강남구
 - 전화: 010-2068-0817
 - 이메일: dreamwithessmarketing@gmail.com
-- 카카오톡 상담: http://pf.kakao.com/_QkZhd
+- 카카오톡 상담: https://pf.kakao.com/_QkZhd
 - 웹사이트: ${SITE_URL}
 
 ## 핵심 차별점
