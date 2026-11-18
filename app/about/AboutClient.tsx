@@ -417,7 +417,7 @@ export default function AboutClient() {
                 data-track="cta_click" data-category="promotion" data-label="promo_contact">
                 {t("promo.cta1")}
               </a>
-              <a href="http://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer"
+              <a href="https://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer"
                 className="cta-btn promo-ghost"
                 data-track="cta_click" data-category="promotion" data-label="promo_kakao">
                 {t("promo.cta2")}
@@ -644,7 +644,7 @@ export default function AboutClient() {
             </div>
 
             <div className="contact-channels">
-              <a href="http://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer" className="contact-ch"
+              <a href="https://pf.kakao.com/_QkZhd" target="_blank" rel="noopener noreferrer" className="contact-ch"
                 data-track="cta_click" data-category="contact" data-label="contact_kakao">
                 <div className="ch-label">KAKAOTALK</div>
                 <div className="ch-val">{t("contact.ch.kakao")}</div>
@@ -674,7 +674,7 @@ export default function AboutClient() {
       {/* FLOATING CTA — premium pill style with inline SVG */}
       <div className="float-cta">
         <a
-          href="http://pf.kakao.com/_QkZhd"
+          href="https://pf.kakao.com/_QkZhd"
           target="_blank"
           rel="noopener noreferrer"
           className="float-cta-btn kakao"
