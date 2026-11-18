@@ -88,10 +88,12 @@ export default function SiteHeader() {
       <div className="container header-inner">
         <a href={isKo ? "/" : `/${lang}`} className="logo" onClick={closeMenu} aria-label={t("a11y.home")}>
           <img
-            src="/logo.png"
+            // 11/18 속도: 화면엔 높이 44px 로 보이는데 800×200(78KB) 원본을 받고 있었다 → 2배 크기(352×88, 30KB)
+            //   원본 logo.png 는 구조화 데이터(회사 로고)에 그대로 쓴다
+            src="/logo-header.png"
             alt={t("a11y.logo")}
-            width={200}
-            height={50}
+            width={176}
+            height={44}
             style={{ height: "44px", width: "auto", display: "block" }}
           />
         </a>

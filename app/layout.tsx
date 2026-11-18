@@ -267,10 +267,15 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        {/*
+          11/18 속도: 예전 pretendard.css 는 굵기마다 한글 전체 글꼴(약 750KB)을 통째로 받아
+          한 페이지에 4.6MB 가 내려갔다. dynamic-subset 은 페이지에 실제로 쓰인 글자 조각만 받는다
+          (CSS 압축 14KB · 글꼴 이름은 그대로 "Pretendard").
+        */}
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css"
         />
         <script
           id="ld-organization"
