@@ -10,6 +10,7 @@ const NAV = [
   { href: "/admin/monitoring", label: "AI 노출 모니터링", ico: "🔎" },
   { href: "/admin/content", label: "콘텐츠 편집", ico: "✏️" },
   { href: "/admin/blog", label: "블로그 글", ico: "📝" },
+  { href: "/admin/board", label: "게시판 글", ico: "💬" },
   { href: "/admin/media", label: "이미지 관리", ico: "🖼️" },
   { href: "/admin/settings", label: "사이트 설정", ico: "⚙️" },
 ];

@@ -146,6 +146,7 @@ export default function SiteHeader() {
               {isKo && <a href="/team" onClick={closeMenu}>전문 작가진</a>}
               {isKo && <a href="/guide" onClick={closeMenu}>출판 가이드</a>}
               {isKo && <a href="/blog" onClick={closeMenu}>블로그</a>}
+              {isKo && <a href="/board" onClick={closeMenu}>게시판</a>}
               <a href={L("/about#faq")} onClick={closeMenu}>{t("nav.faq")}</a>
               {isKo && <a href={PRO_URL} onClick={closeMenu} className="nav-pro">전문직 패키지</a>}
               <a href={KAKAO_CHAT} target="_blank" rel="noopener noreferrer" onClick={closeMenu} className="nav-cta" style={{ color: "var(--gold-600)" }}>
