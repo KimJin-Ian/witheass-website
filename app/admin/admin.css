@@ -457,6 +457,11 @@
 .mon-sources li.ours a, .mon-serp li.ours a { background: #fffbeb; }
 .mon-sources li.ours b, .mon-serp li.ours b { color: #8a6d1f; }
 
+.mon-table-wrap { overflow-x: auto; }
+.mon-keywords td { vertical-align: middle; white-space: nowrap; }
+.mon-keywords td:last-child { white-space: normal; min-width: 180px; }
+.mon-muted-cell { color: var(--admin-text-soft); font-size: 12px; }
+
 .mon-notes ul { margin: 0; padding-left: 18px; color: var(--admin-text-soft); font-size: 13px; line-height: 1.8; }
 
 @media (max-width: 768px) {
