@@ -294,6 +294,30 @@ function googleRankEntry(qid, via, collectedAt, organic) {
   return { qid, via, collectedAt, rank: idx < 0 ? null : idx + 1, top };
 }
 
+/**
+ * 짧은 검색어(예: 책출판) 한 건의 구글 결과 — 우리 사이트가 1면 몇 번째인지, AI 개요에 나오는지.
+ * 직전 측정값(prev)이 있으면 순위 변화를 볼 수 있게 함께 남긴다.
+ */
+function keywordEntry(keyword, via, collectedAt, organic, aiText, aiSources, prev) {
+  const top = normalizeSources(organic).slice(0, 10);
+  const idx = top.findIndex((o) => matchesDomain(o.domain, config.brand.domains));
+  const text = String(aiText || "").trim();
+  const found = analyze(text, normalizeSources(aiSources || []));
+  return {
+    id: keyword.id,
+    keyword: keyword.text,
+    via,
+    collectedAt,
+    rank: idx < 0 ? null : idx + 1,
+    prevRank: prev ? (prev.rank ?? null) : null,
+    prevCollectedAt: prev ? prev.collectedAt : null,
+    top: top.slice(0, 5),
+    aiOverview: text.length >= 40,
+    aiBrand: found.brand,
+    aiCited: found.brandCited,
+  };
+}
+
 // ───────────────────────── 브라우저 수집본 가져오기 ─────────────────────────
 
 /** 구글 검색 화면에서 그대로 복사한 AI 개요 글을 답변 본문만 남기도록 정리한다. */
@@ -322,11 +346,29 @@ function cleanGoogleAiText(raw, sources) {
   return { text: kept.join("\n"), complete };
 }
 
-function importGoogleBrowser(file, date) {
+function importGoogleBrowser(file, date, previousKeywords = []) {
   const raw = readJson(file, null);
   if (!raw) throw new Error(`파일을 읽지 못했습니다: ${file}`);
   const results = [];
   const google = [];
+  const keywords = [];
+  for (const k of config.keywords || []) {
+    const item = raw[k.id];
+    if (!item) continue;
+    const collectedAt = item.at || `${date}T00:00:00.000Z`;
+    const cleaned = cleanGoogleAiText(item.ai?.text, item.ai?.sources || []);
+    keywords.push(
+      keywordEntry(
+        k,
+        "browser",
+        collectedAt,
+        (item.organic || []).map((o) => ({ title: o.t, url: o.u })),
+        cleaned.text,
+        (item.ai?.sources || []).map((s) => ({ title: s.t, url: s.u })),
+        previousKeywords.find((p) => p.id === k.id)
+      )
+    );
+  }
   for (const q of config.questions) {
     const item = raw[q.id];
     if (!item) continue;
@@ -338,7 +380,7 @@ function importGoogleBrowser(file, date) {
     );
     google.push(googleRankEntry(q.id, "browser", collectedAt, (item.organic || []).map((o) => ({ title: o.t, url: o.u }))));
   }
-  return { results, google };
+  return { results, google, keywords };
 }
 
 // ───────────────────────── 저장 ─────────────────────────
@@ -359,10 +401,14 @@ function summarize(latest) {
     };
   }
   const g = latest.google || [];
+  const k = latest.keywords || [];
   return {
     engines,
     google: g.length
       ? { checked: g.length, top10: g.filter((x) => x.rank).length, top3: g.filter((x) => x.rank && x.rank <= 3).length }
+      : null,
+    keywords: k.length
+      ? { checked: k.length, top10: k.filter((x) => x.rank).length, top3: k.filter((x) => x.rank && x.rank <= 3).length }
       : null,
   };
 }
@@ -380,7 +426,7 @@ function save(latest, date) {
 }
 
 function emptyLatest() {
-  return { version: 1, updatedAt: null, date: null, engines: {}, results: [], google: [] };
+  return { version: 1, updatedAt: null, date: null, engines: {}, results: [], google: [], keywords: [] };
 }
 
 // ───────────────────────── 실행 ─────────────────────────
@@ -395,25 +441,33 @@ async function main() {
   latest.engines ||= {};
   latest.results ||= [];
   latest.google ||= [];
+  latest.keywords ||= [];
 
   const importFile = argOf("--import-google-browser");
   if (importFile) {
     const date = argOf("--date") || kstDate();
-    const { results, google } = importGoogleBrowser(importFile, date);
-    latest.results = latest.results.filter((r) => r.engine !== "google_ai").concat(results);
-    latest.google = google;
-    latest.engines.google_ai = {
-      label: ENGINE_LABEL.google_ai,
-      status: "ok",
-      via: "browser",
-      model: null,
-      collectedAt: results[0]?.collectedAt || null,
-    };
+    const { results, google, keywords } = importGoogleBrowser(importFile, date, latest.keywords);
+    // 질문만 든 파일 · 검색어만 든 파일을 따로 넣어도 서로 지우지 않는다.
+    if (results.length) {
+      latest.results = latest.results.filter((r) => r.engine !== "google_ai").concat(results);
+      latest.google = google;
+      latest.engines.google_ai = {
+        label: ENGINE_LABEL.google_ai,
+        status: "ok",
+        via: "browser",
+        model: null,
+        collectedAt: results[0]?.collectedAt || null,
+      };
+    }
+    if (keywords.length) {
+      const ids = new Set(keywords.map((k) => k.id));
+      latest.keywords = latest.keywords.filter((k) => !ids.has(k.id)).concat(keywords).sort((a, b) => a.id.localeCompare(b.id));
+    }
     for (const id of ["chatgpt", "gemini"]) {
       latest.engines[id] ||= { label: ENGINE_LABEL[id], status: "no_key", via: "api", model: null, collectedAt: null };
     }
     save(latest, date);
-    console.log(`구글 브라우저 수집본 ${results.length}건을 반영했습니다.`);
+    console.log(`구글 브라우저 수집본 — 질문 ${results.length}건 · 검색어 ${keywords.length}건을 반영했습니다.`);
     return;
   }
 
@@ -464,6 +518,27 @@ async function main() {
       const ranks = done.filter((d) => d.organic?.length).map((d) => googleRankEntry(d.row.qid, "api", d.collectedAt, d.organic));
       const rankIds = new Set(ranks.map((r) => r.qid));
       latest.google = latest.google.filter((g) => !rankIds.has(g.qid)).concat(ranks).sort((a, b) => a.qid.localeCompare(b.qid));
+    }
+  }
+
+  // 검색어 순위 — 검색 API 키가 있을 때만 (Google AI 개요와 같은 경로)
+  if (active.includes("google_ai") && (config.keywords || []).length) {
+    console.log(`\n[검색어 순위] ${config.keywords.length}개 수집 시작`);
+    const rows = await pool(config.keywords, 2, async (k) => {
+      const collectedAt = new Date().toISOString();
+      try {
+        const res = await withRetry(() => ENGINES.google_ai.ask(k.text));
+        const prev = latest.keywords.find((p) => p.id === k.id);
+        return keywordEntry(k, "api", collectedAt, res.organic || [], res.text, res.sources, prev);
+      } catch (err) {
+        console.log(`  ${k.id} 실패: ${err.message}`);
+        return null;
+      }
+    });
+    const ok = rows.filter(Boolean);
+    if (ok.length) {
+      const ids = new Set(ok.map((k) => k.id));
+      latest.keywords = latest.keywords.filter((k) => !ids.has(k.id)).concat(ok).sort((a, b) => a.id.localeCompare(b.id));
     }
   }
 
