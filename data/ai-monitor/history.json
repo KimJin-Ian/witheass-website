@@ -13,5 +13,20 @@
    "top10": 16,
    "top3": 12
   }
+ },
+ {
+  "date": "2026-11-27",
+  "engines": {
+   "google_ai": {
+    "answered": 30,
+    "mentioned": 9,
+    "cited": 14
+   }
+  },
+  "google": {
+   "checked": 30,
+   "top10": 17,
+   "top3": 14
+  }
  }
 ]
