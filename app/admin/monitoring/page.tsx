@@ -31,6 +31,20 @@ type Latest = {
   engines: Record<string, EngineInfo>;
   results: Result[];
   google: { qid: string; rank: number | null; top: Source[] }[];
+  keywords?: KeywordRow[];
+};
+/** 짧은 검색어(예: 책출판) 한 건의 구글 결과 */
+type KeywordRow = {
+  id: string;
+  keyword: string;
+  collectedAt: string;
+  rank: number | null;
+  prevRank: number | null;
+  prevCollectedAt: string | null;
+  top: Source[];
+  aiOverview: boolean;
+  aiBrand: boolean;
+  aiCited: boolean;
 };
 type HistoryRow = {
   date: string;
@@ -157,6 +171,22 @@ export default function MonitoringPage() {
     const m = list.reduce((n, e) => n + e.mentioned, 0);
     return { date: h.date, answered: a, mentioned: m, rate: pct(m, a), top10: h.google?.top10 ?? null };
   });
+
+  // 검색어 순위 — 1면에 있는 것부터, 순위가 높은 순서로
+  const keywords = [...(latest.keywords || [])].sort(
+    (a, b) => (a.rank ?? 99) - (b.rank ?? 99) || a.id.localeCompare(b.id)
+  );
+  const keywordTop10 = keywords.filter((k) => k.rank).length;
+  const keywordChange = (k: KeywordRow) => {
+    if (!k.prevCollectedAt) return "첫 측정";
+    if (k.rank && k.prevRank) {
+      const diff = k.prevRank - k.rank;
+      return diff === 0 ? "변동 없음" : diff > 0 ? `▲ ${diff}` : `▼ ${-diff}`;
+    }
+    if (k.rank && !k.prevRank) return "1면 진입";
+    if (!k.rank && k.prevRank) return `1면에서 밀림 (전 ${k.prevRank}위)`;
+    return "변동 없음";
+  };
 
   const hasData = answered.length > 0;
   const waiting = engineStats.filter((e) => !e.answered);
@@ -337,6 +367,64 @@ export default function MonitoringPage() {
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+
+          {keywords.length > 0 && (
+            <div className="panel">
+              <h2 className="panel-title">
+                검색어별 구글 순위
+                <span className="meta">
+                  {keywords.length}개 중 {keywordTop10}개 1면 · {formatKst(keywords[0]?.collectedAt)} 측정
+                </span>
+              </h2>
+              <div className="mon-table-wrap">
+                <table className="admin-table mon-keywords">
+                  <thead>
+                    <tr>
+                      <th>검색어</th>
+                      <th>우리 순위</th>
+                      <th>변화</th>
+                      <th>AI 개요</th>
+                      <th>지금 1~3위</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {keywords.map((k) => (
+                      <tr key={k.id}>
+                        <td>
+                          <strong>{k.keyword}</strong>
+                        </td>
+                        <td>
+                          <span className={`mon-badge ${k.rank ? "s-rank" : "s-norank"}`}>
+                            {k.rank ? `${k.rank}위` : "1면 밖"}
+                          </span>
+                        </td>
+                        <td className="mon-muted-cell">{keywordChange(k)}</td>
+                        <td>
+                          <span
+                            className={`mon-badge s-${
+                              !k.aiOverview ? "empty" : k.aiBrand ? "mentioned" : k.aiCited ? "cited" : "none"
+                            }`}
+                          >
+                            {!k.aiOverview ? "없음" : k.aiBrand ? "브랜드 언급" : k.aiCited ? "출처로 인용" : "언급 없음"}
+                          </span>
+                        </td>
+                        <td className="mon-muted-cell">
+                          {k.top
+                            .slice(0, 3)
+                            .map((t) => t.domain)
+                            .join(" · ")}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mon-muted">
+                광고를 뺀 구글 첫 화면 기준입니다. 2면 이후의 정확한 순위는 재지 않습니다. 검색어는
+                data/ai-monitor/config.json 의 keywords 에서 바꿉니다.
+              </p>
             </div>
           )}
 
