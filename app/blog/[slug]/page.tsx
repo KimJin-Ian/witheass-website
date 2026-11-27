@@ -5,6 +5,7 @@ import { getPostBySlug, getPublishedPosts } from "@/lib/content";
 import SiteHeader from "../../components/SiteHeader";
 import BlogViewTracker from "../../components/BlogViewTracker";
 import { faqJsonLd } from "@/lib/faq-schema";
+import { guidesForPost } from "@/lib/blog-guide-links";
 
 const SITE_URL = "https://www.bookpublishingwithess.com";
 const KAKAO_URL = "https://pf.kakao.com/_QkZhd";
@@ -69,6 +70,9 @@ export default async function BlogPostPage({ params }: Props) {
   const otherPosts = allPosts
     .filter((p: any) => p.id !== post.id)
     .slice(0, 3);
+
+  // 이 글과 같은 주제를 한 번에 정리한 대표 가이드 (lib/blog-guide-links.ts)
+  const guides = guidesForPost(post);
 
   const url = `${SITE_URL}/blog/${post.slug}`;
   const articleJsonLd = {
@@ -198,6 +202,31 @@ export default async function BlogPostPage({ params }: Props) {
               className="blog-article-body"
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
+
+            {/* 이어서 읽을 대표 가이드 · 지금 패키지 비용 — 글에서 가이드와 가격으로 가는 길을 만든다 (11/27) */}
+            {guides.length > 0 && (
+              <nav className="blog-guides" aria-label="이어서 읽을 가이드">
+                <h3>이 주제를 한 번에 정리한 가이드</h3>
+                <ul>
+                  {guides.map((g) => (
+                    <li key={g.href}>
+                      <Link href={g.href} data-track="guide_click" data-category="blog" data-label={g.href}>
+                        {g.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/about#pricing"
+                  className="blog-guides-price"
+                  data-track="cta_click"
+                  data-category="blog"
+                  data-label="blog_pricing"
+                >
+                  지금 패키지 구성과 비용 보기 →
+                </Link>
+              </nav>
+            )}
 
             {/* CTA */}
             <div className="blog-cta">
